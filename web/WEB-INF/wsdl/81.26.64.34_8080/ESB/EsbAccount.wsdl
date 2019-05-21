@@ -1,0 +1,2032 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.esb.convergenceondemand.net/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="EsbAccount" targetNamespace="http://service.esb.convergenceondemand.net/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.esb.convergenceondemand.net/" elementFormDefault="unqualified" targetNamespace="http://service.esb.convergenceondemand.net/" version="1.0">
+
+  <xs:element name="accountInfoResponse" type="tns:accountInfoResponse"/>
+
+  <xs:element name="accountResponse" type="tns:accountResponse"/>
+
+  <xs:element name="activateAccount" type="tns:activateAccount"/>
+
+  <xs:element name="activateAccountResponse" type="tns:activateAccountResponse"/>
+
+  <xs:element name="addRelatedAccount" type="tns:addRelatedAccount"/>
+
+  <xs:element name="addRelatedAccountResponse" type="tns:addRelatedAccountResponse"/>
+
+  <xs:element name="auth" type="tns:auth"/>
+
+  <xs:element name="authResponse" type="tns:authResponse"/>
+
+  <xs:element name="authWithEmail" type="tns:authWithEmail"/>
+
+  <xs:element name="authWithEmailResponse" type="tns:authWithEmailResponse"/>
+
+  <xs:element name="billing" type="tns:billing"/>
+
+  <xs:element name="createAccount" type="tns:createAccount"/>
+
+  <xs:element name="createAccountResponse" type="tns:createAccountResponse"/>
+
+  <xs:element name="createInfonovaAccount" type="tns:createInfonovaAccount"/>
+
+  <xs:element name="createInfonovaAccountResponse" type="tns:createInfonovaAccountResponse"/>
+
+  <xs:element name="createTerminalAccount" type="tns:createTerminalAccount"/>
+
+  <xs:element name="createTerminalAccountResponse" type="tns:createTerminalAccountResponse"/>
+
+  <xs:element name="createUtilityAccount" type="tns:createUtilityAccount"/>
+
+  <xs:element name="createUtilityAccountResponse" type="tns:createUtilityAccountResponse"/>
+
+  <xs:element name="customer" type="tns:customer"/>
+
+  <xs:element name="deactivateAccount" type="tns:deactivateAccount"/>
+
+  <xs:element name="deactivateAccountResponse" type="tns:deactivateAccountResponse"/>
+
+  <xs:element name="deleteRelatedAccount" type="tns:deleteRelatedAccount"/>
+
+  <xs:element name="deleteRelatedAccountResponse" type="tns:deleteRelatedAccountResponse"/>
+
+  <xs:element name="deleteTerminalAccount" type="tns:deleteTerminalAccount"/>
+
+  <xs:element name="deleteTerminalAccountResponse" type="tns:deleteTerminalAccountResponse"/>
+
+  <xs:element name="eBaseResponse" type="tns:eBaseResponse"/>
+
+  <xs:element name="editTerminalAccount" type="tns:editTerminalAccount"/>
+
+  <xs:element name="editTerminalAccountResponse" type="tns:editTerminalAccountResponse"/>
+
+  <xs:element name="emailAuthResponse" type="tns:emailAuthResponse"/>
+
+  <xs:element name="forgotPassword" type="tns:forgotPassword"/>
+
+  <xs:element name="forgotPasswordResponse" type="tns:forgotPasswordResponse"/>
+
+  <xs:element name="generateToken" type="tns:generateToken"/>
+
+  <xs:element name="generateTokenResponse" type="tns:generateTokenResponse"/>
+
+  <xs:element name="getAccount" type="tns:getAccount"/>
+
+  <xs:element name="getAccountResponse" type="tns:getAccountResponse"/>
+
+  <xs:element name="getAllTariffs" type="tns:getAllTariffs"/>
+
+  <xs:element name="getAllTariffsResponse" type="tns:getAllTariffsResponse"/>
+
+  <xs:element name="getEMSAccountDetails" type="tns:getEMSAccountDetails"/>
+
+  <xs:element name="getEMSAccountDetailsResponse" type="tns:getEMSAccountDetailsResponse"/>
+
+  <xs:element name="getPreferredContactMethods" type="tns:getPreferredContactMethods"/>
+
+  <xs:element name="getPreferredContactMethodsResponse" type="tns:getPreferredContactMethodsResponse"/>
+
+  <xs:element name="getPreferredLanguages" type="tns:getPreferredLanguages"/>
+
+  <xs:element name="getPreferredLanguagesResponse" type="tns:getPreferredLanguagesResponse"/>
+
+  <xs:element name="getRelatedAccounts" type="tns:getRelatedAccounts"/>
+
+  <xs:element name="getRelatedAccountsResponse" type="tns:getRelatedAccountsResponse"/>
+
+  <xs:element name="getSecurityInfo" type="tns:getSecurityInfo"/>
+
+  <xs:element name="getSecurityInfoResponse" type="tns:getSecurityInfoResponse"/>
+
+  <xs:element name="getSelfcareUsers" type="tns:getSelfcareUsers"/>
+
+  <xs:element name="getSelfcareUsersResponse" type="tns:getSelfcareUsersResponse"/>
+
+  <xs:element name="getTerminalUserDetails" type="tns:getTerminalUserDetails"/>
+
+  <xs:element name="getTerminalUserDetailsResponse" type="tns:getTerminalUserDetailsResponse"/>
+
+  <xs:element name="getTerminalUsers" type="tns:getTerminalUsers"/>
+
+  <xs:element name="getTerminalUsersResponse" type="tns:getTerminalUsersResponse"/>
+
+  <xs:element name="getUtilityAccountByAccountId" type="tns:getUtilityAccountByAccountId"/>
+
+  <xs:element name="getUtilityAccountByAccountIdResponse" type="tns:getUtilityAccountByAccountIdResponse"/>
+
+  <xs:element name="getUtilityAccountInfo" type="tns:getUtilityAccountInfo"/>
+
+  <xs:element name="getUtilityAccountInfoResponse" type="tns:getUtilityAccountInfoResponse"/>
+
+  <xs:element name="getUtilityAccountsByAccountId" type="tns:getUtilityAccountsByAccountId"/>
+
+  <xs:element name="getUtilityAccountsByAccountIdResponse" type="tns:getUtilityAccountsByAccountIdResponse"/>
+
+  <xs:element name="getUtilityAccountsByName" type="tns:getUtilityAccountsByName"/>
+
+  <xs:element name="getUtilityAccountsByNameResponse" type="tns:getUtilityAccountsByNameResponse"/>
+
+  <xs:element name="oldAccountDetail" type="tns:oldAccountDetail"/>
+
+  <xs:element name="recoverAccount" type="tns:recoverAccount"/>
+
+  <xs:element name="recoverAccountResponse" type="tns:recoverAccountResponse"/>
+
+  <xs:element name="relatedAccount" type="tns:relatedAccount"/>
+
+  <xs:element name="relatedAccountResponse" type="tns:relatedAccountResponse"/>
+
+  <xs:element name="searchResponse" type="tns:searchResponse"/>
+
+  <xs:element name="searchUtilityAccount" type="tns:searchUtilityAccount"/>
+
+  <xs:element name="searchUtilityAccountResponse" type="tns:searchUtilityAccountResponse"/>
+
+  <xs:element name="searchUtilityAccountWithPagination" type="tns:searchUtilityAccountWithPagination"/>
+
+  <xs:element name="searchUtilityAccountWithPaginationResponse" type="tns:searchUtilityAccountWithPaginationResponse"/>
+
+  <xs:element name="securityInfoResponse" type="tns:securityInfoResponse"/>
+
+  <xs:element name="terminalUsersResponse" type="tns:terminalUsersResponse"/>
+
+  <xs:element name="tokenVerificationResponse" type="tns:tokenVerificationResponse"/>
+
+  <xs:element name="updateAccount" type="tns:updateAccount"/>
+
+  <xs:element name="updateAccountResponse" type="tns:updateAccountResponse"/>
+
+  <xs:element name="updateMeterNumber" type="tns:updateMeterNumber"/>
+
+  <xs:element name="updateMeterNumberResponse" type="tns:updateMeterNumberResponse"/>
+
+  <xs:element name="updatePassword" type="tns:updatePassword"/>
+
+  <xs:element name="updatePasswordResponse" type="tns:updatePasswordResponse"/>
+
+  <xs:element name="updateUtilityAccount" type="tns:updateUtilityAccount"/>
+
+  <xs:element name="updateUtilityAccountResponse" type="tns:updateUtilityAccountResponse"/>
+
+  <xs:element name="usersResponse" type="tns:usersResponse"/>
+
+  <xs:element name="utilityAccountCreationResponse" type="tns:utilityAccountCreationResponse"/>
+
+  <xs:element name="verifyToken" type="tns:verifyToken"/>
+
+  <xs:element name="verifyTokenResponse" type="tns:verifyTokenResponse"/>
+
+  <xs:complexType name="recoverAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="otp" type="xs:string"/>
+      <xs:element minOccurs="0" name="newPassword" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="recoverAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="eBaseResponse">
+    <xs:sequence>
+      <xs:element name="retn" nillable="true" type="xs:int"/>
+      <xs:element name="desc" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:accountResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="accountResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="userId" nillable="true" type="xs:string"/>
+          <xs:element name="email" nillable="true" type="xs:string"/>
+          <xs:element name="balance" nillable="true" type="xs:string"/>
+          <xs:element name="status" nillable="true" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="generateToken">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="generateTokenResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="forgotPassword">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="forgotPasswordResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUtilityAccountsByName">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="customerName" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUtilityAccountsByNameResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:searchResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="searchResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="accounts" nillable="true" type="tns:customer"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="customer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="accountType" type="xs:string"/>
+      <xs:element minOccurs="0" name="adc" type="xs:string"/>
+      <xs:element minOccurs="0" name="address1" type="xs:string"/>
+      <xs:element minOccurs="0" name="address2" type="xs:string"/>
+      <xs:element minOccurs="0" name="address3" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="billings" nillable="true" type="tns:billing"/>
+      <xs:element minOccurs="0" name="businessDistrict" type="tns:businessDistrict"/>
+      <xs:element minOccurs="0" name="createdDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerCycle" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerId" type="xs:long"/>
+      <xs:element minOccurs="0" name="customerStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerType" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="fts" type="xs:string"/>
+      <xs:element minOccurs="0" name="govt" type="xs:string"/>
+      <xs:element minOccurs="0" name="institutionCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="kcg" type="xs:string"/>
+      <xs:element minOccurs="0" name="meterNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="meterStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="oldAccountDetail" type="tns:oldAccountDetail"/>
+      <xs:element minOccurs="0" name="organizationCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="phoneNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="tariff" type="xs:string"/>
+      <xs:element minOccurs="0" name="vsoId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="billing">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="adc" type="xs:string"/>
+      <xs:element minOccurs="0" name="adjustment" type="xs:int"/>
+      <xs:element minOccurs="0" name="billAmountWithinPeriod" type="xs:double"/>
+      <xs:element minOccurs="0" name="billCycle" type="xs:string"/>
+      <xs:element minOccurs="0" name="billDueDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="billEmbededPowerCharges" type="xs:double"/>
+      <xs:element minOccurs="0" name="billProductionDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="billingDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="billingId" type="xs:long"/>
+      <xs:element minOccurs="0" name="billingMode" type="tns:billingMode"/>
+      <xs:element minOccurs="0" name="billingPeriods" type="xs:string"/>
+      <xs:element minOccurs="0" name="closingBalance" type="xs:double"/>
+      <xs:element minOccurs="0" name="consumption" type="xs:double"/>
+      <xs:element minOccurs="0" name="costPerUnitPod" type="xs:double"/>
+      <xs:element minOccurs="0" name="costPerUnitPog" type="xs:double"/>
+      <xs:element minOccurs="0" name="createdDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="embeddedPowerRate" type="xs:double"/>
+      <xs:element minOccurs="0" name="energyCharge" type="xs:double"/>
+      <xs:element minOccurs="0" name="fc" type="xs:double"/>
+      <xs:element minOccurs="0" name="fixed" type="xs:string"/>
+      <xs:element minOccurs="0" name="invoiceNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="kvaConsumptions" type="xs:int"/>
+      <xs:element minOccurs="0" name="kvaDemandChage" type="xs:double"/>
+      <xs:element minOccurs="0" name="kvaMultiplier" type="xs:double"/>
+      <xs:element minOccurs="0" name="kvaRate" type="xs:string"/>
+      <xs:element minOccurs="0" name="kvaReadCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="kvaReadDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="lar" type="xs:int"/>
+      <xs:element minOccurs="0" name="larDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastPayment" type="xs:double"/>
+      <xs:element minOccurs="0" name="meteredStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="mmc" type="xs:string"/>
+      <xs:element minOccurs="0" name="multiplier" type="xs:double"/>
+      <xs:element minOccurs="0" name="netArrears" type="xs:double"/>
+      <xs:element minOccurs="0" name="newCharges" type="xs:double"/>
+      <xs:element minOccurs="0" name="nextInvoicePeriod" type="xs:string"/>
+      <xs:element minOccurs="0" name="noEstimates" type="xs:string"/>
+      <xs:element minOccurs="0" name="nodials" type="xs:int"/>
+      <xs:element minOccurs="0" name="paid" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="payment" type="xs:double"/>
+      <xs:element minOccurs="0" name="premiumServiceSubscription" type="xs:double"/>
+      <xs:element minOccurs="0" name="presentCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="presentReading" type="xs:double"/>
+      <xs:element minOccurs="0" name="presentReadingDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="previousBalance" type="xs:double"/>
+      <xs:element minOccurs="0" name="previousReadingAmount" type="xs:double"/>
+      <xs:element minOccurs="0" name="previousReadingDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="statusCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="tariff" type="xs:string"/>
+      <xs:element minOccurs="0" name="totalAmountDue" type="xs:double"/>
+      <xs:element minOccurs="0" name="totalCharge" type="xs:double"/>
+      <xs:element minOccurs="0" name="totalUsages" type="xs:double"/>
+      <xs:element minOccurs="0" name="unitsConsumedPod" type="xs:double"/>
+      <xs:element minOccurs="0" name="unitsConsumedPog" type="xs:double"/>
+      <xs:element minOccurs="0" name="vat" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="oldAccountDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="createdDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:long"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUtilityAccountInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="meterNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUtilityAccountInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:accountInfoResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="accountInfoResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:double"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="invoices" type="tns:billing"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="schedules" type="tns:outageSchedule"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="usages" type="tns:usage"/>
+          <xs:element minOccurs="0" name="userAccount" type="tns:utilityAccountDetails"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="outageSchedule">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="area" type="xs:string"/>
+      <xs:element minOccurs="0" name="endTime" type="xs:string"/>
+      <xs:element minOccurs="0" name="startTime" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="usage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="data" type="xs:string"/>
+      <xs:element minOccurs="0" name="label" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="utilityAccountDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountId" type="xs:string"/>
+      <xs:element minOccurs="0" name="billMode" type="tns:billingMode"/>
+      <xs:element minOccurs="0" name="birthDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="businessDistrict" type="xs:string"/>
+      <xs:element minOccurs="0" name="creationDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerType" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="entityType" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+      <xs:element minOccurs="0" name="houseNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="idNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="idType" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastModifiedDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+      <xs:element minOccurs="0" name="meterNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="otherPhone" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element minOccurs="0" name="phoneNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="preferedContactMethod" type="xs:string"/>
+      <xs:element minOccurs="0" name="preferredLanguage" type="xs:string"/>
+      <xs:element minOccurs="0" name="registrationChannel" type="xs:string"/>
+      <xs:element minOccurs="0" name="stateOfResidence" type="xs:string"/>
+      <xs:element minOccurs="0" name="streetAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="tariff" type="xs:string"/>
+      <xs:element minOccurs="0" name="vsoIdentifier" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllTariffs">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllTariffsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:tariffResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tariffResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="tariffs" nillable="true" type="tns:tariff"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="tariff">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="costPerUnit" type="xs:double"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:long"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="powerDuration" type="xs:string"/>
+      <xs:element minOccurs="0" name="premiumSubscription" type="xs:double"/>
+      <xs:element minOccurs="0" name="smartModulePrice" type="xs:double"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="tariffFeatures" nillable="true" type="tns:tariffFeature"/>
+      <xs:element minOccurs="0" name="upgradeCost" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tariffFeature">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="featureDescription" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSecurityInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSecurityInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:securityInfoResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="securityInfoResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="userId" nillable="true" type="xs:string"/>
+          <xs:element name="securityQuestion" nillable="true" type="xs:string"/>
+          <xs:element name="securityAnswer" nillable="true" type="xs:string"/>
+          <xs:element name="registrationDate" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getTerminalUsers">
+    <xs:sequence>
+      <xs:element name="page" type="xs:int"/>
+      <xs:element name="size" type="xs:int"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTerminalUsersResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:terminalUsersResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="terminalUsersResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="users" nillable="true" type="tns:userAccountWithCashOffice"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="userAccountWithCashOffice">
+    <xs:sequence>
+      <xs:element name="accountDetails" nillable="true" type="tns:userAccountExtended"/>
+      <xs:element name="cashOfficeId" nillable="true" type="xs:long"/>
+      <xs:element name="cashOfficeName" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="userAccountExtended">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountId" type="xs:string"/>
+      <xs:element minOccurs="0" name="billMode" type="tns:billingMode"/>
+      <xs:element minOccurs="0" name="birthDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="businessDistrict" type="xs:string"/>
+      <xs:element minOccurs="0" name="businessUnitId" type="xs:long"/>
+      <xs:element minOccurs="0" name="creationDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="customerStatus" type="tns:customerStatus"/>
+      <xs:element minOccurs="0" name="customerType" type="tns:customerType"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="entityType" type="tns:customerEntityType"/>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+      <xs:element minOccurs="0" name="houseNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:long"/>
+      <xs:element minOccurs="0" name="idNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="idType" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastModifiedDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+      <xs:element minOccurs="0" name="meterNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="otherPhone" type="xs:string"/>
+      <xs:element minOccurs="0" name="parentAccountId" type="xs:string"/>
+      <xs:element minOccurs="0" name="phoneNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="preferedContactMethod" type="tns:preferredContactMethod"/>
+      <xs:element minOccurs="0" name="preferredLanguage" type="xs:string"/>
+      <xs:element minOccurs="0" name="registrationChannel" type="tns:channel"/>
+      <xs:element minOccurs="0" name="stateOfResidence" type="xs:string"/>
+      <xs:element minOccurs="0" name="streetAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="vsoIdentifier" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="authWithEmail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="authWithEmailResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:emailAuthResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="emailAuthResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="userId" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="auth">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="authResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteRelatedAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="parentAccountPhone" type="xs:string"/>
+      <xs:element minOccurs="0" name="relatedAccountNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="vsoIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteRelatedAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUtilityAccountsByAccountId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUtilityAccountsByAccountIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:searchResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getRelatedAccounts">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="parentAccountPhone" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getRelatedAccountsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:relatedAccountResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="relatedAccountResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="relatedAccounts" type="tns:relatedAccount"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="relatedAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountId" type="xs:string"/>
+      <xs:element minOccurs="0" name="activationDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="balance" type="xs:double"/>
+      <xs:element minOccurs="0" name="businessUnit" type="xs:string"/>
+      <xs:element minOccurs="0" name="currentMeterReading" type="xs:double"/>
+      <xs:element minOccurs="0" name="houseAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:long"/>
+      <xs:element minOccurs="0" name="meterNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="tariff" type="tns:tariff"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="verifyToken">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="token" type="xs:string"/>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="verifyTokenResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:tokenVerificationResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tokenVerificationResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="tokenStatus" nillable="true" type="tns:tokenStatus"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="searchUtilityAccountWithPagination">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="query" type="xs:string"/>
+      <xs:element minOccurs="0" name="criterion" type="tns:searchCriterion"/>
+      <xs:element name="cursor" type="xs:int"/>
+      <xs:element name="size" type="xs:int"/>
+      <xs:element minOccurs="0" name="direction" type="tns:direction"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="searchUtilityAccountWithPaginationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:searchResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="newEmail" type="xs:string"/>
+      <xs:element minOccurs="0" name="newPassword" type="xs:string"/>
+      <xs:element minOccurs="0" name="newSecretQuestion" type="xs:string"/>
+      <xs:element minOccurs="0" name="newSsecretAnswer" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPreferredLanguages">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPreferredLanguagesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:stringResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="stringResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="strings" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="createInfonovaAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element minOccurs="0" name="secretQuestion" type="xs:string"/>
+      <xs:element minOccurs="0" name="secretAnswer" type="xs:string"/>
+      <xs:element minOccurs="0" name="vsoIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="channel" type="tns:channel"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createInfonovaAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deactivateAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="blacklistingAdmin" type="xs:string"/>
+      <xs:element minOccurs="0" name="reason" type="xs:string"/>
+      <xs:element minOccurs="0" name="furtherActions" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deactivateAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateUtilityAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountDetails" type="tns:utilityAccountDetails"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateUtilityAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="searchUtilityAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="query" type="xs:string"/>
+      <xs:element minOccurs="0" name="criterion" type="tns:searchCriterion"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="searchUtilityAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:searchResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="activateAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="unblacklistingAdmin" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="activateAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createUtilityAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountDetails" type="tns:utilityAccountDetails"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createUtilityAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:utilityAccountCreationResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="utilityAccountCreationResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="token" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getTerminalUserDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTerminalUserDetailsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:terminalUsersResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createTerminalAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountDetails" type="tns:accountDetails"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="accountDetails">
+    <xs:sequence>
+      <xs:element name="address" nillable="true" type="xs:string"/>
+      <xs:element name="addressLine2" nillable="true" type="xs:string"/>
+      <xs:element name="addressLine3" nillable="true" type="xs:string"/>
+      <xs:element name="billingMode" nillable="true" type="tns:billingMode"/>
+      <xs:element name="businessUnitId" nillable="true" type="xs:long"/>
+      <xs:element name="businessUnitName" nillable="true" type="xs:string"/>
+      <xs:element name="cashOfficeId" nillable="true" type="xs:long"/>
+      <xs:element name="cashOfficeName" nillable="true" type="xs:string"/>
+      <xs:element name="channel" nillable="true" type="tns:channel"/>
+      <xs:element name="city" nillable="true" type="xs:string"/>
+      <xs:element name="email" nillable="true" type="xs:string"/>
+      <xs:element name="firstName" nillable="true" type="xs:string"/>
+      <xs:element name="lastName" nillable="true" type="xs:string"/>
+      <xs:element name="password" nillable="true" type="xs:string"/>
+      <xs:element name="phone" nillable="true" type="xs:string"/>
+      <xs:element name="vsoIdentifier" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createTerminalAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteTerminalAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="terminalAgentId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteTerminalAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPreferredContactMethods">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPreferredContactMethodsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:stringResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateMeterNumber">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountId" type="xs:string"/>
+      <xs:element minOccurs="0" name="meterNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateMeterNumberResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updatePassword">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="newPassword" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updatePasswordResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="editTerminalAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountDetails" type="tns:accountDetails"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="editTerminalAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getEMSAccountDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getEMSAccountDetailsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:memmcolResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="memmcolResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="c" type="tns:mCustomer"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="mCustomer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="businessUnit" type="xs:string"/>
+      <xs:element minOccurs="0" name="businessUnitId" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerArrears" type="xs:double"/>
+      <xs:element minOccurs="0" name="customerName" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="minimumPurchase" type="xs:double"/>
+      <xs:element minOccurs="0" name="undertaking" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSelfcareUsers">
+    <xs:sequence>
+      <xs:element name="page" type="xs:int"/>
+      <xs:element name="size" type="xs:int"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSelfcareUsersResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:usersResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="usersResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="users" nillable="true" type="tns:userAccountExtended"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="addRelatedAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="parentAccountPhone" type="xs:string"/>
+      <xs:element minOccurs="0" name="vsoIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="relatedAccount" type="tns:utilityAccount"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="utilityAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="meterNumber" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addRelatedAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUtilityAccountByAccountId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="meterNosOrAccountId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUtilityAccountByAccountIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:searchResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element minOccurs="0" name="secretQuestion" type="xs:string"/>
+      <xs:element minOccurs="0" name="secretAnswer" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="billingMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OFFLINE_PREPAID"/>
+      <xs:enumeration value="OFFLINE_POSTPAID"/>
+      <xs:enumeration value="NOT_METTERED"/>
+      <xs:enumeration value="ONLINE_PREPAID"/>
+      <xs:enumeration value="ONLINE_POSTPAID"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="businessDistrict">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="LEKKI"/>
+      <xs:enumeration value="ISLANDS"/>
+      <xs:enumeration value="AGBARA"/>
+      <xs:enumeration value="APAPA"/>
+      <xs:enumeration value="FESTAC"/>
+      <xs:enumeration value="IJORA"/>
+      <xs:enumeration value="MUSHIN"/>
+      <xs:enumeration value="OJO"/>
+      <xs:enumeration value="ORILE"/>
+      <xs:enumeration value="IBEJU"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="customerStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NEW_CUSTOMER"/>
+      <xs:enumeration value="EXISTING_CUSTOMER"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="customerType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RESIDENTIAL"/>
+      <xs:enumeration value="COMMERCIAL"/>
+      <xs:enumeration value="INDUSTRIAL"/>
+      <xs:enumeration value="AGROALLIED"/>
+      <xs:enumeration value="SPECIAL"/>
+      <xs:enumeration value="STREET_LIGHT"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="customerEntityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INDIVIDUAL"/>
+      <xs:enumeration value="CORPORATE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="preferredContactMethod">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EMAIL"/>
+      <xs:enumeration value="MOBILE"/>
+      <xs:enumeration value="EMAIL_AND_MOBILE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="channel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SL_SMS"/>
+      <xs:enumeration value="MAM"/>
+      <xs:enumeration value="TERMINAL"/>
+      <xs:enumeration value="SPORTS_BETTING"/>
+      <xs:enumeration value="WEB"/>
+      <xs:enumeration value="PAYMENT_GATEWAY"/>
+      <xs:enumeration value="GAME_ENGINE"/>
+      <xs:enumeration value="POS_PAYMENT_GATEWAY"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tokenStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NEW"/>
+      <xs:enumeration value="ACCEPTED"/>
+      <xs:enumeration value="USED"/>
+      <xs:enumeration value="CANCELLED"/>
+      <xs:enumeration value="EXPIRED"/>
+      <xs:enumeration value="NON_EXISTENT"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="searchCriterion">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACCOUNT_ID"/>
+      <xs:enumeration value="METER_NUMBER"/>
+      <xs:enumeration value="CUSTOMER_NAME"/>
+      <xs:enumeration value="CUSTOMER_PHONE"/>
+      <xs:enumeration value="ADDRESS"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="direction">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ASC"/>
+      <xs:enumeration value="DESC"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="recoverAccount">
+    <wsdl:part element="tns:recoverAccount" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccount">
+    <wsdl:part element="tns:getAccount" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createUtilityAccountResponse">
+    <wsdl:part element="tns:createUtilityAccountResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generateToken">
+    <wsdl:part element="tns:generateToken" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="forgotPassword">
+    <wsdl:part element="tns:forgotPassword" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUtilityAccountsByName">
+    <wsdl:part element="tns:getUtilityAccountsByName" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createInfonovaAccountResponse">
+    <wsdl:part element="tns:createInfonovaAccountResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUtilityAccountInfo">
+    <wsdl:part element="tns:getUtilityAccountInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUtilityAccountInfoResponse">
+    <wsdl:part element="tns:getUtilityAccountInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addRelatedAccountResponse">
+    <wsdl:part element="tns:addRelatedAccountResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="forgotPasswordResponse">
+    <wsdl:part element="tns:forgotPasswordResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteRelatedAccount">
+    <wsdl:part element="tns:deleteRelatedAccount" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="activateAccountResponse">
+    <wsdl:part element="tns:activateAccountResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchUtilityAccountResponse">
+    <wsdl:part element="tns:searchUtilityAccountResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyToken">
+    <wsdl:part element="tns:verifyToken" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchUtilityAccountWithPagination">
+    <wsdl:part element="tns:searchUtilityAccountWithPagination" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="editTerminalAccountResponse">
+    <wsdl:part element="tns:editTerminalAccountResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSecurityInfoResponse">
+    <wsdl:part element="tns:getSecurityInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteRelatedAccountResponse">
+    <wsdl:part element="tns:deleteRelatedAccountResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPreferredLanguagesResponse">
+    <wsdl:part element="tns:getPreferredLanguagesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authResponse">
+    <wsdl:part element="tns:authResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="activateAccount">
+    <wsdl:part element="tns:activateAccount" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountResponse">
+    <wsdl:part element="tns:getAccountResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTerminalUsersResponse">
+    <wsdl:part element="tns:getTerminalUsersResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTerminalUserDetails">
+    <wsdl:part element="tns:getTerminalUserDetails" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTerminalAccountResponse">
+    <wsdl:part element="tns:createTerminalAccountResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUtilityAccountsByNameResponse">
+    <wsdl:part element="tns:getUtilityAccountsByNameResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTerminalAccount">
+    <wsdl:part element="tns:createTerminalAccount" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUtilityAccountByAccountIdResponse">
+    <wsdl:part element="tns:getUtilityAccountByAccountIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUtilityAccountsByAccountIdResponse">
+    <wsdl:part element="tns:getUtilityAccountsByAccountIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPreferredContactMethods">
+    <wsdl:part element="tns:getPreferredContactMethods" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateAccountResponse">
+    <wsdl:part element="tns:updateAccountResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTerminalUserDetailsResponse">
+    <wsdl:part element="tns:getTerminalUserDetailsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createAccountResponse">
+    <wsdl:part element="tns:createAccountResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="recoverAccountResponse">
+    <wsdl:part element="tns:recoverAccountResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePassword">
+    <wsdl:part element="tns:updatePassword" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="editTerminalAccount">
+    <wsdl:part element="tns:editTerminalAccount" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEMSAccountDetails">
+    <wsdl:part element="tns:getEMSAccountDetails" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSelfcareUsers">
+    <wsdl:part element="tns:getSelfcareUsers" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generateTokenResponse">
+    <wsdl:part element="tns:generateTokenResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllTariffs">
+    <wsdl:part element="tns:getAllTariffs" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSecurityInfo">
+    <wsdl:part element="tns:getSecurityInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTerminalUsers">
+    <wsdl:part element="tns:getTerminalUsers" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authWithEmail">
+    <wsdl:part element="tns:authWithEmail" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="auth">
+    <wsdl:part element="tns:auth" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUtilityAccountsByAccountId">
+    <wsdl:part element="tns:getUtilityAccountsByAccountId" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRelatedAccounts">
+    <wsdl:part element="tns:getRelatedAccounts" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePasswordResponse">
+    <wsdl:part element="tns:updatePasswordResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllTariffsResponse">
+    <wsdl:part element="tns:getAllTariffsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateAccount">
+    <wsdl:part element="tns:updateAccount" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPreferredLanguages">
+    <wsdl:part element="tns:getPreferredLanguages" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRelatedAccountsResponse">
+    <wsdl:part element="tns:getRelatedAccountsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createInfonovaAccount">
+    <wsdl:part element="tns:createInfonovaAccount" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deactivateAccount">
+    <wsdl:part element="tns:deactivateAccount" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPreferredContactMethodsResponse">
+    <wsdl:part element="tns:getPreferredContactMethodsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateUtilityAccount">
+    <wsdl:part element="tns:updateUtilityAccount" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchUtilityAccount">
+    <wsdl:part element="tns:searchUtilityAccount" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteTerminalAccountResponse">
+    <wsdl:part element="tns:deleteTerminalAccountResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createUtilityAccount">
+    <wsdl:part element="tns:createUtilityAccount" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyTokenResponse">
+    <wsdl:part element="tns:verifyTokenResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteTerminalAccount">
+    <wsdl:part element="tns:deleteTerminalAccount" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateMeterNumber">
+    <wsdl:part element="tns:updateMeterNumber" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchUtilityAccountWithPaginationResponse">
+    <wsdl:part element="tns:searchUtilityAccountWithPaginationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSelfcareUsersResponse">
+    <wsdl:part element="tns:getSelfcareUsersResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deactivateAccountResponse">
+    <wsdl:part element="tns:deactivateAccountResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateMeterNumberResponse">
+    <wsdl:part element="tns:updateMeterNumberResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEMSAccountDetailsResponse">
+    <wsdl:part element="tns:getEMSAccountDetailsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateUtilityAccountResponse">
+    <wsdl:part element="tns:updateUtilityAccountResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addRelatedAccount">
+    <wsdl:part element="tns:addRelatedAccount" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUtilityAccountByAccountId">
+    <wsdl:part element="tns:getUtilityAccountByAccountId" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authWithEmailResponse">
+    <wsdl:part element="tns:authWithEmailResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createAccount">
+    <wsdl:part element="tns:createAccount" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EsbAccount">
+    <wsdl:operation name="recoverAccount">
+      <wsdl:input message="tns:recoverAccount" name="recoverAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:recoverAccountResponse" name="recoverAccountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccount">
+      <wsdl:input message="tns:getAccount" name="getAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountResponse" name="getAccountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generateToken">
+      <wsdl:input message="tns:generateToken" name="generateToken">
+    </wsdl:input>
+      <wsdl:output message="tns:generateTokenResponse" name="generateTokenResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="forgotPassword">
+      <wsdl:input message="tns:forgotPassword" name="forgotPassword">
+    </wsdl:input>
+      <wsdl:output message="tns:forgotPasswordResponse" name="forgotPasswordResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUtilityAccountsByName">
+      <wsdl:input message="tns:getUtilityAccountsByName" name="getUtilityAccountsByName">
+    </wsdl:input>
+      <wsdl:output message="tns:getUtilityAccountsByNameResponse" name="getUtilityAccountsByNameResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUtilityAccountInfo">
+      <wsdl:input message="tns:getUtilityAccountInfo" name="getUtilityAccountInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:getUtilityAccountInfoResponse" name="getUtilityAccountInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTariffs">
+      <wsdl:input message="tns:getAllTariffs" name="getAllTariffs">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllTariffsResponse" name="getAllTariffsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSecurityInfo">
+      <wsdl:input message="tns:getSecurityInfo" name="getSecurityInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:getSecurityInfoResponse" name="getSecurityInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTerminalUsers">
+      <wsdl:input message="tns:getTerminalUsers" name="getTerminalUsers">
+    </wsdl:input>
+      <wsdl:output message="tns:getTerminalUsersResponse" name="getTerminalUsersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authWithEmail">
+      <wsdl:input message="tns:authWithEmail" name="authWithEmail">
+    </wsdl:input>
+      <wsdl:output message="tns:authWithEmailResponse" name="authWithEmailResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="auth">
+      <wsdl:input message="tns:auth" name="auth">
+    </wsdl:input>
+      <wsdl:output message="tns:authResponse" name="authResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRelatedAccount">
+      <wsdl:input message="tns:deleteRelatedAccount" name="deleteRelatedAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteRelatedAccountResponse" name="deleteRelatedAccountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUtilityAccountsByAccountId">
+      <wsdl:input message="tns:getUtilityAccountsByAccountId" name="getUtilityAccountsByAccountId">
+    </wsdl:input>
+      <wsdl:output message="tns:getUtilityAccountsByAccountIdResponse" name="getUtilityAccountsByAccountIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRelatedAccounts">
+      <wsdl:input message="tns:getRelatedAccounts" name="getRelatedAccounts">
+    </wsdl:input>
+      <wsdl:output message="tns:getRelatedAccountsResponse" name="getRelatedAccountsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verifyToken">
+      <wsdl:input message="tns:verifyToken" name="verifyToken">
+    </wsdl:input>
+      <wsdl:output message="tns:verifyTokenResponse" name="verifyTokenResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchUtilityAccountWithPagination">
+      <wsdl:input message="tns:searchUtilityAccountWithPagination" name="searchUtilityAccountWithPagination">
+    </wsdl:input>
+      <wsdl:output message="tns:searchUtilityAccountWithPaginationResponse" name="searchUtilityAccountWithPaginationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateAccount">
+      <wsdl:input message="tns:updateAccount" name="updateAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:updateAccountResponse" name="updateAccountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPreferredLanguages">
+      <wsdl:input message="tns:getPreferredLanguages" name="getPreferredLanguages">
+    </wsdl:input>
+      <wsdl:output message="tns:getPreferredLanguagesResponse" name="getPreferredLanguagesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createInfonovaAccount">
+      <wsdl:input message="tns:createInfonovaAccount" name="createInfonovaAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:createInfonovaAccountResponse" name="createInfonovaAccountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deactivateAccount">
+      <wsdl:input message="tns:deactivateAccount" name="deactivateAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:deactivateAccountResponse" name="deactivateAccountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateUtilityAccount">
+      <wsdl:input message="tns:updateUtilityAccount" name="updateUtilityAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:updateUtilityAccountResponse" name="updateUtilityAccountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchUtilityAccount">
+      <wsdl:input message="tns:searchUtilityAccount" name="searchUtilityAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:searchUtilityAccountResponse" name="searchUtilityAccountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="activateAccount">
+      <wsdl:input message="tns:activateAccount" name="activateAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:activateAccountResponse" name="activateAccountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createUtilityAccount">
+      <wsdl:input message="tns:createUtilityAccount" name="createUtilityAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:createUtilityAccountResponse" name="createUtilityAccountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTerminalUserDetails">
+      <wsdl:input message="tns:getTerminalUserDetails" name="getTerminalUserDetails">
+    </wsdl:input>
+      <wsdl:output message="tns:getTerminalUserDetailsResponse" name="getTerminalUserDetailsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createTerminalAccount">
+      <wsdl:input message="tns:createTerminalAccount" name="createTerminalAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:createTerminalAccountResponse" name="createTerminalAccountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTerminalAccount">
+      <wsdl:input message="tns:deleteTerminalAccount" name="deleteTerminalAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteTerminalAccountResponse" name="deleteTerminalAccountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPreferredContactMethods">
+      <wsdl:input message="tns:getPreferredContactMethods" name="getPreferredContactMethods">
+    </wsdl:input>
+      <wsdl:output message="tns:getPreferredContactMethodsResponse" name="getPreferredContactMethodsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateMeterNumber">
+      <wsdl:input message="tns:updateMeterNumber" name="updateMeterNumber">
+    </wsdl:input>
+      <wsdl:output message="tns:updateMeterNumberResponse" name="updateMeterNumberResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePassword">
+      <wsdl:input message="tns:updatePassword" name="updatePassword">
+    </wsdl:input>
+      <wsdl:output message="tns:updatePasswordResponse" name="updatePasswordResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="editTerminalAccount">
+      <wsdl:input message="tns:editTerminalAccount" name="editTerminalAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:editTerminalAccountResponse" name="editTerminalAccountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEMSAccountDetails">
+      <wsdl:input message="tns:getEMSAccountDetails" name="getEMSAccountDetails">
+    </wsdl:input>
+      <wsdl:output message="tns:getEMSAccountDetailsResponse" name="getEMSAccountDetailsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSelfcareUsers">
+      <wsdl:input message="tns:getSelfcareUsers" name="getSelfcareUsers">
+    </wsdl:input>
+      <wsdl:output message="tns:getSelfcareUsersResponse" name="getSelfcareUsersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addRelatedAccount">
+      <wsdl:input message="tns:addRelatedAccount" name="addRelatedAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:addRelatedAccountResponse" name="addRelatedAccountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUtilityAccountByAccountId">
+      <wsdl:input message="tns:getUtilityAccountByAccountId" name="getUtilityAccountByAccountId">
+    </wsdl:input>
+      <wsdl:output message="tns:getUtilityAccountByAccountIdResponse" name="getUtilityAccountByAccountIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createAccount">
+      <wsdl:input message="tns:createAccount" name="createAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:createAccountResponse" name="createAccountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EsbAccountSoapBinding" type="tns:EsbAccount">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="recoverAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="recoverAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="recoverAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generateToken">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="generateToken">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="generateTokenResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="forgotPassword">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="forgotPassword">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="forgotPasswordResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUtilityAccountsByName">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUtilityAccountsByName">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUtilityAccountsByNameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUtilityAccountInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUtilityAccountInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUtilityAccountInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllTariffs">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllTariffs">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllTariffsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSecurityInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSecurityInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSecurityInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTerminalUsers">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTerminalUsers">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTerminalUsersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authWithEmail">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="authWithEmail">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="authWithEmailResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="auth">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="auth">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="authResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRelatedAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteRelatedAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteRelatedAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUtilityAccountsByAccountId">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUtilityAccountsByAccountId">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUtilityAccountsByAccountIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRelatedAccounts">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getRelatedAccounts">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getRelatedAccountsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verifyToken">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifyToken">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyTokenResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchUtilityAccountWithPagination">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="searchUtilityAccountWithPagination">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchUtilityAccountWithPaginationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPreferredLanguages">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPreferredLanguages">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPreferredLanguagesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createInfonovaAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createInfonovaAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createInfonovaAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deactivateAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deactivateAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deactivateAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateUtilityAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateUtilityAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateUtilityAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchUtilityAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="searchUtilityAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchUtilityAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="activateAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="activateAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="activateAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createUtilityAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createUtilityAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createUtilityAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTerminalUserDetails">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTerminalUserDetails">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTerminalUserDetailsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createTerminalAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createTerminalAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createTerminalAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTerminalAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteTerminalAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteTerminalAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPreferredContactMethods">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPreferredContactMethods">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPreferredContactMethodsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateMeterNumber">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateMeterNumber">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateMeterNumberResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePassword">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updatePassword">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updatePasswordResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="editTerminalAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="editTerminalAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="editTerminalAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEMSAccountDetails">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getEMSAccountDetails">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEMSAccountDetailsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSelfcareUsers">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSelfcareUsers">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSelfcareUsersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addRelatedAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addRelatedAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addRelatedAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUtilityAccountByAccountId">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUtilityAccountByAccountId">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUtilityAccountByAccountIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EsbAccount">
+    <wsdl:port binding="tns:EsbAccountSoapBinding" name="EsbAccountPort">
+      <soap:address location="https://prod1.convergenceondemand.net/ESB/EsbAccount"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

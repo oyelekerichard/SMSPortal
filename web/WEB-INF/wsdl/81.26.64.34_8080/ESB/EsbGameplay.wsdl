@@ -1,0 +1,1126 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.esb.convergenceondemand.net/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="EsbGameplay" targetNamespace="http://service.esb.convergenceondemand.net/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.esb.convergenceondemand.net/" elementFormDefault="unqualified" targetNamespace="http://service.esb.convergenceondemand.net/" version="1.0">
+
+  <xs:element name="addGameplay" type="tns:addGameplay"/>
+
+  <xs:element name="addGameplayResponse" type="tns:addGameplayResponse"/>
+
+  <xs:element name="cancelResultSubscription" type="tns:cancelResultSubscription"/>
+
+  <xs:element name="cancelResultSubscriptionResponse" type="tns:cancelResultSubscriptionResponse"/>
+
+  <xs:element name="createResultSubscription" type="tns:createResultSubscription"/>
+
+  <xs:element name="createResultSubscriptionResponse" type="tns:createResultSubscriptionResponse"/>
+
+  <xs:element name="eBaseResponse" type="tns:eBaseResponse"/>
+
+  <xs:element name="game" type="tns:game"/>
+
+  <xs:element name="gameLinesResponse" type="tns:gameLinesResponse"/>
+
+  <xs:element name="gameListResponse" type="tns:gameListResponse"/>
+
+  <xs:element name="gameResponse" type="tns:gameResponse"/>
+
+  <xs:element name="gameSchedule" type="tns:gameSchedule"/>
+
+  <xs:element name="gameType" type="tns:gameType"/>
+
+  <xs:element name="gameTypeDetails" type="tns:gameTypeDetails"/>
+
+  <xs:element name="gameTypeDetailsWrapper" type="tns:gameTypeDetailsWrapper"/>
+
+  <xs:element name="gameTypeListResponse" type="tns:gameTypeListResponse"/>
+
+  <xs:element name="gameplay" type="tns:gameplay"/>
+
+  <xs:element name="gameplayResponse" type="tns:gameplayResponse"/>
+
+  <xs:element name="getGameByGameCode" type="tns:getGameByGameCode"/>
+
+  <xs:element name="getGameByGameCodeResponse" type="tns:getGameByGameCodeResponse"/>
+
+  <xs:element name="getGameById" type="tns:getGameById"/>
+
+  <xs:element name="getGameByIdResponse" type="tns:getGameByIdResponse"/>
+
+  <xs:element name="getGameLines" type="tns:getGameLines"/>
+
+  <xs:element name="getGameLinesResponse" type="tns:getGameLinesResponse"/>
+
+  <xs:element name="getGameplayHistory" type="tns:getGameplayHistory"/>
+
+  <xs:element name="getGameplayHistoryResponse" type="tns:getGameplayHistoryResponse"/>
+
+  <xs:element name="getLastGameplay" type="tns:getLastGameplay"/>
+
+  <xs:element name="getLastGameplayResponse" type="tns:getLastGameplayResponse"/>
+
+  <xs:element name="getLastResultForGameGroupCode" type="tns:getLastResultForGameGroupCode"/>
+
+  <xs:element name="getLastResultForGameGroupCodeResponse" type="tns:getLastResultForGameGroupCodeResponse"/>
+
+  <xs:element name="getOpenGames" type="tns:getOpenGames"/>
+
+  <xs:element name="getOpenGamesResponse" type="tns:getOpenGamesResponse"/>
+
+  <xs:element name="getPlayedGameByTicketNumber" type="tns:getPlayedGameByTicketNumber"/>
+
+  <xs:element name="getPlayedGameByTicketNumberResponse" type="tns:getPlayedGameByTicketNumberResponse"/>
+
+  <xs:element name="getResultList" type="tns:getResultList"/>
+
+  <xs:element name="getResultListByGameGroupCode" type="tns:getResultListByGameGroupCode"/>
+
+  <xs:element name="getResultListByGameGroupCodeResponse" type="tns:getResultListByGameGroupCodeResponse"/>
+
+  <xs:element name="getResultListResponse" type="tns:getResultListResponse"/>
+
+  <xs:element name="getSalesReport" type="tns:getSalesReport"/>
+
+  <xs:element name="getSalesReportResponse" type="tns:getSalesReportResponse"/>
+
+  <xs:element name="getTerminalGameplayHistory" type="tns:getTerminalGameplayHistory"/>
+
+  <xs:element name="getTerminalGameplayHistoryResponse" type="tns:getTerminalGameplayHistoryResponse"/>
+
+  <xs:element name="getWinningPlays" type="tns:getWinningPlays"/>
+
+  <xs:element name="getWinningPlaysResponse" type="tns:getWinningPlaysResponse"/>
+
+  <xs:element name="listAllGameRules" type="tns:listAllGameRules"/>
+
+  <xs:element name="listAllGameRulesResponse" type="tns:listAllGameRulesResponse"/>
+
+  <xs:element name="listAllGameTypes" type="tns:listAllGameTypes"/>
+
+  <xs:element name="listAllGameTypesResponse" type="tns:listAllGameTypesResponse"/>
+
+  <xs:element name="listRulesByGameType" type="tns:listRulesByGameType"/>
+
+  <xs:element name="listRulesByGameTypeResponse" type="tns:listRulesByGameTypeResponse"/>
+
+  <xs:element name="play" type="tns:play"/>
+
+  <xs:element name="report" type="tns:report"/>
+
+  <xs:element name="reportResponse" type="tns:reportResponse"/>
+
+  <xs:element name="result" type="tns:result"/>
+
+  <xs:element name="resultListResponse" type="tns:resultListResponse"/>
+
+  <xs:element name="resultSubscriptionResponse" type="tns:resultSubscriptionResponse"/>
+
+  <xs:element name="rule" type="tns:rule"/>
+
+  <xs:element name="ruleListResponse" type="tns:ruleListResponse"/>
+
+  <xs:element name="winningPlay" type="tns:winningPlay"/>
+
+  <xs:element name="winningPlaysResponse" type="tns:winningPlaysResponse"/>
+
+  <xs:complexType name="getWinningPlays">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="gameId" type="xs:string"/>
+      <xs:element minOccurs="0" name="gameTypeId" type="xs:string"/>
+      <xs:element minOccurs="0" name="category" type="tns:category"/>
+      <xs:element minOccurs="0" name="start" type="xs:string"/>
+      <xs:element minOccurs="0" name="end" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getWinningPlaysResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:winningPlaysResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="winningPlaysResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="winningPlays" nillable="true" type="tns:winningPlay"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="eBaseResponse">
+    <xs:sequence>
+      <xs:element name="retn" nillable="true" type="xs:int"/>
+      <xs:element name="desc" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="winningPlay">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amount" type="xs:double"/>
+      <xs:element minOccurs="0" name="category" type="xs:string"/>
+      <xs:element minOccurs="0" name="channel" type="xs:string"/>
+      <xs:element minOccurs="0" name="channelId" type="xs:string"/>
+      <xs:element minOccurs="0" name="channelRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="data" type="xs:string"/>
+      <xs:element minOccurs="0" name="drawType" type="xs:string"/>
+      <xs:element minOccurs="0" name="gameId" type="xs:string"/>
+      <xs:element minOccurs="0" name="gameTypeId" type="xs:string"/>
+      <xs:element minOccurs="0" name="gameTypeName" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="isPayed" type="xs:int"/>
+      <xs:element minOccurs="0" name="isSuccessful" type="xs:short"/>
+      <xs:element minOccurs="0" name="odd" type="xs:double"/>
+      <xs:element minOccurs="0" name="playedStyle" type="xs:string"/>
+      <xs:element minOccurs="0" name="potentialWinning" type="xs:double"/>
+      <xs:element minOccurs="0" name="timeOfDraw" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="timeOfPlay" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getResultListByGameGroupCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="category" type="tns:category"/>
+      <xs:element minOccurs="0" name="gameGroupCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="count" type="xs:int"/>
+      <xs:element minOccurs="0" name="start" type="xs:string"/>
+      <xs:element minOccurs="0" name="end" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getResultListByGameGroupCodeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:resultListResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resultListResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="results" nillable="true" type="tns:result"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="result">
+    <xs:sequence>
+      <xs:element name="data" nillable="true" type="xs:string"/>
+      <xs:element name="game" nillable="true" type="tns:game"/>
+      <xs:element name="machineDraw" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="game">
+    <xs:sequence>
+      <xs:element name="drawName" nillable="true" type="xs:string"/>
+      <xs:element name="id" nillable="true" type="xs:string"/>
+      <xs:element name="jackpotValue" nillable="true" type="xs:string"/>
+      <xs:element name="name" nillable="true" type="xs:string"/>
+      <xs:element name="odds" nillable="true" type="xs:double"/>
+      <xs:element name="schedule" nillable="true" type="tns:gameSchedule"/>
+      <xs:element name="state" nillable="true" type="tns:state"/>
+      <xs:element name="type" nillable="true" type="tns:gameType"/>
+      <xs:element name="typeOddMap" nillable="true" type="tns:gameTypeDetailsWrapper"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="gameSchedule">
+    <xs:sequence>
+      <xs:element name="closingTime" nillable="true" type="xs:string"/>
+      <xs:element name="drawTime" nillable="true" type="xs:string"/>
+      <xs:element name="openingTime" nillable="true" type="xs:string"/>
+      <xs:element name="recurrence" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="gameType">
+    <xs:sequence>
+      <xs:element name="category" nillable="true" type="tns:category"/>
+      <xs:element name="id" nillable="true" type="xs:string"/>
+      <xs:element name="name" nillable="true" type="xs:string"/>
+      <xs:element name="odds" nillable="true" type="xs:double"/>
+      <xs:element name="rules" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" name="secondaryGames" nillable="true" type="tns:gameType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="gameTypeDetailsWrapper">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="entry" nillable="true" type="tns:gameTypeDetails"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="gameTypeDetails">
+    <xs:sequence>
+      <xs:element name="value" nillable="true" type="xs:double"/>
+      <xs:element name="key" nillable="true" type="xs:string"/>
+      <xs:element name="maxBallCount" nillable="true" type="xs:int"/>
+      <xs:element name="maxStake" nillable="true" type="xs:double"/>
+      <xs:element name="minBallCount" nillable="true" type="xs:int"/>
+      <xs:element name="minStake" nillable="true" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listRulesByGameType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="gameCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="category" type="tns:category"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listRulesByGameTypeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:ruleListResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ruleListResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="rules" nillable="true" type="tns:rule"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="rule">
+    <xs:sequence>
+      <xs:element name="id" nillable="true" type="xs:string"/>
+      <xs:element name="text" nillable="true" type="xs:string"/>
+      <xs:element name="title" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getResultList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="start" type="xs:string"/>
+      <xs:element minOccurs="0" name="end" type="xs:string"/>
+      <xs:element minOccurs="0" name="count" type="xs:int"/>
+      <xs:element minOccurs="0" name="category" type="tns:category"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getResultListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:resultListResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getLastResultForGameGroupCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="gameGroupCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="category" type="tns:category"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getLastResultForGameGroupCodeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:resultListResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSalesReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="gameId" type="tns:channel"/>
+      <xs:element minOccurs="0" name="start" type="xs:string"/>
+      <xs:element minOccurs="0" name="end" type="xs:string"/>
+      <xs:element minOccurs="0" name="count" type="xs:int"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSalesReportResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:reportResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="reportResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="report" nillable="true" type="tns:report"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="report">
+    <xs:sequence>
+      <xs:element name="data" nillable="true" type="xs:string"/>
+      <xs:element name="timestamp" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getLastGameplay">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getLastGameplayResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:gameplayResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="gameplayResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="gameplay" nillable="true" type="tns:gameplay"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="gameplay">
+    <xs:sequence>
+      <xs:element name="amountStaked" nillable="true" type="xs:double"/>
+      <xs:element name="data" nillable="true" type="xs:string"/>
+      <xs:element name="game" nillable="true" type="tns:game"/>
+      <xs:element name="potentialWinning" nillable="true" type="xs:double"/>
+      <xs:element name="ticketNumber" nillable="true" type="xs:string"/>
+      <xs:element name="timestamp" nillable="true" type="xs:string"/>
+      <xs:element name="transactionId" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getOpenGames">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getOpenGamesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:gameListResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="gameListResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="game" nillable="true" type="tns:game"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getGameLines">
+    <xs:sequence>
+      <xs:element name="amountStaked" type="xs:int"/>
+      <xs:element minOccurs="0" name="gameTypeCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getGameLinesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:gameLinesResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="gameLinesResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="lines" nillable="true" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getGameById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="gameId" type="xs:string"/>
+      <xs:element minOccurs="0" name="category" type="tns:category"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getGameByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:gameResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="gameResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="game" nillable="true" type="tns:game"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getPlayedGameByTicketNumber">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ticketNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPlayedGameByTicketNumberResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:gameplayResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listAllGameTypes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listAllGameTypesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:gameTypeListResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="gameTypeListResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="gameTypes" nillable="true" type="tns:gameType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="addGameplay">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="channel" type="tns:channel"/>
+      <xs:element minOccurs="0" name="channelId" type="xs:string"/>
+      <xs:element minOccurs="0" name="payload" type="tns:gamePayload"/>
+      <xs:element minOccurs="0" name="vsoIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="gamePayload">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="plays" nillable="true" type="tns:play"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="play">
+    <xs:sequence>
+      <xs:element name="amountStaked" nillable="true" type="xs:double"/>
+      <xs:element name="gameCategory" nillable="true" type="tns:category"/>
+      <xs:element name="data" nillable="true" type="xs:string"/>
+      <xs:element name="gameId" nillable="true" type="xs:string"/>
+      <xs:element name="gameTypeId" nillable="true" type="xs:string"/>
+      <xs:element name="ticketNumber" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addGameplayResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:gameplayResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getGameByGameCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="gameCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="category" type="tns:category"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getGameByGameCodeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:gameResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTerminalGameplayHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="terminalOwnerId" type="xs:string"/>
+      <xs:element minOccurs="0" name="start" type="xs:string"/>
+      <xs:element minOccurs="0" name="end" type="xs:string"/>
+      <xs:element minOccurs="0" name="count" type="xs:int"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTerminalGameplayHistoryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:gameplayResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listAllGameRules">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listAllGameRulesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:ruleListResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createResultSubscription">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="gameId" type="xs:string"/>
+      <xs:element minOccurs="0" name="start" type="xs:string"/>
+      <xs:element minOccurs="0" name="end" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createResultSubscriptionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:resultSubscriptionResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resultSubscriptionResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="gameId" nillable="true" type="xs:string"/>
+          <xs:element name="category" nillable="true" type="tns:category"/>
+          <xs:element name="commencement" nillable="true" type="xs:string"/>
+          <xs:element name="expiry" nillable="true" type="xs:string"/>
+          <xs:element name="totalAmount" nillable="true" type="xs:double"/>
+          <xs:element name="transactionRef" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getGameplayHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="start" type="xs:string"/>
+      <xs:element minOccurs="0" name="end" type="xs:string"/>
+      <xs:element minOccurs="0" name="count" type="xs:int"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getGameplayHistoryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:gameplayResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cancelResultSubscription">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="gameId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cancelResultSubscriptionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="response" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="category">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FIVE_NINETY"/>
+      <xs:enumeration value="CI_SIX_FORTY_NINE"/>
+      <xs:enumeration value="RAFFLE"/>
+      <xs:enumeration value="SIX_FORTY_NINE"/>
+      <xs:enumeration value="SPORTS_BETTING"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="state">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NOT_YET_OPEN"/>
+      <xs:enumeration value="OPEN"/>
+      <xs:enumeration value="CLOSED"/>
+      <xs:enumeration value="CONCLUDED"/>
+      <xs:enumeration value="SUSPENDED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="channel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SL_SMS"/>
+      <xs:enumeration value="MAM"/>
+      <xs:enumeration value="TERMINAL"/>
+      <xs:enumeration value="SPORTS_BETTING"/>
+      <xs:enumeration value="WEB"/>
+      <xs:enumeration value="PAYMENT_GATEWAY"/>
+      <xs:enumeration value="GAME_ENGINE"/>
+      <xs:enumeration value="POS_PAYMENT_GATEWAY"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getGameByIdResponse">
+    <wsdl:part element="tns:getGameByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listRulesByGameType">
+    <wsdl:part element="tns:listRulesByGameType" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGameLinesResponse">
+    <wsdl:part element="tns:getGameLinesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTerminalGameplayHistoryResponse">
+    <wsdl:part element="tns:getTerminalGameplayHistoryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getResultListByGameGroupCodeResponse">
+    <wsdl:part element="tns:getResultListByGameGroupCodeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSalesReport">
+    <wsdl:part element="tns:getSalesReport" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLastGameplay">
+    <wsdl:part element="tns:getLastGameplay" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOpenGames">
+    <wsdl:part element="tns:getOpenGames" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWinningPlaysResponse">
+    <wsdl:part element="tns:getWinningPlaysResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOpenGamesResponse">
+    <wsdl:part element="tns:getOpenGamesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGameById">
+    <wsdl:part element="tns:getGameById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPlayedGameByTicketNumber">
+    <wsdl:part element="tns:getPlayedGameByTicketNumber" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLastResultForGameGroupCodeResponse">
+    <wsdl:part element="tns:getLastResultForGameGroupCodeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addGameplayResponse">
+    <wsdl:part element="tns:addGameplayResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGameByGameCode">
+    <wsdl:part element="tns:getGameByGameCode" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listAllGameRules">
+    <wsdl:part element="tns:listAllGameRules" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getResultListResponse">
+    <wsdl:part element="tns:getResultListResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listAllGameRulesResponse">
+    <wsdl:part element="tns:listAllGameRulesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWinningPlays">
+    <wsdl:part element="tns:getWinningPlays" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getResultListByGameGroupCode">
+    <wsdl:part element="tns:getResultListByGameGroupCode" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getResultList">
+    <wsdl:part element="tns:getResultList" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLastResultForGameGroupCode">
+    <wsdl:part element="tns:getLastResultForGameGroupCode" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelResultSubscriptionResponse">
+    <wsdl:part element="tns:cancelResultSubscriptionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLastGameplayResponse">
+    <wsdl:part element="tns:getLastGameplayResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPlayedGameByTicketNumberResponse">
+    <wsdl:part element="tns:getPlayedGameByTicketNumberResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGameLines">
+    <wsdl:part element="tns:getGameLines" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGameByGameCodeResponse">
+    <wsdl:part element="tns:getGameByGameCodeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listAllGameTypes">
+    <wsdl:part element="tns:listAllGameTypes" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listAllGameTypesResponse">
+    <wsdl:part element="tns:listAllGameTypesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSalesReportResponse">
+    <wsdl:part element="tns:getSalesReportResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createResultSubscriptionResponse">
+    <wsdl:part element="tns:createResultSubscriptionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listRulesByGameTypeResponse">
+    <wsdl:part element="tns:listRulesByGameTypeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addGameplay">
+    <wsdl:part element="tns:addGameplay" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTerminalGameplayHistory">
+    <wsdl:part element="tns:getTerminalGameplayHistory" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createResultSubscription">
+    <wsdl:part element="tns:createResultSubscription" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGameplayHistory">
+    <wsdl:part element="tns:getGameplayHistory" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGameplayHistoryResponse">
+    <wsdl:part element="tns:getGameplayHistoryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelResultSubscription">
+    <wsdl:part element="tns:cancelResultSubscription" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EsbGameplay">
+    <wsdl:operation name="getWinningPlays">
+      <wsdl:input message="tns:getWinningPlays" name="getWinningPlays">
+    </wsdl:input>
+      <wsdl:output message="tns:getWinningPlaysResponse" name="getWinningPlaysResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getResultListByGameGroupCode">
+      <wsdl:input message="tns:getResultListByGameGroupCode" name="getResultListByGameGroupCode">
+    </wsdl:input>
+      <wsdl:output message="tns:getResultListByGameGroupCodeResponse" name="getResultListByGameGroupCodeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRulesByGameType">
+      <wsdl:input message="tns:listRulesByGameType" name="listRulesByGameType">
+    </wsdl:input>
+      <wsdl:output message="tns:listRulesByGameTypeResponse" name="listRulesByGameTypeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getResultList">
+      <wsdl:input message="tns:getResultList" name="getResultList">
+    </wsdl:input>
+      <wsdl:output message="tns:getResultListResponse" name="getResultListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLastResultForGameGroupCode">
+      <wsdl:input message="tns:getLastResultForGameGroupCode" name="getLastResultForGameGroupCode">
+    </wsdl:input>
+      <wsdl:output message="tns:getLastResultForGameGroupCodeResponse" name="getLastResultForGameGroupCodeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSalesReport">
+      <wsdl:input message="tns:getSalesReport" name="getSalesReport">
+    </wsdl:input>
+      <wsdl:output message="tns:getSalesReportResponse" name="getSalesReportResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLastGameplay">
+      <wsdl:input message="tns:getLastGameplay" name="getLastGameplay">
+    </wsdl:input>
+      <wsdl:output message="tns:getLastGameplayResponse" name="getLastGameplayResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOpenGames">
+      <wsdl:input message="tns:getOpenGames" name="getOpenGames">
+    </wsdl:input>
+      <wsdl:output message="tns:getOpenGamesResponse" name="getOpenGamesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGameLines">
+      <wsdl:input message="tns:getGameLines" name="getGameLines">
+    </wsdl:input>
+      <wsdl:output message="tns:getGameLinesResponse" name="getGameLinesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGameById">
+      <wsdl:input message="tns:getGameById" name="getGameById">
+    </wsdl:input>
+      <wsdl:output message="tns:getGameByIdResponse" name="getGameByIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPlayedGameByTicketNumber">
+      <wsdl:input message="tns:getPlayedGameByTicketNumber" name="getPlayedGameByTicketNumber">
+    </wsdl:input>
+      <wsdl:output message="tns:getPlayedGameByTicketNumberResponse" name="getPlayedGameByTicketNumberResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllGameTypes">
+      <wsdl:input message="tns:listAllGameTypes" name="listAllGameTypes">
+    </wsdl:input>
+      <wsdl:output message="tns:listAllGameTypesResponse" name="listAllGameTypesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addGameplay">
+      <wsdl:input message="tns:addGameplay" name="addGameplay">
+    </wsdl:input>
+      <wsdl:output message="tns:addGameplayResponse" name="addGameplayResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGameByGameCode">
+      <wsdl:input message="tns:getGameByGameCode" name="getGameByGameCode">
+    </wsdl:input>
+      <wsdl:output message="tns:getGameByGameCodeResponse" name="getGameByGameCodeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTerminalGameplayHistory">
+      <wsdl:input message="tns:getTerminalGameplayHistory" name="getTerminalGameplayHistory">
+    </wsdl:input>
+      <wsdl:output message="tns:getTerminalGameplayHistoryResponse" name="getTerminalGameplayHistoryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllGameRules">
+      <wsdl:input message="tns:listAllGameRules" name="listAllGameRules">
+    </wsdl:input>
+      <wsdl:output message="tns:listAllGameRulesResponse" name="listAllGameRulesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createResultSubscription">
+      <wsdl:input message="tns:createResultSubscription" name="createResultSubscription">
+    </wsdl:input>
+      <wsdl:output message="tns:createResultSubscriptionResponse" name="createResultSubscriptionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGameplayHistory">
+      <wsdl:input message="tns:getGameplayHistory" name="getGameplayHistory">
+    </wsdl:input>
+      <wsdl:output message="tns:getGameplayHistoryResponse" name="getGameplayHistoryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelResultSubscription">
+      <wsdl:input message="tns:cancelResultSubscription" name="cancelResultSubscription">
+    </wsdl:input>
+      <wsdl:output message="tns:cancelResultSubscriptionResponse" name="cancelResultSubscriptionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EsbGameplaySoapBinding" type="tns:EsbGameplay">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getWinningPlays">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getWinningPlays">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getWinningPlaysResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getResultListByGameGroupCode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getResultListByGameGroupCode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getResultListByGameGroupCodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRulesByGameType">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listRulesByGameType">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listRulesByGameTypeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getResultList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getResultList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getResultListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLastResultForGameGroupCode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getLastResultForGameGroupCode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLastResultForGameGroupCodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSalesReport">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSalesReport">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSalesReportResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLastGameplay">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getLastGameplay">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLastGameplayResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOpenGames">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getOpenGames">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getOpenGamesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGameLines">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getGameLines">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getGameLinesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGameById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getGameById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getGameByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPlayedGameByTicketNumber">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPlayedGameByTicketNumber">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPlayedGameByTicketNumberResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllGameTypes">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listAllGameTypes">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listAllGameTypesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addGameplay">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addGameplay">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addGameplayResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGameByGameCode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getGameByGameCode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getGameByGameCodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTerminalGameplayHistory">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTerminalGameplayHistory">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTerminalGameplayHistoryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllGameRules">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listAllGameRules">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listAllGameRulesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createResultSubscription">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createResultSubscription">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createResultSubscriptionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGameplayHistory">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getGameplayHistory">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getGameplayHistoryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelResultSubscription">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="cancelResultSubscription">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cancelResultSubscriptionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EsbGameplay">
+    <wsdl:port binding="tns:EsbGameplaySoapBinding" name="EsbGameplayPort">
+      <soap:address location="https://prod1.convergenceondemand.net/ESB/EsbGameplay"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

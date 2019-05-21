@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-md-12 page-500">
+        <div class="number">
+            {{cUser.accountNumber}}
+        </div>
+        <div class=" details">
+            <h3>Welcome, {{cUser.lastName + ' ' + cUser.firstName}}.</h3>
+            <p>
+                You are logged in as a/an {{cUser.role.name}},<br/>
+                your last login was on {{cUser.lastLoginDate | date:'EEEE, MMMM d, yyyy h:mm a'}}<br/>
+                and you can access the following navigations <br/>
+                {{cUser.role.navigation}}<br/>
+                and you have permissions for the following<br/>
+                {{cUser.role.permission}}<br/>
+                Thank you!
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1003 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.esb.convergenceondemand.net/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="EsbGeneral" targetNamespace="http://service.esb.convergenceondemand.net/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.esb.convergenceondemand.net/" elementFormDefault="unqualified" targetNamespace="http://service.esb.convergenceondemand.net/" version="1.0">
+
+  <xs:element name="billing" type="tns:billing"/>
+
+  <xs:element name="billingTransactionResponse" type="tns:billingTransactionResponse"/>
+
+  <xs:element name="businessUnitResponse" type="tns:businessUnitResponse"/>
+
+  <xs:element name="eBaseResponse" type="tns:eBaseResponse"/>
+
+  <xs:element name="faq" type="tns:faq"/>
+
+  <xs:element name="faqCategory" type="tns:faqCategory"/>
+
+  <xs:element name="faqCategoryListResponse" type="tns:faqCategoryListResponse"/>
+
+  <xs:element name="faqResponse" type="tns:faqResponse"/>
+
+  <xs:element name="findUserLocations" type="tns:findUserLocations"/>
+
+  <xs:element name="findUserLocationsResponse" type="tns:findUserLocationsResponse"/>
+
+  <xs:element name="getBillingTransactionHistory" type="tns:getBillingTransactionHistory"/>
+
+  <xs:element name="getBillingTransactionHistoryByAccountId" type="tns:getBillingTransactionHistoryByAccountId"/>
+
+  <xs:element name="getBillingTransactionHistoryByAccountIdResponse" type="tns:getBillingTransactionHistoryByAccountIdResponse"/>
+
+  <xs:element name="getBillingTransactionHistoryResponse" type="tns:getBillingTransactionHistoryResponse"/>
+
+  <xs:element name="getBusinessUnits" type="tns:getBusinessUnits"/>
+
+  <xs:element name="getBusinessUnitsResponse" type="tns:getBusinessUnitsResponse"/>
+
+  <xs:element name="getFaqsByCategory" type="tns:getFaqsByCategory"/>
+
+  <xs:element name="getFaqsByCategoryResponse" type="tns:getFaqsByCategoryResponse"/>
+
+  <xs:element name="getInvoice" type="tns:getInvoice"/>
+
+  <xs:element name="getInvoicePeriods" type="tns:getInvoicePeriods"/>
+
+  <xs:element name="getInvoicePeriodsResponse" type="tns:getInvoicePeriodsResponse"/>
+
+  <xs:element name="getInvoiceResponse" type="tns:getInvoiceResponse"/>
+
+  <xs:element name="getLastUtilityAccountInvoice" type="tns:getLastUtilityAccountInvoice"/>
+
+  <xs:element name="getLastUtilityAccountInvoiceResponse" type="tns:getLastUtilityAccountInvoiceResponse"/>
+
+  <xs:element name="getNextUtilityOutageSchedule" type="tns:getNextUtilityOutageSchedule"/>
+
+  <xs:element name="getNextUtilityOutageScheduleResponse" type="tns:getNextUtilityOutageScheduleResponse"/>
+
+  <xs:element name="getOutagesByAccount" type="tns:getOutagesByAccount"/>
+
+  <xs:element name="getOutagesByAccountResponse" type="tns:getOutagesByAccountResponse"/>
+
+  <xs:element name="getUtilityAccountDataUsages" type="tns:getUtilityAccountDataUsages"/>
+
+  <xs:element name="getUtilityAccountDataUsagesResponse" type="tns:getUtilityAccountDataUsagesResponse"/>
+
+  <xs:element name="getUtilityAccountInvoiceList" type="tns:getUtilityAccountInvoiceList"/>
+
+  <xs:element name="getUtilityAccountInvoiceListResponse" type="tns:getUtilityAccountInvoiceListResponse"/>
+
+  <xs:element name="getUtilityAccountSchedule" type="tns:getUtilityAccountSchedule"/>
+
+  <xs:element name="getUtilityAccountScheduleResponse" type="tns:getUtilityAccountScheduleResponse"/>
+
+  <xs:element name="listFaqCategories" type="tns:listFaqCategories"/>
+
+  <xs:element name="listFaqCategoriesResponse" type="tns:listFaqCategoriesResponse"/>
+
+  <xs:element name="manageLocation" type="tns:manageLocation"/>
+
+  <xs:element name="manageLocationResponse" type="tns:manageLocationResponse"/>
+
+  <xs:element name="payBill" type="tns:payBill"/>
+
+  <xs:element name="payBillResponse" type="tns:payBillResponse"/>
+
+  <xs:element name="sendSms" type="tns:sendSms"/>
+
+  <xs:element name="sendSmsResponse" type="tns:sendSmsResponse"/>
+
+  <xs:complexType name="getInvoice">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="meterNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="currentReading" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getInvoiceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:invoiceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="invoiceResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="invoices" nillable="true" type="tns:billing"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="eBaseResponse">
+    <xs:sequence>
+      <xs:element name="retn" nillable="true" type="xs:int"/>
+      <xs:element name="desc" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="billing">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="adc" type="xs:string"/>
+      <xs:element minOccurs="0" name="adjustment" type="xs:int"/>
+      <xs:element minOccurs="0" name="billAmountWithinPeriod" type="xs:double"/>
+      <xs:element minOccurs="0" name="billCycle" type="xs:string"/>
+      <xs:element minOccurs="0" name="billDueDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="billEmbededPowerCharges" type="xs:double"/>
+      <xs:element minOccurs="0" name="billProductionDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="billingDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="billingId" type="xs:long"/>
+      <xs:element minOccurs="0" name="billingMode" type="tns:billingMode"/>
+      <xs:element minOccurs="0" name="billingPeriods" type="xs:string"/>
+      <xs:element minOccurs="0" name="closingBalance" type="xs:double"/>
+      <xs:element minOccurs="0" name="consumption" type="xs:double"/>
+      <xs:element minOccurs="0" name="costPerUnitPod" type="xs:double"/>
+      <xs:element minOccurs="0" name="costPerUnitPog" type="xs:double"/>
+      <xs:element minOccurs="0" name="createdDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="embeddedPowerRate" type="xs:double"/>
+      <xs:element minOccurs="0" name="energyCharge" type="xs:double"/>
+      <xs:element minOccurs="0" name="fc" type="xs:double"/>
+      <xs:element minOccurs="0" name="fixed" type="xs:string"/>
+      <xs:element minOccurs="0" name="invoiceNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="kvaConsumptions" type="xs:int"/>
+      <xs:element minOccurs="0" name="kvaDemandChage" type="xs:double"/>
+      <xs:element minOccurs="0" name="kvaMultiplier" type="xs:double"/>
+      <xs:element minOccurs="0" name="kvaRate" type="xs:string"/>
+      <xs:element minOccurs="0" name="kvaReadCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="kvaReadDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="lar" type="xs:int"/>
+      <xs:element minOccurs="0" name="larDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastPayment" type="xs:double"/>
+      <xs:element minOccurs="0" name="meteredStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="mmc" type="xs:string"/>
+      <xs:element minOccurs="0" name="multiplier" type="xs:double"/>
+      <xs:element minOccurs="0" name="netArrears" type="xs:double"/>
+      <xs:element minOccurs="0" name="newCharges" type="xs:double"/>
+      <xs:element minOccurs="0" name="nextInvoicePeriod" type="xs:string"/>
+      <xs:element minOccurs="0" name="noEstimates" type="xs:string"/>
+      <xs:element minOccurs="0" name="nodials" type="xs:int"/>
+      <xs:element minOccurs="0" name="paid" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="payment" type="xs:double"/>
+      <xs:element minOccurs="0" name="premiumServiceSubscription" type="xs:double"/>
+      <xs:element minOccurs="0" name="presentCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="presentReading" type="xs:double"/>
+      <xs:element minOccurs="0" name="presentReadingDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="previousBalance" type="xs:double"/>
+      <xs:element minOccurs="0" name="previousReadingAmount" type="xs:double"/>
+      <xs:element minOccurs="0" name="previousReadingDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="statusCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="tariff" type="xs:string"/>
+      <xs:element minOccurs="0" name="totalAmountDue" type="xs:double"/>
+      <xs:element minOccurs="0" name="totalCharge" type="xs:double"/>
+      <xs:element minOccurs="0" name="totalUsages" type="xs:double"/>
+      <xs:element minOccurs="0" name="unitsConsumedPod" type="xs:double"/>
+      <xs:element minOccurs="0" name="unitsConsumedPog" type="xs:double"/>
+      <xs:element minOccurs="0" name="vat" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sendSms">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="destination" type="xs:string"/>
+      <xs:element minOccurs="0" name="source" type="xs:string"/>
+      <xs:element minOccurs="0" name="text" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sendSmsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="manageLocation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="userLocationDetails" type="tns:userDetails"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="userDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="customerId" type="xs:string"/>
+      <xs:element minOccurs="0" name="data1" type="xs:string"/>
+      <xs:element minOccurs="0" name="data2" type="xs:string"/>
+      <xs:element minOccurs="0" name="data3" type="xs:string"/>
+      <xs:element minOccurs="0" name="data4" type="xs:string"/>
+      <xs:element minOccurs="0" name="deviceId" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="geoPosition" type="xs:string"/>
+      <xs:element minOccurs="0" name="osVersion" type="xs:string"/>
+      <xs:element minOccurs="0" name="status" type="tns:loginStatus"/>
+      <xs:element minOccurs="0" name="streetAddress" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="manageLocationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getOutagesByAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="accountId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getOutagesByAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:outageByAccountResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="outageByAccountResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="accountId" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="outages" nillable="true" type="tns:outage"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="outage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="date" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:long"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="periods" nillable="true" type="tns:fromAndTo"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="fromAndTo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="from" type="xs:string"/>
+      <xs:element minOccurs="0" name="to" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBillingTransactionHistory">
+    <xs:sequence>
+      <xs:element name="start" type="xs:long"/>
+      <xs:element name="end" type="xs:long"/>
+      <xs:element name="page" type="xs:int"/>
+      <xs:element name="size" type="xs:int"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBillingTransactionHistoryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:billingTransactionResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="billingTransactionResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="bts" nillable="true" type="tns:billingTransaction"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="billingTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="amount" type="xs:double"/>
+      <xs:element minOccurs="0" name="businessUnit" type="xs:string"/>
+      <xs:element minOccurs="0" name="cashOffice" type="xs:string"/>
+      <xs:element minOccurs="0" name="provider" type="xs:string"/>
+      <xs:element minOccurs="0" name="transactionDatetime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="transactionRef" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findUserLocations">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findUserLocationsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBusinessUnits">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBusinessUnitsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:businessUnitResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="businessUnitResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="businessUnits" type="tns:businessUnit"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="businessUnit">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="address" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:long"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="uniqueIdentifier" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="payBill">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="meterNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="currentReading" type="xs:long"/>
+      <xs:element minOccurs="0" name="base64Image" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="payBillResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getInvoicePeriods">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="parentAccountId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getInvoicePeriodsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:invoicePeriodResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="invoicePeriodResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="periods" nillable="true" type="tns:invoicePeriod"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="invoicePeriod">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountId" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="invoicePeriods" nillable="true" type="tns:period"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="period">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="invoiceId" type="xs:long"/>
+      <xs:element minOccurs="0" name="period" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUtilityAccountDataUsages">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="meterNumber" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUtilityAccountDataUsagesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:usageResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="usageResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="accountId" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateDetails" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="usages" nillable="true" type="tns:usage"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="usage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="data" type="xs:string"/>
+      <xs:element minOccurs="0" name="label" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getNextUtilityOutageSchedule">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="meterNumber" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getNextUtilityOutageScheduleResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:outageScheduleResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="outageScheduleResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="schedules" type="tns:outageSchedule"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="outageSchedule">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="area" type="xs:string"/>
+      <xs:element minOccurs="0" name="endTime" type="xs:string"/>
+      <xs:element minOccurs="0" name="startTime" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBillingTransactionHistoryByAccountId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="acountId" type="xs:string"/>
+      <xs:element name="start" type="xs:long"/>
+      <xs:element name="end" type="xs:long"/>
+      <xs:element name="page" type="xs:int"/>
+      <xs:element name="size" type="xs:int"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBillingTransactionHistoryByAccountIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:billingTransactionResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUtilityAccountSchedule">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="start" type="xs:string"/>
+      <xs:element minOccurs="0" name="end" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUtilityAccountScheduleResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:outageScheduleResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFaqsByCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element name="categoryId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFaqsByCategoryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:faqResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="faqResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="faqs" nillable="true" type="tns:faq"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="faq">
+    <xs:sequence>
+      <xs:element name="category" nillable="true" type="xs:string"/>
+      <xs:element name="question" nillable="true" type="xs:string"/>
+      <xs:element name="answer" nillable="true" type="xs:string"/>
+      <xs:element name="url" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listFaqCategories">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listFaqCategoriesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:faqCategoryListResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="faqCategoryListResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="faqCategories" nillable="true" type="tns:faqCategory"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="faqCategory">
+    <xs:sequence>
+      <xs:element name="id" nillable="true" type="xs:string"/>
+      <xs:element name="name" nillable="true" type="xs:string"/>
+      <xs:element name="description" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getLastUtilityAccountInvoice">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="meterNumber" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getLastUtilityAccountInvoiceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:invoiceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUtilityAccountInvoiceList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="meterNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="nosOfInvoice" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUtilityAccountInvoiceListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:invoiceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="billingMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OFFLINE_PREPAID"/>
+      <xs:enumeration value="OFFLINE_POSTPAID"/>
+      <xs:enumeration value="NOT_METTERED"/>
+      <xs:enumeration value="ONLINE_PREPAID"/>
+      <xs:enumeration value="ONLINE_POSTPAID"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="loginStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="LOGGED_IN"/>
+      <xs:enumeration value="LOGGED_OUT"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="findUserLocationsResponse">
+    <wsdl:part element="tns:findUserLocationsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInvoice">
+    <wsdl:part element="tns:getInvoice" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOutagesByAccount">
+    <wsdl:part element="tns:getOutagesByAccount" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBillingTransactionHistoryResponse">
+    <wsdl:part element="tns:getBillingTransactionHistoryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findUserLocations">
+    <wsdl:part element="tns:findUserLocations" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listFaqCategoriesResponse">
+    <wsdl:part element="tns:listFaqCategoriesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBusinessUnits">
+    <wsdl:part element="tns:getBusinessUnits" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="payBill">
+    <wsdl:part element="tns:payBill" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInvoiceResponse">
+    <wsdl:part element="tns:getInvoiceResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLastUtilityAccountInvoiceResponse">
+    <wsdl:part element="tns:getLastUtilityAccountInvoiceResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInvoicePeriods">
+    <wsdl:part element="tns:getInvoicePeriods" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNextUtilityOutageSchedule">
+    <wsdl:part element="tns:getNextUtilityOutageSchedule" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUtilityAccountDataUsagesResponse">
+    <wsdl:part element="tns:getUtilityAccountDataUsagesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBillingTransactionHistoryByAccountId">
+    <wsdl:part element="tns:getBillingTransactionHistoryByAccountId" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUtilityAccountSchedule">
+    <wsdl:part element="tns:getUtilityAccountSchedule" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFaqsByCategory">
+    <wsdl:part element="tns:getFaqsByCategory" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOutagesByAccountResponse">
+    <wsdl:part element="tns:getOutagesByAccountResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUtilityAccountInvoiceListResponse">
+    <wsdl:part element="tns:getUtilityAccountInvoiceListResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="payBillResponse">
+    <wsdl:part element="tns:payBillResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUtilityAccountInvoiceList">
+    <wsdl:part element="tns:getUtilityAccountInvoiceList" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="manageLocationResponse">
+    <wsdl:part element="tns:manageLocationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUtilityAccountScheduleResponse">
+    <wsdl:part element="tns:getUtilityAccountScheduleResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendSms">
+    <wsdl:part element="tns:sendSms" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="manageLocation">
+    <wsdl:part element="tns:manageLocation" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBusinessUnitsResponse">
+    <wsdl:part element="tns:getBusinessUnitsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBillingTransactionHistory">
+    <wsdl:part element="tns:getBillingTransactionHistory" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBillingTransactionHistoryByAccountIdResponse">
+    <wsdl:part element="tns:getBillingTransactionHistoryByAccountIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFaqsByCategoryResponse">
+    <wsdl:part element="tns:getFaqsByCategoryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNextUtilityOutageScheduleResponse">
+    <wsdl:part element="tns:getNextUtilityOutageScheduleResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUtilityAccountDataUsages">
+    <wsdl:part element="tns:getUtilityAccountDataUsages" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInvoicePeriodsResponse">
+    <wsdl:part element="tns:getInvoicePeriodsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendSmsResponse">
+    <wsdl:part element="tns:sendSmsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listFaqCategories">
+    <wsdl:part element="tns:listFaqCategories" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLastUtilityAccountInvoice">
+    <wsdl:part element="tns:getLastUtilityAccountInvoice" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EsbGeneral">
+    <wsdl:operation name="getInvoice">
+      <wsdl:input message="tns:getInvoice" name="getInvoice">
+    </wsdl:input>
+      <wsdl:output message="tns:getInvoiceResponse" name="getInvoiceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSms">
+      <wsdl:input message="tns:sendSms" name="sendSms">
+    </wsdl:input>
+      <wsdl:output message="tns:sendSmsResponse" name="sendSmsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="manageLocation">
+      <wsdl:input message="tns:manageLocation" name="manageLocation">
+    </wsdl:input>
+      <wsdl:output message="tns:manageLocationResponse" name="manageLocationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOutagesByAccount">
+      <wsdl:input message="tns:getOutagesByAccount" name="getOutagesByAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:getOutagesByAccountResponse" name="getOutagesByAccountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBillingTransactionHistory">
+      <wsdl:input message="tns:getBillingTransactionHistory" name="getBillingTransactionHistory">
+    </wsdl:input>
+      <wsdl:output message="tns:getBillingTransactionHistoryResponse" name="getBillingTransactionHistoryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findUserLocations">
+      <wsdl:input message="tns:findUserLocations" name="findUserLocations">
+    </wsdl:input>
+      <wsdl:output message="tns:findUserLocationsResponse" name="findUserLocationsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBusinessUnits">
+      <wsdl:input message="tns:getBusinessUnits" name="getBusinessUnits">
+    </wsdl:input>
+      <wsdl:output message="tns:getBusinessUnitsResponse" name="getBusinessUnitsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="payBill">
+      <wsdl:input message="tns:payBill" name="payBill">
+    </wsdl:input>
+      <wsdl:output message="tns:payBillResponse" name="payBillResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoicePeriods">
+      <wsdl:input message="tns:getInvoicePeriods" name="getInvoicePeriods">
+    </wsdl:input>
+      <wsdl:output message="tns:getInvoicePeriodsResponse" name="getInvoicePeriodsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUtilityAccountDataUsages">
+      <wsdl:input message="tns:getUtilityAccountDataUsages" name="getUtilityAccountDataUsages">
+    </wsdl:input>
+      <wsdl:output message="tns:getUtilityAccountDataUsagesResponse" name="getUtilityAccountDataUsagesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNextUtilityOutageSchedule">
+      <wsdl:input message="tns:getNextUtilityOutageSchedule" name="getNextUtilityOutageSchedule">
+    </wsdl:input>
+      <wsdl:output message="tns:getNextUtilityOutageScheduleResponse" name="getNextUtilityOutageScheduleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBillingTransactionHistoryByAccountId">
+      <wsdl:input message="tns:getBillingTransactionHistoryByAccountId" name="getBillingTransactionHistoryByAccountId">
+    </wsdl:input>
+      <wsdl:output message="tns:getBillingTransactionHistoryByAccountIdResponse" name="getBillingTransactionHistoryByAccountIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUtilityAccountSchedule">
+      <wsdl:input message="tns:getUtilityAccountSchedule" name="getUtilityAccountSchedule">
+    </wsdl:input>
+      <wsdl:output message="tns:getUtilityAccountScheduleResponse" name="getUtilityAccountScheduleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFaqsByCategory">
+      <wsdl:input message="tns:getFaqsByCategory" name="getFaqsByCategory">
+    </wsdl:input>
+      <wsdl:output message="tns:getFaqsByCategoryResponse" name="getFaqsByCategoryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listFaqCategories">
+      <wsdl:input message="tns:listFaqCategories" name="listFaqCategories">
+    </wsdl:input>
+      <wsdl:output message="tns:listFaqCategoriesResponse" name="listFaqCategoriesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLastUtilityAccountInvoice">
+      <wsdl:input message="tns:getLastUtilityAccountInvoice" name="getLastUtilityAccountInvoice">
+    </wsdl:input>
+      <wsdl:output message="tns:getLastUtilityAccountInvoiceResponse" name="getLastUtilityAccountInvoiceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUtilityAccountInvoiceList">
+      <wsdl:input message="tns:getUtilityAccountInvoiceList" name="getUtilityAccountInvoiceList">
+    </wsdl:input>
+      <wsdl:output message="tns:getUtilityAccountInvoiceListResponse" name="getUtilityAccountInvoiceListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EsbGeneralSoapBinding" type="tns:EsbGeneral">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getInvoice">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getInvoice">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getInvoiceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSms">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sendSms">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendSmsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="manageLocation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="manageLocation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="manageLocationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOutagesByAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getOutagesByAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getOutagesByAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBillingTransactionHistory">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getBillingTransactionHistory">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBillingTransactionHistoryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findUserLocations">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findUserLocations">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findUserLocationsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBusinessUnits">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getBusinessUnits">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBusinessUnitsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="payBill">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="payBill">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="payBillResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoicePeriods">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getInvoicePeriods">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getInvoicePeriodsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUtilityAccountDataUsages">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUtilityAccountDataUsages">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUtilityAccountDataUsagesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNextUtilityOutageSchedule">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getNextUtilityOutageSchedule">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getNextUtilityOutageScheduleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBillingTransactionHistoryByAccountId">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getBillingTransactionHistoryByAccountId">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBillingTransactionHistoryByAccountIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUtilityAccountSchedule">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUtilityAccountSchedule">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUtilityAccountScheduleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFaqsByCategory">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getFaqsByCategory">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFaqsByCategoryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listFaqCategories">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listFaqCategories">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listFaqCategoriesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLastUtilityAccountInvoice">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getLastUtilityAccountInvoice">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLastUtilityAccountInvoiceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUtilityAccountInvoiceList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUtilityAccountInvoiceList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUtilityAccountInvoiceListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EsbGeneral">
+    <wsdl:port binding="tns:EsbGeneralSoapBinding" name="EsbGeneralPort">
+      <soap:address location="https://prod1.convergenceondemand.net/ESB/EsbGeneral"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

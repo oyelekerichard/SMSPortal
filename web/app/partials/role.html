@@ -1,0 +1,251 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-certificate"></i> Manage Roles
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-toolbar">
+                    <div class="btn-group">
+                        <button data-ng-show="hasPermission('9')" class="btn green btn-xs" data-ng-click="addRole()">
+                            Add New <i class="icon-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                    <div class="table-scrollable">
+                        <table class="table table-striped table-bordered table-hover table-condensed dataTable">
+                            <thead>
+                                <tr role="row">
+                                    <th style="width:2px;">#</th>
+                                    <th>Name</th>
+                                                                        <th>Description</th>
+                                    <th>Created By</th>
+                                    <th>Created Date</th>
+                                    <th>Modified By</th>
+                                    <th>Modified Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                <tr data-ng-hide="rroles || rroles > 0" class="error">
+                                    <td colspan="8">
+                                        <div class="text-center"><strong>No Roles created at this time.</strong></div>
+                                    </td>
+                                </tr>
+                                <tr data-ng-repeat="r in rroles">
+                                    <td class="">{{$index + 1}}</td>
+                                    <td class="">{{r.name}}</td>
+                                                                        <td class="">{{r.description}}</td>
+                                    <td class="">{{r.createdBy}}</td>
+                                    <td class="">{{r.created| date:'EEEE, MMMM d, yyyy h:mm a'}}</td>
+                                    <td class="">{{r.modifiedBy}}</td>
+                                    <td class="">{{r.modified| date:'EEEE, MMMM d, yyyy h:mm a'}}</td>
+                                    <td class="">
+                                        <button data-ng-show="hasPermission('10')" class="btn btn-xs btn-success" tooltip="View Role" data-ng-click="viewRole(r)"><i class="fa fa-eye"></i></button>
+                                        <button data-ng-show="hasPermission('11')" class="btn btn-xs yellow" tooltip="Update Role" data-ng-click="updateRole(r)"><i class="fa fa-pencil"></i></button>
+<!--                                        <button data-ng-show="hasPermission('6')" class="btn btn-xs btn-warning" tooltip="Deactivate or Reactivate User" data-ng-click="changeUserState(u.id)"><i class="fa fa-lock"></i></button>
+                                        <button data-ng-show="hasPermission('5')" class="btn btn-xs btn-primary" tooltip="Reset User Password" data-ng-click="resetPassword(u.id)"><i class="fa fa-repeat"></i></button>
+                                        <button data-ng-show="hasPermission('3')" class="btn btn-xs btn-danger" tooltip="Delete User" data-ng-click="deleteUser(u.id)"><i class="fa fa-trash"></i></button>-->
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--                    <div class="row">
+                                            <div class="col-md-5 col-sm-12">
+                                                <div class="dataTables_info" id="sample_1_info" style="padding-top:15px;">Showing {{users.start}} to {{users.end}} of {{users.totalCount}} entries</div>
+                                            </div>
+                                            <div class="col-md-7 col-sm-12">
+                                                <div class="dataTables_paginate paging_bootstrap pull-right">
+                                                    <ul class="pagination">
+                                                        <li class="prev" ><button type="button" class="btn blue" data-ng-click="prev()">Prev</button></li>
+                                                        <li class="next" ><button type="button" class="btn blue" data-ng-click="next()">Next</button></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<script type="text/ng-template" id="addrole.html">
+<div class="modal-header">
+    <h3 class="modal-title">Add Role</h3>
+</div>
+<div class="modal-body">
+    <div  class="horizontal-form">
+        <form class="form-horizontal" role="form">
+            <div class="form-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Name</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-sm" data-ng-model="role.name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Description</label>
+                            <div class="col-md-9">
+                                <textarea rows="3" class="form-control input-sm" data-ng-model="role.description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Navigation</label>
+                            <div class="col-md-9">
+                                <div class="checkbox-inline" data-ng-repeat="p in navigations">
+                                    <input type="checkbox" data-ng-model="p.description" class="checker">&nbsp;{{p.name}}</input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Permissions</label>
+                            <div class="col-md-9">
+                                <div class="checkbox-inline" data-ng-repeat="p in permissions">
+                                    <input type="checkbox" data-ng-model="p.description" class="checker">&nbsp;{{p.name}}</input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="pull-right">
+                                    <button class="btn btn-primary btn-sm" data-ng-click="createRole()" tooltip="Save Changes"><i class="icon-cogs"></i> Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>
+
+<script type="text/ng-template" id="viewrole.html">
+<div class="modal-header">
+    <h3 class="modal-title">Role details</h3>
+</div>
+<div class="modal-body">
+    <div  class="horizontal-form">
+        <form class="form-horizontal" role="form">
+            <div class="form-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Name</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-sm" data-ng-model="role.name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Description</label>
+                            <div class="col-md-9">
+                                <textarea rows="3" class="form-control input-sm" data-ng-model="role.description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Navigation</label>
+                            <div class="col-md-9">
+                                <div class="checkbox-inline" data-ng-repeat="p in navigations">
+                                    <input type="checkbox" data-ng-model="p.description" class="checker">&nbsp;{{p.name}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Permissions</label>
+                            <div class="col-md-9">
+                                <div class="checkbox-inline" data-ng-repeat="p in permissions">
+                                    <input type="checkbox" data-ng-model="p.description" class="checker">&nbsp;{{p.name}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>
+
+<script type="text/ng-template" id="updateRole.html">
+<div class="modal-header">
+    <h3 class="modal-title">Role details</h3>
+</div>
+<div class="modal-body">
+    <div  class="horizontal-form">
+        <form class="form-horizontal" role="form">
+            <div class="form-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Name</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-sm" data-ng-model="role.name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Description</label>
+                            <div class="col-md-9">
+                                <textarea rows="3" class="form-control input-sm" data-ng-model="role.description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Navigations</label>
+                            <div class="col-md-9">
+                                <div class="checkbox-inline" data-ng-repeat="x in navigations">
+                                    <input type="checkbox" data-ng-model="x.description" class="checker">&nbsp;{{x.name}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Permissions</label>
+                            <div class="col-md-9">
+                                <div class="checkbox-inline" data-ng-repeat="p in permissions">
+                                    <input type="checkbox" data-ng-model="p.description" class="checker">&nbsp;{{p.name}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                    </div>
+                   <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="pull-right">
+                                    <button class="btn btn-primary btn-sm" data-ng-click="updateRole()" tooltip="Update Role"><i class="icon-cogs"></i> Update Role</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>

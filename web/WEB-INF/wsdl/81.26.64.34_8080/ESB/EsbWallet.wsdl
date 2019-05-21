@@ -1,0 +1,3105 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.esb.convergenceondemand.net/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="EsbWallet" targetNamespace="http://service.esb.convergenceondemand.net/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.esb.convergenceondemand.net/" elementFormDefault="unqualified" targetNamespace="http://service.esb.convergenceondemand.net/" version="1.0">
+
+  <xs:element name="addTransactionChargeSpec" type="tns:addTransactionChargeSpec"/>
+
+  <xs:element name="addTransactionChargeSpecResponse" type="tns:addTransactionChargeSpecResponse"/>
+
+  <xs:element name="availableVouchersResponse" type="tns:availableVouchersResponse"/>
+
+  <xs:element name="bankListResponse" type="tns:bankListResponse"/>
+
+  <xs:element name="bankTransferInformationResponse" type="tns:bankTransferInformationResponse"/>
+
+  <xs:element name="baseVoucherResponse" type="tns:baseVoucherResponse"/>
+
+  <xs:element name="billingTransactionResponse" type="tns:billingTransactionResponse"/>
+
+  <xs:element name="calculateCashoutCommission" type="tns:calculateCashoutCommission"/>
+
+  <xs:element name="calculateCashoutCommissionResponse" type="tns:calculateCashoutCommissionResponse"/>
+
+  <xs:element name="calculateCommissionResponse" type="tns:calculateCommissionResponse"/>
+
+  <xs:element name="cashin" type="tns:cashin"/>
+
+  <xs:element name="cashinResponse" type="tns:cashinResponse"/>
+
+  <xs:element name="cashinStatusResponse" type="tns:cashinStatusResponse"/>
+
+  <xs:element name="cashout" type="tns:cashout"/>
+
+  <xs:element name="cashoutResponse" type="tns:cashoutResponse"/>
+
+  <xs:element name="chargeWallet" type="tns:chargeWallet"/>
+
+  <xs:element name="chargeWalletResponse" type="tns:chargeWalletResponse"/>
+
+  <xs:element name="checkCashinStatus" type="tns:checkCashinStatus"/>
+
+  <xs:element name="checkCashinStatusResponse" type="tns:checkCashinStatusResponse"/>
+
+  <xs:element name="commissionMonthlyCharts" type="tns:commissionMonthlyCharts"/>
+
+  <xs:element name="commissionMonthlyChartsResponse" type="tns:commissionMonthlyChartsResponse"/>
+
+  <xs:element name="consumePOSOrderId" type="tns:consumePOSOrderId"/>
+
+  <xs:element name="consumePOSOrderIdResponse" type="tns:consumePOSOrderIdResponse"/>
+
+  <xs:element name="creditWinnings" type="tns:creditWinnings"/>
+
+  <xs:element name="creditWinningsBatchResponse" type="tns:creditWinningsBatchResponse"/>
+
+  <xs:element name="creditWinningsInBatch" type="tns:creditWinningsInBatch"/>
+
+  <xs:element name="creditWinningsInBatchResponse" type="tns:creditWinningsInBatchResponse"/>
+
+  <xs:element name="creditWinningsResponse" type="tns:creditWinningsResponse"/>
+
+  <xs:element name="debitWinnings" type="tns:debitWinnings"/>
+
+  <xs:element name="debitWinningsResponse" type="tns:debitWinningsResponse"/>
+
+  <xs:element name="deleteTransactionChargeSpec" type="tns:deleteTransactionChargeSpec"/>
+
+  <xs:element name="deleteTransactionChargeSpecResponse" type="tns:deleteTransactionChargeSpecResponse"/>
+
+  <xs:element name="eBaseResponse" type="tns:eBaseResponse"/>
+
+  <xs:element name="financialInfoResponse" type="tns:financialInfoResponse"/>
+
+  <xs:element name="findBillingTransactionHistory" type="tns:findBillingTransactionHistory"/>
+
+  <xs:element name="findBillingTransactionHistoryResponse" type="tns:findBillingTransactionHistoryResponse"/>
+
+  <xs:element name="getAllDealers" type="tns:getAllDealers"/>
+
+  <xs:element name="getAllDealersResponse" type="tns:getAllDealersResponse"/>
+
+  <xs:element name="getAvailableVouchers" type="tns:getAvailableVouchers"/>
+
+  <xs:element name="getAvailableVouchersResponse" type="tns:getAvailableVouchersResponse"/>
+
+  <xs:element name="getBalance" type="tns:getBalance"/>
+
+  <xs:element name="getBalanceResponse" type="tns:getBalanceResponse"/>
+
+  <xs:element name="getCashinProviders" type="tns:getCashinProviders"/>
+
+  <xs:element name="getCashinProvidersResponse" type="tns:getCashinProvidersResponse"/>
+
+  <xs:element name="getDealerByCode" type="tns:getDealerByCode"/>
+
+  <xs:element name="getDealerByCodeResponse" type="tns:getDealerByCodeResponse"/>
+
+  <xs:element name="getDealerByRegion" type="tns:getDealerByRegion"/>
+
+  <xs:element name="getDealerByRegionResponse" type="tns:getDealerByRegionResponse"/>
+
+  <xs:element name="getDealerVoucherSales" type="tns:getDealerVoucherSales"/>
+
+  <xs:element name="getDealerVoucherSalesResponse" type="tns:getDealerVoucherSalesResponse"/>
+
+  <xs:element name="getFinancialInfo" type="tns:getFinancialInfo"/>
+
+  <xs:element name="getFinancialInfoResponse" type="tns:getFinancialInfoResponse"/>
+
+  <xs:element name="getLoadedVoucherDetails" type="tns:getLoadedVoucherDetails"/>
+
+  <xs:element name="getLoadedVoucherDetailsResponse" type="tns:getLoadedVoucherDetailsResponse"/>
+
+  <xs:element name="getRegionalSales" type="tns:getRegionalSales"/>
+
+  <xs:element name="getRegionalSalesResponse" type="tns:getRegionalSalesResponse"/>
+
+  <xs:element name="getSoldSales" type="tns:getSoldSales"/>
+
+  <xs:element name="getSoldSalesResponse" type="tns:getSoldSalesResponse"/>
+
+  <xs:element name="getTopVoucherSellers" type="tns:getTopVoucherSellers"/>
+
+  <xs:element name="getTopVoucherSellersResponse" type="tns:getTopVoucherSellersResponse"/>
+
+  <xs:element name="getTotalCommisionPaid" type="tns:getTotalCommisionPaid"/>
+
+  <xs:element name="getTotalCommisionPaidResponse" type="tns:getTotalCommisionPaidResponse"/>
+
+  <xs:element name="getTotalCommissionDue" type="tns:getTotalCommissionDue"/>
+
+  <xs:element name="getTotalCommissionDueResponse" type="tns:getTotalCommissionDueResponse"/>
+
+  <xs:element name="getTotalVoucherSales" type="tns:getTotalVoucherSales"/>
+
+  <xs:element name="getTotalVoucherSalesResponse" type="tns:getTotalVoucherSalesResponse"/>
+
+  <xs:element name="getTransactionChargeSpecs" type="tns:getTransactionChargeSpecs"/>
+
+  <xs:element name="getTransactionChargeSpecsResponse" type="tns:getTransactionChargeSpecsResponse"/>
+
+  <xs:element name="getTransactionHistory" type="tns:getTransactionHistory"/>
+
+  <xs:element name="getTransactionHistoryByChannel" type="tns:getTransactionHistoryByChannel"/>
+
+  <xs:element name="getTransactionHistoryByChannelResponse" type="tns:getTransactionHistoryByChannelResponse"/>
+
+  <xs:element name="getTransactionHistoryResponse" type="tns:getTransactionHistoryResponse"/>
+
+  <xs:element name="getTransfers" type="tns:getTransfers"/>
+
+  <xs:element name="getTransfersResponse" type="tns:getTransfersResponse"/>
+
+  <xs:element name="getUsedSales" type="tns:getUsedSales"/>
+
+  <xs:element name="getUsedSalesResponse" type="tns:getUsedSalesResponse"/>
+
+  <xs:element name="getVoucherSales" type="tns:getVoucherSales"/>
+
+  <xs:element name="getVoucherSalesResponse" type="tns:getVoucherSalesResponse"/>
+
+  <xs:element name="listBankTransferInformation" type="tns:listBankTransferInformation"/>
+
+  <xs:element name="listBankTransferInformationResponse" type="tns:listBankTransferInformationResponse"/>
+
+  <xs:element name="listCashoutPartners" type="tns:listCashoutPartners"/>
+
+  <xs:element name="listCashoutPartnersResponse" type="tns:listCashoutPartnersResponse"/>
+
+  <xs:element name="loadUtilityVoucher" type="tns:loadUtilityVoucher"/>
+
+  <xs:element name="loadUtilityVoucherResponse" type="tns:loadUtilityVoucherResponse"/>
+
+  <xs:element name="loadVoucher" type="tns:loadVoucher"/>
+
+  <xs:element name="loadVoucherResponse" type="tns:loadVoucherResponse"/>
+
+  <xs:element name="loadWallet" type="tns:loadWallet"/>
+
+  <xs:element name="loadWalletResponse" type="tns:loadWalletResponse"/>
+
+  <xs:element name="loadedVoucher" type="tns:loadedVoucher"/>
+
+  <xs:element name="loadedVoucherResponse" type="tns:loadedVoucherResponse"/>
+
+  <xs:element name="logBillingTransaction" type="tns:logBillingTransaction"/>
+
+  <xs:element name="logBillingTransactionResponse" type="tns:logBillingTransactionResponse"/>
+
+  <xs:element name="payDealerCommission" type="tns:payDealerCommission"/>
+
+  <xs:element name="payDealerCommissionResponse" type="tns:payDealerCommissionResponse"/>
+
+  <xs:element name="payWinnings" type="tns:payWinnings"/>
+
+  <xs:element name="payWinningsResponse" type="tns:payWinningsResponse"/>
+
+  <xs:element name="pinResponse" type="tns:pinResponse"/>
+
+  <xs:element name="posCashin" type="tns:posCashin"/>
+
+  <xs:element name="posCashinResponse" type="tns:posCashinResponse"/>
+
+  <xs:element name="posCashinTrackingResponse" type="tns:posCashinTrackingResponse"/>
+
+  <xs:element name="posCashinWithExtraData" type="tns:posCashinWithExtraData"/>
+
+  <xs:element name="posCashinWithExtraDataResponse" type="tns:posCashinWithExtraDataResponse"/>
+
+  <xs:element name="posTerminalCashinResponse" type="tns:posTerminalCashinResponse"/>
+
+  <xs:element name="queryLoadedVoucherByUser" type="tns:queryLoadedVoucherByUser"/>
+
+  <xs:element name="queryLoadedVoucherByUserResponse" type="tns:queryLoadedVoucherByUserResponse"/>
+
+  <xs:element name="queryWinnings" type="tns:queryWinnings"/>
+
+  <xs:element name="queryWinningsResponse" type="tns:queryWinningsResponse"/>
+
+  <xs:element name="regionalSalesResponse" type="tns:regionalSalesResponse"/>
+
+  <xs:element name="salesResponse" type="tns:salesResponse"/>
+
+  <xs:element name="sellPin" type="tns:sellPin"/>
+
+  <xs:element name="sellPinResponse" type="tns:sellPinResponse"/>
+
+  <xs:element name="sellPinWithWalletDeduct" type="tns:sellPinWithWalletDeduct"/>
+
+  <xs:element name="sellPinWithWalletDeductResponse" type="tns:sellPinWithWalletDeductResponse"/>
+
+  <xs:element name="sellersResponse" type="tns:sellersResponse"/>
+
+  <xs:element name="splitPayments" type="tns:splitPayments"/>
+
+  <xs:element name="splitPaymentsResponse" type="tns:splitPaymentsResponse"/>
+
+  <xs:element name="stagedCashin" type="tns:stagedCashin"/>
+
+  <xs:element name="touchWinningsResponse" type="tns:touchWinningsResponse"/>
+
+  <xs:element name="trackPosCashin" type="tns:trackPosCashin"/>
+
+  <xs:element name="trackPosCashinResponse" type="tns:trackPosCashinResponse"/>
+
+  <xs:element name="trackWinningsPay" type="tns:trackWinningsPay"/>
+
+  <xs:element name="trackWinningsPayResponse" type="tns:trackWinningsPayResponse"/>
+
+  <xs:element name="transactionChargeSpecListResponse" type="tns:transactionChargeSpecListResponse"/>
+
+  <xs:element name="transactionHistoryResponse" type="tns:transactionHistoryResponse"/>
+
+  <xs:element name="transactionRecord" type="tns:transactionRecord"/>
+
+  <xs:element name="transactionResponse" type="tns:transactionResponse"/>
+
+  <xs:element name="transferFunds" type="tns:transferFunds"/>
+
+  <xs:element name="transferFundsResponse" type="tns:transferFundsResponse"/>
+
+  <xs:element name="userAccount" type="tns:userAccount"/>
+
+  <xs:element name="voucherDealersResponse" type="tns:voucherDealersResponse"/>
+
+  <xs:element name="voucherSalesResponse" type="tns:voucherSalesResponse"/>
+
+  <xs:element name="voucherSellerResponse" type="tns:voucherSellerResponse"/>
+
+  <xs:element name="walletCashinResponse" type="tns:walletCashinResponse"/>
+
+  <xs:element name="walletResponse" type="tns:walletResponse"/>
+
+  <xs:element name="walletTransferResponse" type="tns:walletTransferResponse"/>
+
+  <xs:element name="winningPayEvent" type="tns:winningPayEvent"/>
+
+  <xs:element name="winningsCashoutResponse" type="tns:winningsCashoutResponse"/>
+
+  <xs:element name="winningsPayResponse" type="tns:winningsPayResponse"/>
+
+  <xs:element name="winningsPayTrackingResponse" type="tns:winningsPayTrackingResponse"/>
+
+  <xs:element name="winningsResponse" type="tns:winningsResponse"/>
+
+  <xs:complexType name="getRegionalSales">
+    <xs:sequence>
+      <xs:element name="start" type="xs:int"/>
+      <xs:element name="count" type="xs:int"/>
+      <xs:element minOccurs="0" name="startDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="endDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getRegionalSalesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:regionalSalesResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="regionalSalesResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="regionalSales" nillable="true" type="tns:regionalSales"/>
+          <xs:element name="totalCount" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="eBaseResponse">
+    <xs:sequence>
+      <xs:element name="retn" nillable="true" type="xs:int"/>
+      <xs:element name="desc" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="regionalSales">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="dValue" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="loadUtilityVoucher">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accounId" type="xs:string"/>
+      <xs:element minOccurs="0" name="pin" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="loadUtilityVoucherResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:walletResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="walletResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="balance" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="stagedCashin" type="tns:stagedCashin"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="stagedCashin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="agentId" type="xs:string"/>
+      <xs:element minOccurs="0" name="agentName" type="xs:string"/>
+      <xs:element minOccurs="0" name="amount" type="xs:double"/>
+      <xs:element minOccurs="0" name="businessUnit" type="xs:string"/>
+      <xs:element minOccurs="0" name="cashOffice" type="xs:string"/>
+      <xs:element minOccurs="0" name="confirmationTime" type="xs:string"/>
+      <xs:element name="convenienceCharge" type="xs:int"/>
+      <xs:element minOccurs="0" name="customerAccountType" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerBusinessUnit" type="xs:string"/>
+      <xs:element minOccurs="0" name="extraData" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="initiationTime" type="xs:string"/>
+      <xs:element minOccurs="0" name="merchantId" type="xs:string"/>
+      <xs:element minOccurs="0" name="paymentPartner" type="xs:string"/>
+      <xs:element minOccurs="0" name="providerMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="providerRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="purpose" type="xs:string"/>
+      <xs:element minOccurs="0" name="secondaryUserId" type="xs:string"/>
+      <xs:element minOccurs="0" name="status" type="xs:int"/>
+      <xs:element minOccurs="0" name="tamAgentId" type="xs:string"/>
+      <xs:element minOccurs="0" name="tamAgentName" type="xs:string"/>
+      <xs:element minOccurs="0" name="tenantId" type="xs:string"/>
+      <xs:element minOccurs="0" name="terminalId" type="xs:string"/>
+      <xs:element minOccurs="0" name="ucgChannel" type="xs:string"/>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteTransactionChargeSpec">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="transactionChargeSpec" type="xs:long"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteTransactionChargeSpecResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getDealerByCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dealerId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getDealerByCodeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:voucherDealersResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="voucherDealersResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="voucherDealers" nillable="true" type="tns:voucherDealer"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="voucherDealer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accrual" type="xs:double"/>
+      <xs:element minOccurs="0" name="address" type="xs:string"/>
+      <xs:element minOccurs="0" name="comment" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyName" type="xs:string"/>
+      <xs:element minOccurs="0" name="createTime" type="xs:string"/>
+      <xs:element name="createdBy" type="xs:int"/>
+      <xs:element minOccurs="0" name="creator" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="isActive" type="xs:int"/>
+      <xs:element name="lga" type="xs:int"/>
+      <xs:element minOccurs="0" name="location" type="xs:string"/>
+      <xs:element minOccurs="0" name="nameOfRepresentative" type="xs:string"/>
+      <xs:element minOccurs="0" name="paid" type="xs:double"/>
+      <xs:element minOccurs="0" name="phone" type="xs:string"/>
+      <xs:element minOccurs="0" name="updateTime" type="xs:string"/>
+      <xs:element name="updatedBy" type="xs:int"/>
+      <xs:element minOccurs="0" name="updater" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTopVoucherSellers">
+    <xs:sequence>
+      <xs:element name="start" type="xs:int"/>
+      <xs:element name="count" type="xs:int"/>
+      <xs:element minOccurs="0" name="startDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="endDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTopVoucherSellersResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:sellersResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sellersResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="sellers" nillable="true" type="tns:seller"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="seller">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amount" type="xs:double"/>
+      <xs:element name="dealerId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findBillingTransactionHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="acountId" type="xs:string"/>
+      <xs:element minOccurs="0" name="start" type="xs:string"/>
+      <xs:element minOccurs="0" name="end" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findBillingTransactionHistoryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:billingTransactionResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="billingTransactionResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="bts" nillable="true" type="tns:billingTransaction"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="billingTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="amount" type="xs:double"/>
+      <xs:element minOccurs="0" name="businessUnit" type="xs:string"/>
+      <xs:element minOccurs="0" name="cashOffice" type="xs:string"/>
+      <xs:element minOccurs="0" name="provider" type="xs:string"/>
+      <xs:element minOccurs="0" name="transactionDatetime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="transactionRef" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consumePOSOrderId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="orderId" type="xs:int"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="consumePOSOrderIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCashinProviders">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCashinProvidersResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:cashinProviderResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cashinProviderResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="cashinProviders">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="key" type="tns:provider"/>
+                      <xs:element minOccurs="0" name="value" type="xs:string"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getTransactionHistoryByChannel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="start" type="xs:string"/>
+      <xs:element minOccurs="0" name="end" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="tns:type"/>
+      <xs:element minOccurs="0" name="channel" type="tns:channel"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTransactionHistoryByChannelResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:transactionHistoryResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transactionHistoryResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="transaction" nillable="true" type="tns:transactionRecord"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="transactionRecord">
+    <xs:sequence>
+      <xs:element name="amount" nillable="true" type="xs:double"/>
+      <xs:element name="channel" nillable="true" type="xs:string"/>
+      <xs:element name="description" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element name="paymentMethod" nillable="true" type="xs:string"/>
+      <xs:element name="provider" nillable="true" type="xs:string"/>
+      <xs:element name="providerMsg" nillable="true" type="xs:string"/>
+      <xs:element name="providerRef" nillable="true" type="xs:string"/>
+      <xs:element name="slRef" nillable="true" type="xs:string"/>
+      <xs:element name="timestamp" nillable="true" type="xs:string"/>
+      <xs:element name="type" nillable="true" type="xs:string"/>
+      <xs:element name="userId" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTransactionChargeSpecs">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTransactionChargeSpecsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:transactionChargeSpecListResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transactionChargeSpecListResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="transactionChargeSpecs" nillable="true" type="tns:transactionChargeSpecification"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="transactionChargeSpecification">
+    <xs:sequence>
+      <xs:element name="cashoutChannel" nillable="true" type="tns:cashoutChannel"/>
+      <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+      <xs:element name="maximumCashout" nillable="true" type="xs:double"/>
+      <xs:element name="maximumCashoutTimesPerDay" nillable="true" type="xs:int"/>
+      <xs:element name="maximumCharge" nillable="true" type="xs:double"/>
+      <xs:element name="minimumCashout" nillable="true" type="xs:double"/>
+      <xs:element name="minimumCharge" nillable="true" type="xs:double"/>
+      <xs:element name="name" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" name="tiers" nillable="true" type="tns:embeddableStringPair"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="embeddableStringPair">
+    <xs:sequence>
+      <xs:element name="key" nillable="true" type="xs:string"/>
+      <xs:element name="value" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="loadVoucher">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="pin" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="loadVoucherResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:walletResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAvailableVouchers">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAvailableVouchersResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:availableVouchersResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="availableVouchersResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="voucherProducts" nillable="true" type="tns:voucherProduct"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="voucherProduct">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="denominations" nillable="true" type="tns:vDenomination"/>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vDenomination">
+    <xs:sequence>
+      <xs:element name="denomination" type="xs:int"/>
+      <xs:element name="id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllDealers">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element name="start" type="xs:int"/>
+      <xs:element name="count" type="xs:int"/>
+      <xs:element name="maxAmount" type="xs:double"/>
+      <xs:element name="minAmount" type="xs:double"/>
+      <xs:element minOccurs="0" name="category" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllDealersResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:voucherDealersResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="queryWinnings">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="queryWinningsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:winningsResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="winningsResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="balance" nillable="true" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getLoadedVoucherDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="voucherpin" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getLoadedVoucherDetailsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:loadedVoucherResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="loadedVoucherResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="loadedVouchers" nillable="true" type="tns:loadedVoucher"/>
+          <xs:element name="userDetails" nillable="true" type="tns:userAccount"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="loadedVoucher">
+    <xs:sequence>
+      <xs:element name="amount" nillable="true" type="xs:string"/>
+      <xs:element name="pin" nillable="true" type="xs:string"/>
+      <xs:element name="timeOfTxn" nillable="true" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="userAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="acceptedTac" type="xs:int"/>
+      <xs:element minOccurs="0" name="betwareCustomerId" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastUpdateTime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element minOccurs="0" name="registrationTime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="secretAnswer" type="xs:string"/>
+      <xs:element minOccurs="0" name="secretQuestion" type="xs:string"/>
+      <xs:element minOccurs="0" name="status" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cashin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="paymentPartner" type="tns:paymentPartner"/>
+      <xs:element name="amount" type="xs:double"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cashinResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:walletCashinResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="walletCashinResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="redirectUrl" nillable="true" type="xs:string"/>
+          <xs:element name="trackingId" nillable="true" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="posCashinWithExtraData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:posCashinParams"/>
+      <xs:element name="extraData">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string"/>
+                  <xs:element minOccurs="0" name="value" type="xs:string"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="posCashinParams">
+    <xs:sequence>
+      <xs:element name="amount" nillable="true" type="xs:double"/>
+      <xs:element name="tamAgentId" nillable="true" type="xs:string"/>
+      <xs:element name="userId" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="posCashinWithExtraDataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:posTerminalCashinResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="posTerminalCashinResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="orderId" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="creditWinningsInBatch">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="creditWinningsParams" type="tns:creditWinningsParams"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="creditWinningsParams">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="entries" nillable="true" type="tns:winningsEntry"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="winningsEntry">
+    <xs:sequence>
+      <xs:element name="amount" nillable="true" type="xs:double"/>
+      <xs:element minOccurs="0" name="category" type="xs:string"/>
+      <xs:element minOccurs="0" name="channel" type="xs:string"/>
+      <xs:element minOccurs="0" name="channelId" type="xs:string"/>
+      <xs:element minOccurs="0" name="channelRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="data" type="xs:string"/>
+      <xs:element name="description" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="drawType" type="xs:string"/>
+      <xs:element minOccurs="0" name="gameId" type="xs:string"/>
+      <xs:element minOccurs="0" name="gameTypeId" type="xs:string"/>
+      <xs:element minOccurs="0" name="gameTypeName" type="xs:string"/>
+      <xs:element minOccurs="0" name="isPayed" type="xs:int"/>
+      <xs:element minOccurs="0" name="isSuccessful" type="xs:short"/>
+      <xs:element minOccurs="0" name="odd" type="xs:double"/>
+      <xs:element minOccurs="0" name="playedStyle" type="xs:string"/>
+      <xs:element minOccurs="0" name="potentialWinning" type="xs:double"/>
+      <xs:element name="provider" nillable="true" type="tns:provider"/>
+      <xs:element name="ticketNumber" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="timeOfPlay" type="xs:string"/>
+      <xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+      <xs:element name="userId" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="creditWinningsInBatchResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:creditWinningsBatchResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="creditWinningsBatchResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="failedCredits">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="key" type="xs:string"/>
+                      <xs:element minOccurs="0" name="value" type="xs:string"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" name="successfulCredits" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="posCashin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="params" type="tns:posCashinParams"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="posCashinResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:posTerminalCashinResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getDealerByRegion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="region" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getDealerByRegionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:voucherDealersResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addTransactionChargeSpec">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="transactionChargeSpec" type="tns:transactionChargeSpecification"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addTransactionChargeSpecResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getVoucherSales">
+    <xs:sequence>
+      <xs:element name="start" type="xs:int"/>
+      <xs:element name="count" type="xs:int"/>
+      <xs:element minOccurs="0" name="startDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="endDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getVoucherSalesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:voucherSalesResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="voucherSalesResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="voucherSales" nillable="true" type="tns:voucherSales"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="voucherSales">
+    <xs:sequence>
+      <xs:element name="numOfdealers" type="xs:int"/>
+      <xs:element minOccurs="0" name="region" type="xs:string"/>
+      <xs:element name="voucherSales" type="xs:int"/>
+      <xs:element name="voucherSold" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="creditWinnings">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="amount" type="xs:double"/>
+      <xs:element minOccurs="0" name="provider" type="tns:provider"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="ticketNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="timestamp" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="creditWinningsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:touchWinningsResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="touchWinningsResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="balance" nillable="true" type="xs:double"/>
+          <xs:element name="transactionRef" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="loadWallet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="transactionParams" type="tns:transactionParams"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transactionParams">
+    <xs:sequence>
+      <xs:element name="amount" nillable="true" type="xs:double"/>
+      <xs:element name="channel" nillable="true" type="tns:channel"/>
+      <xs:element name="extraData">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string"/>
+                  <xs:element minOccurs="0" name="value" type="xs:string"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="paymentMethod" nillable="true" type="tns:paymentMethod"/>
+      <xs:element name="provider" nillable="true" type="xs:string"/>
+      <xs:element name="providerMsg" nillable="true" type="xs:string"/>
+      <xs:element name="providerRef" nillable="true" type="xs:string"/>
+      <xs:element name="type" nillable="true" type="tns:type"/>
+      <xs:element name="userId" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="loadWalletResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:walletResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listBankTransferInformation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listBankTransferInformationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:bankTransferInformationResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bankTransferInformationResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="accountTypes">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="key" type="xs:string"/>
+                      <xs:element minOccurs="0" name="value" type="xs:int"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="banks">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="key" type="xs:string"/>
+                      <xs:element minOccurs="0" name="value" type="xs:string"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="commissionMonthlyCharts">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="commissionMonthlyChartsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:commissionMonthResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="commissionMonthResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="commisionMonth" nillable="true" type="tns:commisionMonth"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="commisionMonth">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accrued" type="xs:double"/>
+      <xs:element name="month" type="xs:int"/>
+      <xs:element minOccurs="0" name="paid" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="splitPayments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="splitPaymentDetails" type="tns:splitPayment"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="splitPayment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountId" type="xs:string"/>
+      <xs:element minOccurs="0" name="cashPaymentDetails" type="tns:transactionParams"/>
+      <xs:element minOccurs="0" name="orderId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="splitPaymentsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:splitPaymentResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="splitPaymentResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cashCashin" type="tns:stagedCashin"/>
+          <xs:element minOccurs="0" name="cashMessage" type="xs:string"/>
+          <xs:element minOccurs="0" name="posCashin" type="tns:stagedCashin"/>
+          <xs:element minOccurs="0" name="posMessage" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="trackPosCashin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="orderId" type="xs:int"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="trackPosCashinResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:posCashinTrackingResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="posCashinTrackingResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="agentId" nillable="true" type="xs:string"/>
+          <xs:element name="agentName" nillable="true" type="xs:string"/>
+          <xs:element name="amount" nillable="true" type="xs:double"/>
+          <xs:element name="confirmationTime" nillable="true" type="xs:string"/>
+          <xs:element name="creationTime" nillable="true" type="xs:string"/>
+          <xs:element name="stagedCashin" nillable="true" type="tns:stagedCashin"/>
+          <xs:element name="status" nillable="true" type="xs:string"/>
+          <xs:element name="tamAgentId" nillable="true" type="xs:string"/>
+          <xs:element name="terminalId" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getTransfers">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="start" type="xs:string"/>
+      <xs:element minOccurs="0" name="end" type="xs:string"/>
+      <xs:element minOccurs="0" name="channel" type="tns:channel"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTransfersResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:transactionHistoryResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listCashoutPartners">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listCashoutPartnersResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:bankListResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bankListResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="banks">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="key" type="xs:string"/>
+                      <xs:element minOccurs="0" name="value" type="xs:string"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getTotalCommissionDue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTotalCommissionDueResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:baseVoucherResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="baseVoucherResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="value" nillable="true" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="chargeWallet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="transactionParams" type="tns:transactionParams"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="chargeWalletResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:walletResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTransactionHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="start" type="xs:string"/>
+      <xs:element minOccurs="0" name="end" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="tns:type"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTransactionHistoryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:transactionHistoryResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="payDealerCommission">
+    <xs:sequence>
+      <xs:element name="delearId" type="xs:int"/>
+      <xs:element name="amountPaid" type="xs:double"/>
+      <xs:element minOccurs="0" name="datePaid" type="xs:string"/>
+      <xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="payDealerCommissionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUsedSales">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUsedSalesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:salesResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="salesResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="sales" nillable="true" type="tns:sales"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="sales">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amount" type="xs:double"/>
+      <xs:element name="denomination" type="xs:int"/>
+      <xs:element name="month" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sellPinWithWalletDeduct">
+    <xs:sequence>
+      <xs:element name="product" type="xs:int"/>
+      <xs:element name="denomination" type="xs:int"/>
+      <xs:element minOccurs="0" name="quantity" type="xs:string"/>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sellPinWithWalletDeductResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:pinResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pinResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="pins" nillable="true" type="tns:voucher"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="voucher">
+    <xs:sequence>
+      <xs:element name="denomination" type="xs:int"/>
+      <xs:element minOccurs="0" name="expiry" type="xs:string"/>
+      <xs:element minOccurs="0" name="marketingInfo" type="xs:string"/>
+      <xs:element minOccurs="0" name="pin" type="xs:string"/>
+      <xs:element name="serialNumber" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="queryLoadedVoucherByUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="count" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="queryLoadedVoucherByUserResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:loadedVoucherResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sellPin">
+    <xs:sequence>
+      <xs:element name="product" type="xs:int"/>
+      <xs:element name="denomination" type="xs:int"/>
+      <xs:element minOccurs="0" name="quantity" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sellPinResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:pinResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="payWinnings">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="winningPlayIds" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="payWinningsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:winningsPayResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="winningsPayResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="eventId" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getTotalCommisionPaid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTotalCommisionPaidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:baseVoucherResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transferFunds">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="source" type="xs:string"/>
+      <xs:element minOccurs="0" name="destination" type="xs:string"/>
+      <xs:element name="amount" type="xs:double"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transferFundsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:walletTransferResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="walletTransferResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="destinationBalance" nillable="true" type="xs:double"/>
+          <xs:element name="sourceBalance" nillable="true" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getSoldSales">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSoldSalesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:salesResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="calculateCashoutCommission">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cashoutParams" type="tns:cashoutParams"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cashoutParams">
+    <xs:sequence>
+      <xs:element name="accountNumber" nillable="true" type="xs:string"/>
+      <xs:element name="accountType" nillable="true" type="xs:string"/>
+      <xs:element name="amount" nillable="true" type="xs:double"/>
+      <xs:element name="bankCbnCode" nillable="true" type="xs:string"/>
+      <xs:element name="email" nillable="true" type="xs:string"/>
+      <xs:element name="lastName" nillable="true" type="xs:string"/>
+      <xs:element name="otherNames" nillable="true" type="xs:string"/>
+      <xs:element name="paymentMethod" nillable="true" type="tns:paymentMethod"/>
+      <xs:element name="phoneNumber" nillable="true" type="xs:string"/>
+      <xs:element name="provider" nillable="true" type="tns:provider"/>
+      <xs:element name="userId" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="calculateCashoutCommissionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:calculateCommissionResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="calculateCommissionResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="cashoutAmount" nillable="true" type="xs:double"/>
+          <xs:element name="commissionSummary" nillable="true" type="xs:string"/>
+          <xs:element name="totalCommission" nillable="true" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="debitWinnings">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="amount" type="xs:double"/>
+      <xs:element minOccurs="0" name="provider" type="tns:provider"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="timestamp" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="debitWinningsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:touchWinningsResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBalance">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBalanceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:walletResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTotalVoucherSales">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTotalVoucherSalesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:baseVoucherResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="trackWinningsPay">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="eventId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="trackWinningsPayResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:winningsPayTrackingResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="winningsPayTrackingResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="events" nillable="true" type="tns:winningPayEvent"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="winningPayEvent">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="eventId" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="smsText" type="xs:string"/>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+      <xs:element minOccurs="0" name="winningPlayId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cashout">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cashoutParams" type="tns:cashoutParams"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cashoutResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:winningsCashoutResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="winningsCashoutResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="amount" nillable="true" type="xs:double"/>
+          <xs:element name="commissionSummary" nillable="true" type="xs:string"/>
+          <xs:element name="expiry" nillable="true" type="xs:string"/>
+          <xs:element name="instruction" nillable="true" type="xs:string"/>
+          <xs:element name="otp" nillable="true" type="xs:string"/>
+          <xs:element name="pin" nillable="true" type="xs:string"/>
+          <xs:element name="bankAccountTransferStatus" nillable="true" type="tns:bankAccountTransferStatus"/>
+          <xs:element name="transactionRef" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getDealerVoucherSales">
+    <xs:sequence>
+      <xs:element name="dealer" type="xs:int"/>
+      <xs:element name="start" type="xs:int"/>
+      <xs:element name="count" type="xs:int"/>
+      <xs:element minOccurs="0" name="startDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="endDate" type="xs:string"/>
+      <xs:element name="denomination" type="xs:int"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getDealerVoucherSalesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:voucherSellerResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="voucherSellerResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="voucherSeller" nillable="true" type="tns:voucherSeller"/>
+          <xs:element name="totalCount" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="voucherSeller">
+    <xs:sequence>
+      <xs:element name="amount" type="xs:double"/>
+      <xs:element name="dealerId" type="xs:int"/>
+      <xs:element minOccurs="0" name="dealerName" type="xs:string"/>
+      <xs:element minOccurs="0" name="purchaseDate" type="xs:string"/>
+      <xs:element name="volume" type="xs:int"/>
+      <xs:element name="voucher" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFinancialInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFinancialInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:financialInfoResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="financialInfoResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="wallet" nillable="true" type="tns:wallet"/>
+          <xs:element name="winnings" nillable="true" type="tns:winnings"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="wallet">
+    <xs:sequence>
+      <xs:element name="balance" nillable="true" type="xs:string"/>
+      <xs:element name="lastUpdateTime" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="winnings">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="winningEntries" nillable="true" type="tns:entry"/>
+      <xs:element name="totalAmount" nillable="true" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="entry">
+    <xs:sequence>
+      <xs:element name="amount" nillable="true" type="xs:string"/>
+      <xs:element name="description" nillable="true" type="xs:string"/>
+      <xs:element name="expiry" nillable="true" type="xs:string"/>
+      <xs:element name="provider" nillable="true" type="xs:string"/>
+      <xs:element name="ticketNumber" nillable="true" type="xs:string"/>
+      <xs:element name="timestamp" nillable="true" type="xs:string"/>
+      <xs:element name="transactionId" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="checkCashinStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="trackingId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="checkCashinStatusResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:cashinStatusResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cashinStatusResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="amount" nillable="true" type="xs:double"/>
+          <xs:element name="status" nillable="true" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="logBillingTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="billingTransactionParams" type="tns:billingTransactionParams"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="billingTransactionParams">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="accountType" type="xs:string"/>
+      <xs:element minOccurs="0" name="amount" type="xs:double"/>
+      <xs:element minOccurs="0" name="billProductionDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="businessUnitName" type="xs:string"/>
+      <xs:element minOccurs="0" name="cashOffice" type="xs:string"/>
+      <xs:element name="extraData">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string"/>
+                  <xs:element minOccurs="0" name="value" type="xs:string"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="provider" type="xs:string"/>
+      <xs:element minOccurs="0" name="purpose" type="xs:string"/>
+      <xs:element minOccurs="0" name="tamAgentId" type="xs:string"/>
+      <xs:element minOccurs="0" name="tamAgentName" type="xs:string"/>
+      <xs:element minOccurs="0" name="transactionDateTime" type="xs:string"/>
+      <xs:element minOccurs="0" name="transactionRef" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="logBillingTransactionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:transactionResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transactionResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="stagedCashin" type="tns:stagedCashin"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="provider">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="WALLET"/>
+      <xs:enumeration value="CASH"/>
+      <xs:enumeration value="WINNINGS"/>
+      <xs:enumeration value="LOTTERY_OPERATOR"/>
+      <xs:enumeration value="BETWARE"/>
+      <xs:enumeration value="SPORTS_BETTING"/>
+      <xs:enumeration value="FIVE_NINETY"/>
+      <xs:enumeration value="CI_SIX_FORTY_NINE"/>
+      <xs:enumeration value="VOUCHER_MANAGER"/>
+      <xs:enumeration value="INTERSWITCH"/>
+      <xs:enumeration value="INTERSWITCH_BANK_TRANSFER"/>
+      <xs:enumeration value="BANK_BRANCH_TRANSFER"/>
+      <xs:enumeration value="EAZYMONEY"/>
+      <xs:enumeration value="FIRSTMONEY"/>
+      <xs:enumeration value="GLOBAL_ACCELEREX"/>
+      <xs:enumeration value="NIBSS_CENTRAL_PAY"/>
+      <xs:enumeration value="NIBSS_E_BILLS_PAY"/>
+      <xs:enumeration value="CROWN_WALLET"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREDIT"/>
+      <xs:enumeration value="DEBIT"/>
+      <xs:enumeration value="NEUTRAL"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="channel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SL_SMS"/>
+      <xs:enumeration value="MAM"/>
+      <xs:enumeration value="TERMINAL"/>
+      <xs:enumeration value="SPORTS_BETTING"/>
+      <xs:enumeration value="WEB"/>
+      <xs:enumeration value="PAYMENT_GATEWAY"/>
+      <xs:enumeration value="GAME_ENGINE"/>
+      <xs:enumeration value="POS_PAYMENT_GATEWAY"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="cashoutChannel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ATM_CASHOUT"/>
+      <xs:enumeration value="INTERSWITCH_BANK_TRANSFER"/>
+      <xs:enumeration value="BANK_BRANCH_TRANSFER"/>
+      <xs:enumeration value="LOTTERY_OFFICE_CASHOUT"/>
+      <xs:enumeration value="CASHOUT_TO_WALLET"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="paymentPartner">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INTERSWITCH"/>
+      <xs:enumeration value="FIRSTMONEY"/>
+      <xs:enumeration value="EAZY_MONEY"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="paymentMethod">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="POS"/>
+      <xs:enumeration value="CASH"/>
+      <xs:enumeration value="CARD"/>
+      <xs:enumeration value="VOUCHER"/>
+      <xs:enumeration value="WALLET"/>
+      <xs:enumeration value="WINNINGS"/>
+      <xs:enumeration value="TRANSFER"/>
+      <xs:enumeration value="INTERWALLET_TRANSFER"/>
+      <xs:enumeration value="CROWN_WALLET"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="bankAccountTransferStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PENDING"/>
+      <xs:enumeration value="CONFIRMED"/>
+      <xs:enumeration value="DECLINED"/>
+      <xs:enumeration value="EXPIRED"/>
+      <xs:enumeration value="FAILED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getDealerByRegionResponse">
+    <wsdl:part element="tns:getDealerByRegionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loadUtilityVoucher">
+    <wsdl:part element="tns:loadUtilityVoucher" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="posCashinWithExtraDataResponse">
+    <wsdl:part element="tns:posCashinWithExtraDataResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteTransactionChargeSpec">
+    <wsdl:part element="tns:deleteTransactionChargeSpec" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTotalCommissionDueResponse">
+    <wsdl:part element="tns:getTotalCommissionDueResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRegionalSalesResponse">
+    <wsdl:part element="tns:getRegionalSalesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDealerByCodeResponse">
+    <wsdl:part element="tns:getDealerByCodeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="payWinningsResponse">
+    <wsdl:part element="tns:payWinningsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDealerVoucherSalesResponse">
+    <wsdl:part element="tns:getDealerVoucherSalesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consumePOSOrderIdResponse">
+    <wsdl:part element="tns:consumePOSOrderIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTransactionChargeSpecs">
+    <wsdl:part element="tns:getTransactionChargeSpecs" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="trackWinningsPayResponse">
+    <wsdl:part element="tns:trackWinningsPayResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="logBillingTransactionResponse">
+    <wsdl:part element="tns:logBillingTransactionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAvailableVouchersResponse">
+    <wsdl:part element="tns:getAvailableVouchersResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loadVoucher">
+    <wsdl:part element="tns:loadVoucher" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAvailableVouchers">
+    <wsdl:part element="tns:getAvailableVouchers" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllDealers">
+    <wsdl:part element="tns:getAllDealers" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLoadedVoucherDetails">
+    <wsdl:part element="tns:getLoadedVoucherDetails" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTransactionHistoryByChannelResponse">
+    <wsdl:part element="tns:getTransactionHistoryByChannelResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="posCashinWithExtraData">
+    <wsdl:part element="tns:posCashinWithExtraData" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creditWinningsResponse">
+    <wsdl:part element="tns:creditWinningsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creditWinnings">
+    <wsdl:part element="tns:creditWinnings" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listBankTransferInformation">
+    <wsdl:part element="tns:listBankTransferInformation" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="splitPayments">
+    <wsdl:part element="tns:splitPayments" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVoucherSalesResponse">
+    <wsdl:part element="tns:getVoucherSalesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkCashinStatusResponse">
+    <wsdl:part element="tns:checkCashinStatusResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFinancialInfoResponse">
+    <wsdl:part element="tns:getFinancialInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTransfers">
+    <wsdl:part element="tns:getTransfers" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTotalCommissionDue">
+    <wsdl:part element="tns:getTotalCommissionDue" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sellPinWithWalletDeduct">
+    <wsdl:part element="tns:sellPinWithWalletDeduct" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sellPin">
+    <wsdl:part element="tns:sellPin" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTotalCommisionPaid">
+    <wsdl:part element="tns:getTotalCommisionPaid" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryWinningsResponse">
+    <wsdl:part element="tns:queryWinningsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="debitWinnings">
+    <wsdl:part element="tns:debitWinnings" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBalance">
+    <wsdl:part element="tns:getBalance" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTotalVoucherSales">
+    <wsdl:part element="tns:getTotalVoucherSales" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loadUtilityVoucherResponse">
+    <wsdl:part element="tns:loadUtilityVoucherResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTransactionChargeSpecsResponse">
+    <wsdl:part element="tns:getTransactionChargeSpecsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBalanceResponse">
+    <wsdl:part element="tns:getBalanceResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="payDealerCommissionResponse">
+    <wsdl:part element="tns:payDealerCommissionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listCashoutPartnersResponse">
+    <wsdl:part element="tns:listCashoutPartnersResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="commissionMonthlyChartsResponse">
+    <wsdl:part element="tns:commissionMonthlyChartsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="transferFundsResponse">
+    <wsdl:part element="tns:transferFundsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cashout">
+    <wsdl:part element="tns:cashout" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDealerVoucherSales">
+    <wsdl:part element="tns:getDealerVoucherSales" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFinancialInfo">
+    <wsdl:part element="tns:getFinancialInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="trackPosCashinResponse">
+    <wsdl:part element="tns:trackPosCashinResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="chargeWalletResponse">
+    <wsdl:part element="tns:chargeWalletResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRegionalSales">
+    <wsdl:part element="tns:getRegionalSales" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTotalCommisionPaidResponse">
+    <wsdl:part element="tns:getTotalCommisionPaidResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findBillingTransactionHistoryResponse">
+    <wsdl:part element="tns:findBillingTransactionHistoryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDealerByCode">
+    <wsdl:part element="tns:getDealerByCode" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTopVoucherSellers">
+    <wsdl:part element="tns:getTopVoucherSellers" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUsedSalesResponse">
+    <wsdl:part element="tns:getUsedSalesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findBillingTransactionHistory">
+    <wsdl:part element="tns:findBillingTransactionHistory" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSoldSalesResponse">
+    <wsdl:part element="tns:getSoldSalesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cashinResponse">
+    <wsdl:part element="tns:cashinResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consumePOSOrderId">
+    <wsdl:part element="tns:consumePOSOrderId" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sellPinWithWalletDeductResponse">
+    <wsdl:part element="tns:sellPinWithWalletDeductResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCashinProviders">
+    <wsdl:part element="tns:getCashinProviders" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="posCashinResponse">
+    <wsdl:part element="tns:posCashinResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loadWalletResponse">
+    <wsdl:part element="tns:loadWalletResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTransactionHistoryByChannel">
+    <wsdl:part element="tns:getTransactionHistoryByChannel" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTransactionHistoryResponse">
+    <wsdl:part element="tns:getTransactionHistoryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryWinnings">
+    <wsdl:part element="tns:queryWinnings" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creditWinningsInBatchResponse">
+    <wsdl:part element="tns:creditWinningsInBatchResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cashin">
+    <wsdl:part element="tns:cashin" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTransfersResponse">
+    <wsdl:part element="tns:getTransfersResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creditWinningsInBatch">
+    <wsdl:part element="tns:creditWinningsInBatch" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="posCashin">
+    <wsdl:part element="tns:posCashin" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDealerByRegion">
+    <wsdl:part element="tns:getDealerByRegion" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addTransactionChargeSpec">
+    <wsdl:part element="tns:addTransactionChargeSpec" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVoucherSales">
+    <wsdl:part element="tns:getVoucherSales" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loadVoucherResponse">
+    <wsdl:part element="tns:loadVoucherResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loadWallet">
+    <wsdl:part element="tns:loadWallet" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="commissionMonthlyCharts">
+    <wsdl:part element="tns:commissionMonthlyCharts" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTopVoucherSellersResponse">
+    <wsdl:part element="tns:getTopVoucherSellersResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="trackPosCashin">
+    <wsdl:part element="tns:trackPosCashin" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sellPinResponse">
+    <wsdl:part element="tns:sellPinResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listCashoutPartners">
+    <wsdl:part element="tns:listCashoutPartners" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="debitWinningsResponse">
+    <wsdl:part element="tns:debitWinningsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="chargeWallet">
+    <wsdl:part element="tns:chargeWallet" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="calculateCashoutCommissionResponse">
+    <wsdl:part element="tns:calculateCashoutCommissionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllDealersResponse">
+    <wsdl:part element="tns:getAllDealersResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTransactionHistory">
+    <wsdl:part element="tns:getTransactionHistory" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listBankTransferInformationResponse">
+    <wsdl:part element="tns:listBankTransferInformationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="payDealerCommission">
+    <wsdl:part element="tns:payDealerCommission" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUsedSales">
+    <wsdl:part element="tns:getUsedSales" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryLoadedVoucherByUser">
+    <wsdl:part element="tns:queryLoadedVoucherByUser" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTotalVoucherSalesResponse">
+    <wsdl:part element="tns:getTotalVoucherSalesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="payWinnings">
+    <wsdl:part element="tns:payWinnings" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="transferFunds">
+    <wsdl:part element="tns:transferFunds" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSoldSales">
+    <wsdl:part element="tns:getSoldSales" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteTransactionChargeSpecResponse">
+    <wsdl:part element="tns:deleteTransactionChargeSpecResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="splitPaymentsResponse">
+    <wsdl:part element="tns:splitPaymentsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="calculateCashoutCommission">
+    <wsdl:part element="tns:calculateCashoutCommission" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addTransactionChargeSpecResponse">
+    <wsdl:part element="tns:addTransactionChargeSpecResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="trackWinningsPay">
+    <wsdl:part element="tns:trackWinningsPay" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCashinProvidersResponse">
+    <wsdl:part element="tns:getCashinProvidersResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLoadedVoucherDetailsResponse">
+    <wsdl:part element="tns:getLoadedVoucherDetailsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cashoutResponse">
+    <wsdl:part element="tns:cashoutResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryLoadedVoucherByUserResponse">
+    <wsdl:part element="tns:queryLoadedVoucherByUserResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkCashinStatus">
+    <wsdl:part element="tns:checkCashinStatus" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="logBillingTransaction">
+    <wsdl:part element="tns:logBillingTransaction" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EsbWallet">
+    <wsdl:operation name="getRegionalSales">
+      <wsdl:input message="tns:getRegionalSales" name="getRegionalSales">
+    </wsdl:input>
+      <wsdl:output message="tns:getRegionalSalesResponse" name="getRegionalSalesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadUtilityVoucher">
+      <wsdl:input message="tns:loadUtilityVoucher" name="loadUtilityVoucher">
+    </wsdl:input>
+      <wsdl:output message="tns:loadUtilityVoucherResponse" name="loadUtilityVoucherResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTransactionChargeSpec">
+      <wsdl:input message="tns:deleteTransactionChargeSpec" name="deleteTransactionChargeSpec">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteTransactionChargeSpecResponse" name="deleteTransactionChargeSpecResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDealerByCode">
+      <wsdl:input message="tns:getDealerByCode" name="getDealerByCode">
+    </wsdl:input>
+      <wsdl:output message="tns:getDealerByCodeResponse" name="getDealerByCodeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTopVoucherSellers">
+      <wsdl:input message="tns:getTopVoucherSellers" name="getTopVoucherSellers">
+    </wsdl:input>
+      <wsdl:output message="tns:getTopVoucherSellersResponse" name="getTopVoucherSellersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findBillingTransactionHistory">
+      <wsdl:input message="tns:findBillingTransactionHistory" name="findBillingTransactionHistory">
+    </wsdl:input>
+      <wsdl:output message="tns:findBillingTransactionHistoryResponse" name="findBillingTransactionHistoryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consumePOSOrderId">
+      <wsdl:input message="tns:consumePOSOrderId" name="consumePOSOrderId">
+    </wsdl:input>
+      <wsdl:output message="tns:consumePOSOrderIdResponse" name="consumePOSOrderIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCashinProviders">
+      <wsdl:input message="tns:getCashinProviders" name="getCashinProviders">
+    </wsdl:input>
+      <wsdl:output message="tns:getCashinProvidersResponse" name="getCashinProvidersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTransactionHistoryByChannel">
+      <wsdl:input message="tns:getTransactionHistoryByChannel" name="getTransactionHistoryByChannel">
+    </wsdl:input>
+      <wsdl:output message="tns:getTransactionHistoryByChannelResponse" name="getTransactionHistoryByChannelResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTransactionChargeSpecs">
+      <wsdl:input message="tns:getTransactionChargeSpecs" name="getTransactionChargeSpecs">
+    </wsdl:input>
+      <wsdl:output message="tns:getTransactionChargeSpecsResponse" name="getTransactionChargeSpecsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadVoucher">
+      <wsdl:input message="tns:loadVoucher" name="loadVoucher">
+    </wsdl:input>
+      <wsdl:output message="tns:loadVoucherResponse" name="loadVoucherResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAvailableVouchers">
+      <wsdl:input message="tns:getAvailableVouchers" name="getAvailableVouchers">
+    </wsdl:input>
+      <wsdl:output message="tns:getAvailableVouchersResponse" name="getAvailableVouchersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllDealers">
+      <wsdl:input message="tns:getAllDealers" name="getAllDealers">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllDealersResponse" name="getAllDealersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryWinnings">
+      <wsdl:input message="tns:queryWinnings" name="queryWinnings">
+    </wsdl:input>
+      <wsdl:output message="tns:queryWinningsResponse" name="queryWinningsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLoadedVoucherDetails">
+      <wsdl:input message="tns:getLoadedVoucherDetails" name="getLoadedVoucherDetails">
+    </wsdl:input>
+      <wsdl:output message="tns:getLoadedVoucherDetailsResponse" name="getLoadedVoucherDetailsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cashin">
+      <wsdl:input message="tns:cashin" name="cashin">
+    </wsdl:input>
+      <wsdl:output message="tns:cashinResponse" name="cashinResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posCashinWithExtraData">
+      <wsdl:input message="tns:posCashinWithExtraData" name="posCashinWithExtraData">
+    </wsdl:input>
+      <wsdl:output message="tns:posCashinWithExtraDataResponse" name="posCashinWithExtraDataResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creditWinningsInBatch">
+      <wsdl:input message="tns:creditWinningsInBatch" name="creditWinningsInBatch">
+    </wsdl:input>
+      <wsdl:output message="tns:creditWinningsInBatchResponse" name="creditWinningsInBatchResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posCashin">
+      <wsdl:input message="tns:posCashin" name="posCashin">
+    </wsdl:input>
+      <wsdl:output message="tns:posCashinResponse" name="posCashinResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDealerByRegion">
+      <wsdl:input message="tns:getDealerByRegion" name="getDealerByRegion">
+    </wsdl:input>
+      <wsdl:output message="tns:getDealerByRegionResponse" name="getDealerByRegionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addTransactionChargeSpec">
+      <wsdl:input message="tns:addTransactionChargeSpec" name="addTransactionChargeSpec">
+    </wsdl:input>
+      <wsdl:output message="tns:addTransactionChargeSpecResponse" name="addTransactionChargeSpecResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVoucherSales">
+      <wsdl:input message="tns:getVoucherSales" name="getVoucherSales">
+    </wsdl:input>
+      <wsdl:output message="tns:getVoucherSalesResponse" name="getVoucherSalesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creditWinnings">
+      <wsdl:input message="tns:creditWinnings" name="creditWinnings">
+    </wsdl:input>
+      <wsdl:output message="tns:creditWinningsResponse" name="creditWinningsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadWallet">
+      <wsdl:input message="tns:loadWallet" name="loadWallet">
+    </wsdl:input>
+      <wsdl:output message="tns:loadWalletResponse" name="loadWalletResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listBankTransferInformation">
+      <wsdl:input message="tns:listBankTransferInformation" name="listBankTransferInformation">
+    </wsdl:input>
+      <wsdl:output message="tns:listBankTransferInformationResponse" name="listBankTransferInformationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="commissionMonthlyCharts">
+      <wsdl:input message="tns:commissionMonthlyCharts" name="commissionMonthlyCharts">
+    </wsdl:input>
+      <wsdl:output message="tns:commissionMonthlyChartsResponse" name="commissionMonthlyChartsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="splitPayments">
+      <wsdl:input message="tns:splitPayments" name="splitPayments">
+    </wsdl:input>
+      <wsdl:output message="tns:splitPaymentsResponse" name="splitPaymentsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="trackPosCashin">
+      <wsdl:input message="tns:trackPosCashin" name="trackPosCashin">
+    </wsdl:input>
+      <wsdl:output message="tns:trackPosCashinResponse" name="trackPosCashinResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTransfers">
+      <wsdl:input message="tns:getTransfers" name="getTransfers">
+    </wsdl:input>
+      <wsdl:output message="tns:getTransfersResponse" name="getTransfersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listCashoutPartners">
+      <wsdl:input message="tns:listCashoutPartners" name="listCashoutPartners">
+    </wsdl:input>
+      <wsdl:output message="tns:listCashoutPartnersResponse" name="listCashoutPartnersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalCommissionDue">
+      <wsdl:input message="tns:getTotalCommissionDue" name="getTotalCommissionDue">
+    </wsdl:input>
+      <wsdl:output message="tns:getTotalCommissionDueResponse" name="getTotalCommissionDueResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="chargeWallet">
+      <wsdl:input message="tns:chargeWallet" name="chargeWallet">
+    </wsdl:input>
+      <wsdl:output message="tns:chargeWalletResponse" name="chargeWalletResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTransactionHistory">
+      <wsdl:input message="tns:getTransactionHistory" name="getTransactionHistory">
+    </wsdl:input>
+      <wsdl:output message="tns:getTransactionHistoryResponse" name="getTransactionHistoryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="payDealerCommission">
+      <wsdl:input message="tns:payDealerCommission" name="payDealerCommission">
+    </wsdl:input>
+      <wsdl:output message="tns:payDealerCommissionResponse" name="payDealerCommissionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsedSales">
+      <wsdl:input message="tns:getUsedSales" name="getUsedSales">
+    </wsdl:input>
+      <wsdl:output message="tns:getUsedSalesResponse" name="getUsedSalesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sellPinWithWalletDeduct">
+      <wsdl:input message="tns:sellPinWithWalletDeduct" name="sellPinWithWalletDeduct">
+    </wsdl:input>
+      <wsdl:output message="tns:sellPinWithWalletDeductResponse" name="sellPinWithWalletDeductResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryLoadedVoucherByUser">
+      <wsdl:input message="tns:queryLoadedVoucherByUser" name="queryLoadedVoucherByUser">
+    </wsdl:input>
+      <wsdl:output message="tns:queryLoadedVoucherByUserResponse" name="queryLoadedVoucherByUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sellPin">
+      <wsdl:input message="tns:sellPin" name="sellPin">
+    </wsdl:input>
+      <wsdl:output message="tns:sellPinResponse" name="sellPinResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="payWinnings">
+      <wsdl:input message="tns:payWinnings" name="payWinnings">
+    </wsdl:input>
+      <wsdl:output message="tns:payWinningsResponse" name="payWinningsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalCommisionPaid">
+      <wsdl:input message="tns:getTotalCommisionPaid" name="getTotalCommisionPaid">
+    </wsdl:input>
+      <wsdl:output message="tns:getTotalCommisionPaidResponse" name="getTotalCommisionPaidResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="transferFunds">
+      <wsdl:input message="tns:transferFunds" name="transferFunds">
+    </wsdl:input>
+      <wsdl:output message="tns:transferFundsResponse" name="transferFundsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSoldSales">
+      <wsdl:input message="tns:getSoldSales" name="getSoldSales">
+    </wsdl:input>
+      <wsdl:output message="tns:getSoldSalesResponse" name="getSoldSalesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calculateCashoutCommission">
+      <wsdl:input message="tns:calculateCashoutCommission" name="calculateCashoutCommission">
+    </wsdl:input>
+      <wsdl:output message="tns:calculateCashoutCommissionResponse" name="calculateCashoutCommissionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="debitWinnings">
+      <wsdl:input message="tns:debitWinnings" name="debitWinnings">
+    </wsdl:input>
+      <wsdl:output message="tns:debitWinningsResponse" name="debitWinningsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBalance">
+      <wsdl:input message="tns:getBalance" name="getBalance">
+    </wsdl:input>
+      <wsdl:output message="tns:getBalanceResponse" name="getBalanceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalVoucherSales">
+      <wsdl:input message="tns:getTotalVoucherSales" name="getTotalVoucherSales">
+    </wsdl:input>
+      <wsdl:output message="tns:getTotalVoucherSalesResponse" name="getTotalVoucherSalesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="trackWinningsPay">
+      <wsdl:input message="tns:trackWinningsPay" name="trackWinningsPay">
+    </wsdl:input>
+      <wsdl:output message="tns:trackWinningsPayResponse" name="trackWinningsPayResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cashout">
+      <wsdl:input message="tns:cashout" name="cashout">
+    </wsdl:input>
+      <wsdl:output message="tns:cashoutResponse" name="cashoutResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDealerVoucherSales">
+      <wsdl:input message="tns:getDealerVoucherSales" name="getDealerVoucherSales">
+    </wsdl:input>
+      <wsdl:output message="tns:getDealerVoucherSalesResponse" name="getDealerVoucherSalesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFinancialInfo">
+      <wsdl:input message="tns:getFinancialInfo" name="getFinancialInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:getFinancialInfoResponse" name="getFinancialInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkCashinStatus">
+      <wsdl:input message="tns:checkCashinStatus" name="checkCashinStatus">
+    </wsdl:input>
+      <wsdl:output message="tns:checkCashinStatusResponse" name="checkCashinStatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logBillingTransaction">
+      <wsdl:input message="tns:logBillingTransaction" name="logBillingTransaction">
+    </wsdl:input>
+      <wsdl:output message="tns:logBillingTransactionResponse" name="logBillingTransactionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EsbWalletSoapBinding" type="tns:EsbWallet">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getRegionalSales">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getRegionalSales">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getRegionalSalesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadUtilityVoucher">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="loadUtilityVoucher">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="loadUtilityVoucherResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTransactionChargeSpec">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteTransactionChargeSpec">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteTransactionChargeSpecResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDealerByCode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getDealerByCode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDealerByCodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTopVoucherSellers">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTopVoucherSellers">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTopVoucherSellersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findBillingTransactionHistory">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findBillingTransactionHistory">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findBillingTransactionHistoryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consumePOSOrderId">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="consumePOSOrderId">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="consumePOSOrderIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCashinProviders">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCashinProviders">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCashinProvidersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTransactionHistoryByChannel">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTransactionHistoryByChannel">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTransactionHistoryByChannelResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTransactionChargeSpecs">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTransactionChargeSpecs">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTransactionChargeSpecsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadVoucher">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="loadVoucher">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="loadVoucherResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllDealers">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllDealers">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllDealersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAvailableVouchers">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAvailableVouchers">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAvailableVouchersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryWinnings">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="queryWinnings">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryWinningsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLoadedVoucherDetails">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getLoadedVoucherDetails">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLoadedVoucherDetailsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cashin">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="cashin">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cashinResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posCashinWithExtraData">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="posCashinWithExtraData">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="posCashinWithExtraDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creditWinningsInBatch">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="creditWinningsInBatch">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="creditWinningsInBatchResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posCashin">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="posCashin">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="posCashinResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDealerByRegion">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getDealerByRegion">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDealerByRegionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addTransactionChargeSpec">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addTransactionChargeSpec">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addTransactionChargeSpecResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVoucherSales">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getVoucherSales">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getVoucherSalesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creditWinnings">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="creditWinnings">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="creditWinningsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadWallet">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="loadWallet">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="loadWalletResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listBankTransferInformation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listBankTransferInformation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listBankTransferInformationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="commissionMonthlyCharts">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="commissionMonthlyCharts">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="commissionMonthlyChartsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="splitPayments">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="splitPayments">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="splitPaymentsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="trackPosCashin">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="trackPosCashin">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="trackPosCashinResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTransfers">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTransfers">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTransfersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listCashoutPartners">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listCashoutPartners">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listCashoutPartnersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalCommissionDue">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTotalCommissionDue">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTotalCommissionDueResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="chargeWallet">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="chargeWallet">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="chargeWalletResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTransactionHistory">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTransactionHistory">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTransactionHistoryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="payDealerCommission">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="payDealerCommission">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="payDealerCommissionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsedSales">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUsedSales">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUsedSalesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sellPinWithWalletDeduct">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sellPinWithWalletDeduct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sellPinWithWalletDeductResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryLoadedVoucherByUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="queryLoadedVoucherByUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryLoadedVoucherByUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sellPin">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sellPin">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sellPinResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="payWinnings">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="payWinnings">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="payWinningsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalCommisionPaid">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTotalCommisionPaid">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTotalCommisionPaidResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="transferFunds">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="transferFunds">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="transferFundsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSoldSales">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSoldSales">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSoldSalesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calculateCashoutCommission">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="calculateCashoutCommission">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="calculateCashoutCommissionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="debitWinnings">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="debitWinnings">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="debitWinningsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBalance">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getBalance">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBalanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalVoucherSales">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTotalVoucherSales">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTotalVoucherSalesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="trackWinningsPay">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="trackWinningsPay">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="trackWinningsPayResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cashout">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="cashout">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cashoutResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDealerVoucherSales">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getDealerVoucherSales">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDealerVoucherSalesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFinancialInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getFinancialInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFinancialInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkCashinStatus">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="checkCashinStatus">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="checkCashinStatusResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logBillingTransaction">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="logBillingTransaction">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="logBillingTransactionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EsbWallet">
+    <wsdl:port binding="tns:EsbWalletSoapBinding" name="EsbWalletPort">
+      <soap:address location="https://prod1.convergenceondemand.net/ESB/EsbWallet"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

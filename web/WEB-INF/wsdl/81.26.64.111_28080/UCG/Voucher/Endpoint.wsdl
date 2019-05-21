@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.voucher.ucg.convergenceondemand.net/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="Endpoint" targetNamespace="http://ws.voucher.ucg.convergenceondemand.net/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.voucher.ucg.convergenceondemand.net/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://ws.voucher.ucg.convergenceondemand.net/">
+  <xs:element name="baseCollection" type="tns:baseCollection"/>
+  <xs:element name="baseResponse" type="tns:baseResponse"/>
+  <xs:element name="cashinParams" type="tns:cashinParams"/>
+  <xs:element name="getVoucherStatus" type="tns:getVoucherStatus"/>
+  <xs:element name="getVoucherStatusResponse" type="tns:getVoucherStatusResponse"/>
+  <xs:element name="loadVoucher" type="tns:loadVoucher"/>
+  <xs:element name="loadVoucherResponse" type="tns:loadVoucherResponse"/>
+  <xs:complexType name="loadVoucher">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pin" type="xs:string"/>
+      <xs:element minOccurs="0" name="params" type="tns:cashinParams"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cashinParams">
+    <xs:sequence>
+      <xs:element name="amount" type="xs:double"/>
+      <xs:element name="extraData">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string"/>
+                  <xs:element minOccurs="0" name="value" type="xs:string"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="summary" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="loadVoucherResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:baseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="baseResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="entity" type="xs:anyType"/>
+      <xs:element minOccurs="0" name="status" type="tns:responseStatus"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="responseStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" type="xs:int"/>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="baseCollection">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="collection" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getVoucherStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pin" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getVoucherStatusResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:baseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="voucherStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amount" type="xs:string"/>
+      <xs:element minOccurs="0" name="currency" type="xs:string"/>
+      <xs:element minOccurs="0" name="expiry" type="xs:string"/>
+      <xs:element name="isActive" type="xs:int"/>
+      <xs:element name="isExpired" type="xs:int"/>
+      <xs:element name="isUsed" type="xs:int"/>
+      <xs:element minOccurs="0" name="serialNumber" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tenantId" nillable="true" type="xs:string"/>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="loadVoucher">
+    <wsdl:part element="tns:loadVoucher" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:tenantId" name="tenantId">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loadVoucherResponse">
+    <wsdl:part element="tns:loadVoucherResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVoucherStatusResponse">
+    <wsdl:part element="tns:getVoucherStatusResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVoucherStatus">
+    <wsdl:part element="tns:getVoucherStatus" name="parameters">
+    </wsdl:part>
+    <wsdl:part element="tns:tenantId" name="tenantId">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Endpoint">
+    <wsdl:operation name="loadVoucher">
+      <wsdl:input message="tns:loadVoucher" name="loadVoucher">
+    </wsdl:input>
+      <wsdl:output message="tns:loadVoucherResponse" name="loadVoucherResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVoucherStatus">
+      <wsdl:input message="tns:getVoucherStatus" name="getVoucherStatus">
+    </wsdl:input>
+      <wsdl:output message="tns:getVoucherStatusResponse" name="getVoucherStatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EndpointSoapBinding" type="tns:Endpoint">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="loadVoucher">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="loadVoucher">
+        <soap:header message="tns:loadVoucher" part="tenantId" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="loadVoucherResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVoucherStatus">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getVoucherStatus">
+        <soap:header message="tns:getVoucherStatus" part="tenantId" use="literal">
+        </soap:header>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getVoucherStatusResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Endpoint">
+    <wsdl:port binding="tns:EndpointSoapBinding" name="EndpointPort">
+      <soap:address location="http://81.26.64.111:28080/UCG/Voucher/Endpoint"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

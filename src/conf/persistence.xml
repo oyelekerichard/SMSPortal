@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="SMSPortalPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <non-jta-data-source>java:/jboss.datasources.smsds</non-jta-data-source>
+    <class>com.crowninteractive.smsportal.model.Permission</class>
+    <class>com.crowninteractive.smsportal.model.Role</class>
+    <class>com.crowninteractive.smsportal.model.Settings</class>
+    <class>com.crowninteractive.smsportal.model.User</class>
+    <class>com.crowninteractive.smsportal.model.dto.GenericModel</class>
+    <class>com.crowninteractive.smsportal.model.dto.GenericModel2</class>
+    <class>com.crowninteractive.smsportal.model.dto.SMSDetails</class>
+    <class>com.crowninteractive.smsportal.model.NavigationItem</class>
+    <class>com.crowninteractive.smsportal.model.SIncoming</class>
+    <class>com.crowninteractive.smsportal.model.SOutgoing</class>
+    <class>com.crowninteractive.smsportal.model.MenuItem</class>
+    <class>com.crowninteractive.smsportal.model.Registrations</class>
+    <class>com.crowninteractive.smsportal.model.USSDSettings</class>
+    <class>com.crowninteractive.smsportal.model.USSDTemplate</class>
+    <class>com.crowninteractive.smsportal.model.UssdSubscriber</class>
+    <class>com.crowninteractive.smsportal.model.UssdTransaction</class>
+    <class>com.crowninteractive.smsportal.model.UssdTransactionLog</class>
+    <class>com.crowninteractive.smsportal.model.dto.GenericCount</class>
+    <class>com.crowninteractive.smsportal.model.BroadcastLog</class>
+    <class>com.crowninteractive.smsportal.model.SMSDeliveryLog</class>
+    <class>com.crowninteractive.smsportal.model.dto.DeliveryCount</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <shared-cache-mode>NONE</shared-cache-mode>
+    <validation-mode>NONE</validation-mode>
+    <properties>
+    </properties>
+  </persistence-unit>
+</persistence>

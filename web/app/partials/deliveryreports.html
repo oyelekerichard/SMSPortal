@@ -1,0 +1,75 @@
+<div class="row" style="margin-bottom: 10px;">
+    <div class="col-md-6">
+        <div class="clearfix" data-toggle="buttons">
+            <button id ="today" class="btn {{p.tcolor}}" ng-click="getSMSByRangeType('TODAY')">Today</button>
+            <button id="yesterday" class="btn {{p.yestcolor}}" ng-click="getSMSByRangeType('YESTERDAY')">Yesterday</button>
+            <button id="thisweek" class="btn {{p.wcolor}}" ng-click="getSMSByRangeType('THIS_WEEK')">This Week</button>
+            <button id="thismonth" class="btn {{p.mcolor}}" ng-click="getSMSByRangeType('THIS_MONTH')">This Month</button>
+            <button id="thisyear" class="btn {{p.ycolor}}" ng-click="getSMSByRangeType('THIS_YEAR')">This Year</button>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="pull-right">
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <input type="date" class="form-control" ng-model="p.from" tooltip="From Date"/>
+                </div>
+                <div class="form-group">
+                    <input type="date" class="form-control" ng-model="p.to" tooltip="To Date"/>
+                </div>
+                <button type="submit" class="btn btn-primary" ng-click="getDeliveryReportStatsByDate()"><i class="icon-search"></i> Find By Range</button>
+            </form>
+        </div>
+    </div>  
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-mobile"></i> Delivery Reports
+                </div>
+                <div class="actions">
+<!--                    <button type="submit" class="btn btn-primary" ng-click="downloadData()"><i class="icon-cloud-download"  ></i> Download</button>-->
+                </div>
+            </div>
+            <div class="portlet-body">
+<!--                <tabset type="tabs">
+                    <tab heading="Chart">
+                        <am-chart id="deliverychart" options="amChartOptions" height="600px" width="100%"></am-chart>
+                    </tab>
+                    <tab heading="Data">-->
+                        <div class="dataTables_wrapper no-footer">
+                            <div class="table-scrollable">
+                                <table class="table table-striped table-bordered table-hover table-condensed dataTable no-footer" >
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Date</th>
+                                            <th>Delivered</th>
+                                            <th>Expired</th>
+                                            <th>Undelivered</th>
+                                            <th>Unknown</th>
+                                            <th>Total Number of SMS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="d in deliveries">
+                                            <td>{{$index + 1}}</td>
+                                            <td>{{d.date}}</td>
+                                            <td>{{d.delivrd}}</td>
+                                            <td>{{d.expired}}</td>
+                                            <td>{{d.undeliv}}</td>
+                                            <td>{{d.unknown}}</td>
+                                            <td>{{sumData(d)}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+<!--                    </tab>
+                </tabset>-->
+            </div>
+        </div>
+    </div>
+</div>

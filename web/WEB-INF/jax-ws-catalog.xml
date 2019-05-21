@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://81.26.64.34:8080/ESB/EsbAccount?wsdl" uri="wsdl/81.26.64.34_8080/ESB/EsbAccount.wsdl"/>
+    <system systemId="http://81.26.64.34:8080/ESB/EsbGameplay?wsdl" uri="wsdl/81.26.64.34_8080/ESB/EsbGameplay.wsdl"/>
+    <system systemId="http://81.26.64.34:8080/ESB/EsbWallet?wsdl" uri="wsdl/81.26.64.34_8080/ESB/EsbWallet.wsdl"/>
+    <system systemId="http://81.26.64.34:8080/ESB/EsbGeneral?wsdl" uri="wsdl/81.26.64.34_8080/ESB/EsbGeneral.wsdl"/>
+    <system systemId="http://81.26.64.34:8080/ESB/EsbWorkforce?wsdl" uri="wsdl/81.26.64.34_8080/ESB/EsbWorkforce.wsdl"/>
+    <system systemId="http://81.26.64.111:28080/UCG/Voucher/Endpoint?wsdl" uri="wsdl/81.26.64.111_28080/UCG/Voucher/Endpoint.wsdl"/>
+    <system systemId="http://81.26.64.111:28080/ESB/SmsModule?wsdl" uri="wsdl/81.26.64.111_28080/ESB/SmsModule.wsdl"/>
+    <system systemId="http://99.81.162.1:28080/ESB/EsbAccount?wsdl" uri="wsdl/99.81.162.1_28080/ESB/EsbAccount.wsdl"/>
+</catalog>

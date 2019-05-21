@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+        *** GENERATED FROM jax-ws.xml - DO NOT EDIT !                             ***
+        *** TO MODIFY wsimport options USE Web Service node -> Edit WS Attributes ***
+        *** TO CHANGE TARGETS GENERATED TO jaxws-build.xml COPY THOSE             ***
+        *** TARGETS TO ../build.xml AND MODIFY THAT FILE INSTEAD                  ***
+
+        --><project xmlns:xalan="http://xml.apache.org/xslt" xmlns:webproject2="http://www.netbeans.org/ns/web-project/2" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSGEN SECTION
+                ===================
+            -->
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <fail if="${wsimport.bad.version}" message="WsImport ant task defined in the classpath ${j2ee.platform.wsimport.classpath} has a serious bug. See http://wiki.netbeans.org/MetroIssue for details."/>
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <property name="j2ee.platform.wsimport.classpath" value="${libs.jaxws21.classpath}"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${java.home}/../lib/tools.jar:${j2ee.platform.wsimport.classpath}:${javac.classpath}"/>
+        </taskdef>
+        <condition property="conf-dir" value="${conf.dir}/" else="">
+            <isset property="conf.dir"/>
+        </condition>
+    </target>
+    <target name="wsimport-client-EsbAccount" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/EsbAccount"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/EsbAccount" destdir="${build.generated.dir}/jax-wsCache/EsbAccount" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/EsbAccount/wsdl/99.81.162.1_28080/ESB/EsbAccount.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://81.26.64.34:8080/ESB/EsbAccount?wsdl" xnocompile="true" xendorsed="true" package="com.crowninteractive.smsportal.websrv">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/EsbAccount/wsdl/99.81.162.1_28080/ESB/EsbAccount.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/EsbAccount"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/EsbAccount">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-EsbAccount" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/crowninteractive/smsportal/websrv"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/EsbAccount"/>
+    </target>
+    <target name="wsimport-client-EsbGameplay" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/EsbGameplay"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/EsbGameplay" destdir="${build.generated.dir}/jax-wsCache/EsbGameplay" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/EsbGameplay/wsdl/81.26.64.34_8080/ESB/EsbGameplay.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://81.26.64.34:8080/ESB/EsbGameplay?wsdl" xnocompile="true" xendorsed="true" package="com.crowninteractive.smsportal.websrv.gameplay">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/EsbGameplay/wsdl/81.26.64.34_8080/ESB/EsbGameplay.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/EsbGameplay"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/EsbGameplay">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-EsbGameplay" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/crowninteractive/smsportal/websrv/gameplay"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/EsbGameplay"/>
+    </target>
+    <target name="wsimport-client-EsbWallet" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/EsbWallet"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/EsbWallet" destdir="${build.generated.dir}/jax-wsCache/EsbWallet" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/EsbWallet/wsdl/81.26.64.34_8080/ESB/EsbWallet.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://81.26.64.34:8080/ESB/EsbWallet?wsdl" xnocompile="true" xendorsed="true" package="com.crowninteractive.smsportal.websrv.wallet">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/EsbWallet/wsdl/81.26.64.34_8080/ESB/EsbWallet.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/EsbWallet"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/EsbWallet">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-EsbWallet" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/crowninteractive/smsportal/websrv/wallet"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/EsbWallet"/>
+    </target>
+    <target name="wsimport-client-EsbGeneral" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/EsbGeneral"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/EsbGeneral" destdir="${build.generated.dir}/jax-wsCache/EsbGeneral" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/EsbGeneral/wsdl/81.26.64.34_8080/ESB/EsbGeneral.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://81.26.64.34:8080/ESB/EsbGeneral?wsdl" xnocompile="true" xendorsed="true" package="com.crowninteractive.smsportal.websrv.general">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/EsbGeneral/wsdl/81.26.64.34_8080/ESB/EsbGeneral.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/EsbGeneral"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/EsbGeneral">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-EsbGeneral" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/crowninteractive/smsportal/websrv/general"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/EsbGeneral"/>
+    </target>
+    <target name="wsimport-client-EsbWorkforce" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/EsbWorkforce"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/EsbWorkforce" destdir="${build.generated.dir}/jax-wsCache/EsbWorkforce" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/EsbWorkforce/wsdl/81.26.64.34_8080/ESB/EsbWorkforce.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://81.26.64.34:8080/ESB/EsbWorkforce?wsdl" xnocompile="true" xendorsed="true" package="com.crowninteractive.smsportal.websrv.workforce">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/EsbWorkforce/wsdl/81.26.64.34_8080/ESB/EsbWorkforce.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/EsbWorkforce"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/EsbWorkforce">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-EsbWorkforce" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/crowninteractive/smsportal/websrv/workforce"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/EsbWorkforce"/>
+    </target>
+    <target name="wsimport-client-Endpoint" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/Endpoint"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Endpoint" destdir="${build.generated.dir}/jax-wsCache/Endpoint" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Endpoint/wsdl/81.26.64.111_28080/UCG/Voucher/Endpoint.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://81.26.64.111:28080/UCG/Voucher/Endpoint?wsdl" xnocompile="true" xendorsed="true" package="com.crowninteractive.smsportal.websrv.ucg">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Endpoint/wsdl/81.26.64.111_28080/UCG/Voucher/Endpoint.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/Endpoint"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/Endpoint">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-Endpoint" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/crowninteractive/smsportal/websrv/ucg"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/Endpoint"/>
+    </target>
+    <target name="wsimport-client-SmsModule" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/SmsModule"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/SmsModule" destdir="${build.generated.dir}/jax-wsCache/SmsModule" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/SmsModule/wsdl/81.26.64.111_28080/ESB/SmsModule.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://81.26.64.111:28080/ESB/SmsModule?wsdl" xnocompile="true" xendorsed="true" package="com.crowninteractive.smsportal.websrv.sms">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/SmsModule/wsdl/81.26.64.111_28080/ESB/SmsModule.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/SmsModule"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/SmsModule">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-SmsModule" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/crowninteractive/smsportal/websrv/sms"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/SmsModule"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-EsbAccount, wsimport-client-EsbGameplay, wsimport-client-EsbWallet, wsimport-client-EsbGeneral, wsimport-client-EsbWorkforce, wsimport-client-Endpoint, wsimport-client-SmsModule"/>
+</project>

@@ -1,0 +1,424 @@
+<div class="row" data-ng-show="hasPermission('7')">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat blue">
+            <div class="visual">
+                <i class="fa fa-users"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    {{u.users}}
+                </div>
+                <div class="desc">                           
+                    Users
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat green">
+            <div class="visual">
+                <i class="fa fa-certificate"></i>
+            </div>
+            <div class="details">
+                <div class="number">{{u.roles}}</div>
+                <div class="desc">Roles</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat purple">
+            <div class="visual">
+                <i class="fa fa-bullhorn"></i>
+            </div>
+            <div class="details">
+                <div class="number">{{u.channels}}</div>
+                <div class="desc">Channels</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat red">
+            <div class="visual">
+                <i class="icon-bar-chart"></i>
+            </div>
+            <div class="details">
+                <div class="number">{{u.permissions}}</div>
+                <div class="desc">Permissions</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-users"></i>Manage Users
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-toolbar">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="btn-group">
+                                <button id="sample_editable_1_new" class="btn green" data-ng-click="createUser()">
+                                    Add New <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sample_1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div id="sample_1_length" class="dataTables_length">
+                                <label>
+                                    <select class="form-control input-xsmall"  data-ng-model="size" data-ng-change="findUsers()">
+                                        <option value="5" selected="selected">5</option>
+                                        <option value="10">10</option>
+                                        <option value="20">20</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select> records
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6" data-ng-show="hasPermission('8')">
+                            <div class="dataTables_filter  pull-right" id="sample_1_filter">
+                                <label>Search: <input type="text" class="form-control input-medium" data-ng-model="searchString" data-ng-change="search()"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-scrollable">
+                        <table class="table table-striped table-bordered table-hover table-condensed dataTable" id="sample_1" aria-describedby="sample_1_info">
+                            <thead>
+                                <tr role="row">
+                                    <th style="width:2px;">#</th>
+                                    <th>Email</th>
+                                    <th>Full Name</th>
+                                    <th>Phone</th>
+                                    <th>Role</th>
+                                    <th>User State</th>
+                                    <th>Creation Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                <tr data-ng-hide="u.userdata || u.userdata.length > 0" class="error">
+                                    <td colspan="8">
+                                        <div class="text-center"><strong>No Users registered at this time.</strong></div>
+                                    </td>
+                                </tr>
+                                <tr data-ng-repeat="u in u.userdata">
+                                    <td class="">{{$index + 1}}</td>
+                                    <td class="">{{u.email}}</td>
+                                    <td class="">{{u.lastName + ' ' + u.firstName}}</td>
+                                    <td class="">{{u.phoneNumber}}</td>
+                                    <td class="">{{u.role.name}}</td>
+                                    <td class="">{{u.userstate}}</td>
+                                    <!--                                    <td class="">{{u.lastLoginDate && u.lastLoginDate|| "New User" | date:'EEEE, MMMM d, yyyy h:mm a'}}</td>-->
+                                    <td class="">{{u.creationDate| date:'EEEE, MMMM d, yyyy h:mm a'}}</td>
+                                    <td class="">
+                                        <button data-ng-show="hasPermission('4')" class="btn btn-xs btn-success" tooltip="View User" data-ng-click="viewUser(u)"><i class="fa fa-eye"></i></button>
+                                        <button data-ng-show="hasPermission('2')" class="btn btn-xs yellow" tooltip="Update User" data-ng-click="manageUser(u)"><i class="fa fa-pencil"></i></button>
+                                        <button data-ng-show="hasPermission('6')" class="btn btn-xs btn-warning" tooltip="Deactivate or Reactivate User" data-ng-click="changeUserState(u.id)"><i class="fa fa-lock"></i></button>
+                                        <button data-ng-show="hasPermission('5')" class="btn btn-xs btn-primary" tooltip="Reset User Password" data-ng-click="resetPassword(u.id)"><i class="fa fa-repeat"></i></button>
+                                        <button data-ng-show="hasPermission('3')" class="btn btn-xs btn-danger" tooltip="Delete User" data-ng-click="deleteUser(u.id)"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12">
+                            <div class="dataTables_info" id="sample_1_info" style="padding-top:15px;">Showing {{users.start}} to {{users.end}} of {{users.totalCount}} entries</div>
+                        </div>
+                        <div class="col-md-7 col-sm-12">
+                            <div class="dataTables_paginate paging_bootstrap pull-right">
+                                <ul class="pagination">
+                                    <li class="prev" ><button type="button" class="btn blue" data-ng-click="prev()">Prev</button></li>
+                                    <li class="next" ><button type="button" class="btn blue" data-ng-click="next()">Next</button></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+<script type="text/ng-template" id="viewUser.html">
+    <div class="modal-header">
+    <h3 class="modal-title">View User Details</h3>
+    </div>
+    <div class="modal-body">
+    <div  class="horizontal-form">
+    <form class="form-horizontal" role="form">
+    <div class="form-body">
+    <div class="row">
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">Last Name</label>
+    <div class="col-md-9">
+    <input type="text" class="form-control input-sm" data-ng-model="user.lastName" disabled="true">
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">First Name</label>
+    <div class="col-md-9">
+    <input type="text" class="form-control input-sm" data-ng-model="user.firstName" disabled="true">
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">Email</label>
+    <div class="col-md-9">
+    <input type="text" class="form-control input-sm" data-ng-model="user.email" disabled="true">
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">Phone Number</label>
+    <div class="col-md-9">
+    <input type="text" class="form-control input-sm" data-ng-model="user.phoneNumber" disabled="true">
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">Address</label>
+    <div class="col-md-9">
+    <input type="text" class="form-control input-sm" data-ng-model="user.address" disabled="true">
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">Created</label>
+    <div class="col-md-9">
+    <input type="text" class="form-control input-sm" data-ng-model="user.creationDate | date:'EEEE, MMMM d, yyyy h:mm a'" disabled="true">
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">Current Login</label>
+    <div class="col-md-9">
+    <input type="text" class="form-control input-sm" data-ng-model="user.currentLoginDate | date:'EEEE, MMMM d, yyyy h:mm a'" disabled="true">
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">Last Login</label>
+    <div class="col-md-9">
+    <input type="text" class="form-control input-sm" data-ng-model="user.lastLoginDate | date:'EEEE, MMMM d, yyyy h:mm a'" disabled="true">
+    </div>
+    </div>
+    </div>  
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">State</label>
+    <div class="col-md-9">
+    <input type="text" class="form-control input-sm" data-ng-model="user.userstate" disabled="true">
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">Role</label>
+    <div class="col-md-9">
+    <input type="text" class="form-control input-sm" data-ng-model="user.role.name" disabled="true">
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </form>
+    </div>
+</script>
+<script type="text/ng-template" id="usermanage.html">
+    <div class="modal-header">
+    <h3 class="modal-title">Manage User</h3>
+    </div>
+    <div class="modal-body">
+    <div  class="horizontal-form">
+    <form class="form-horizontal" role="form">
+    <div class="form-body">
+    <div class="row">
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">Last Name</label>
+    <div class="col-md-9">
+    <input type="text" class="form-control input-sm" data-ng-model="user.lastName" disabled="true">
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">First Name</label>
+    <div class="col-md-9">
+    <input type="text" class="form-control input-sm" data-ng-model="user.firstName" disabled="true">
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">Email</label>
+    <div class="col-md-9">
+    <input type="text" class="form-control input-sm" data-ng-model="user.email" disabled="true">
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">Phone Number</label>
+    <div class="col-md-9">
+    <input type="text" class="form-control input-sm" data-ng-model="user.phoneNumber" disabled="true">
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">Created</label>
+    <div class="col-md-9">
+    <input type="text" class="form-control input-sm" data-ng-model="user.creationDate | date:'EEEE, MMMM d, yyyy h:mm a'" disabled="true">
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">Current Login</label>
+    <div class="col-md-9">
+    <input type="text" class="form-control input-sm" data-ng-model="user.currentLoginDate | date:'EEEE, MMMM d, yyyy h:mm a'" disabled="true">
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">Last Login</label>
+    <div class="col-md-9">
+    <input type="text" class="form-control input-sm" data-ng-model="user.lastLoginDate | date:'EEEE, MMMM d, yyyy h:mm a'" disabled="true">
+    </div>
+    </div>
+    </div>    
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">State</label>
+    <div class="col-md-9">
+    <input type="text" class="form-control input-sm" data-ng-model="user.userstate" disabled="true">
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">Current Role</label>
+    <div class="col-md-9">
+    <input type="text" class="form-control input-sm" data-ng-model="user.role.name" disabled="true">
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="form-group">
+    <label class="col-md-3 control-label">Change Role</label>
+    <div class="col-md-9">
+    <select class="form-control" data-ng-model="p.id" required>
+    <option value="" data-ng-selected="true">Change User Role To</option>
+    <option  data-ng-repeat="role in rroles" data-ng-value="role.id">{{role.name}}</option>
+    </select>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="form-group">
+    <div class="col-md-12">
+    <div class="pull-right">
+    <button class="btn btn-primary btn-sm" data-ng-click="updateUser()" tooltip="Save Changes"><i class="icon-cogs"></i> Save Changes</button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </form>
+    </div>
+</script>
+<script type="text/ng-template" id="adduser.html">
+<div class="modal-header">
+    <h3 class="modal-title">Add User</h3>
+</div>
+<div class="modal-body">
+    <div  class="horizontal-form">
+        <form class="form-horizontal" role="form">
+            <div class="form-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Last Name</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-sm" data-ng-model="user.lastName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">First Name</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-sm" data-ng-model="user.firstName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Email</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-sm" data-ng-model="user.email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Phone Number</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-sm" data-ng-model="user.phoneNumber">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Address</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-sm" data-ng-model="user.address">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Change Role</label>
+                            <div class="col-md-9">
+                                <select class="form-control" data-ng-model="p.id" required>
+                                    <option value="" data-ng-selected="true">Change User Role To</option>
+                                    <option  data-ng-repeat="role in rroles" data-ng-value="role.id">{{role.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="pull-right">
+                                    <button class="btn btn-primary btn-sm" data-ng-click="insertUser()" tooltip="Save Changes"><i class="icon-cogs"></i> Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</script>
