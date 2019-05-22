@@ -41,6 +41,9 @@ public final class SmsSender {
         StringBuilder sb = new StringBuilder("http://" + HOST + ":" + PORT);
         sb.append("/adapter/sendsms/");
         sb.append("?destination=").append(encode(destination));
+        if (!source.equals("EKEDP") && !source.equals("55999")) {
+            source = "CICOD";
+        }
         sb.append("&source=").append(encode(source));
         sb.append("&text=").append(encode(text));
 
@@ -58,6 +61,7 @@ public final class SmsSender {
                 SMSC = "mtech";
                 break;
             case "EKEDP":
+            case "CICOD":
                 SMSC = "crownbulk";
                 break;
             default:
