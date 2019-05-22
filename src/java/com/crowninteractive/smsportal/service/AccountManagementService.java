@@ -449,6 +449,8 @@ public class AccountManagementService {
             TypedQuery<Settings> q = em.createQuery(query, Settings.class);
             q.setParameter("identifier", identifier);
             return q.getSingleResult();
+        } catch (Exception e) {
+            return null;
         } finally {
             em.close();
         }

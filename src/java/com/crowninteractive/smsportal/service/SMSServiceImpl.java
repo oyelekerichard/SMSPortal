@@ -164,7 +164,11 @@ public class SMSServiceImpl {
                 @Override
                 public void run() {
                     try {
-                        Settings setting = ASERVICE.findSetting("SEND_SMS");
+                        Settings setting = null;
+                        setting = ASERVICE.findSetting(channel);
+                        if (setting == null) {
+                            setting = ASERVICE.findSetting("SEND_SMS");
+                        }
                         SmsSender.send(msisdn, setting.getCurrentValue(), message);
                         accessbean.create(new BroadcastLog(msisdn, message, channel, Status.MESSAGE_SENT, batchId));
                     } catch (Exception ex) {
