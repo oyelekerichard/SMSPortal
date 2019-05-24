@@ -24,7 +24,7 @@ import org.xml.sax.SAXException;
  */
 public class VoucherUtil {
 
-    private final static String WSDLURL = "http://81.26.64.111:28080/UCG/Voucher/Endpoint?wsdl";
+    private final static String WSDLURL = Config.getInstance().getUCGVoucherURL();
     //private final static String WSDLURL = "http://81.26.64.34:8080/UCG/Voucher/Endpoint?wsdl";
     private static final Logger LOG = Logger.getLogger(VoucherUtil.class);
 

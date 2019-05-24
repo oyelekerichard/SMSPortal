@@ -56,19 +56,18 @@ import org.w3c.dom.Node;
  */
 public class UtilMethods {
 
-    private static final String SWITCHIP = "172.16.10.70";
-    private static final String PORT = "9999";
     private static int sequence;
     private static final Logger L = Logger.getLogger(UtilMethods.class);
     private static final Gson GSON = new Gson();
     private static final EMCC EMCC = new EMCC();
+    private static final Config CONFIG = Config.getInstance();
 
-    private static final String WSDL1 = "http://172.29.14.3:38080/ESB/EsbGeneral?wsdl";
-    private static final String WSDL2 = "http://172.29.14.3:38080/ESB/EsbWorkforce?wsdl";
-    private static final String WSDL3 = "http://172.29.14.3:38080/ESB/EsbWallet?wsdl";
-    private static final String WSDL4 = "http://172.29.14.3:38080/ESB/EsbAccount?wsdl";
-    private static final String WSDL5 = "http://172.29.14.3:38080/ESB/SmsModule?wsdl";
-    private static final String WSDL6 = "http://172.29.14.110:28080/UCG/Voucher/Endpoint?wsdl";
+    private static final String WSDL1 = CONFIG.getESBGeneralURL();
+    private static final String WSDL2 = CONFIG.getESBWorkForceURL();
+    private static final String WSDL3 = CONFIG.getESBWalletURL();
+    private static final String WSDL4 = CONFIG.getESBAccountURL();
+    private static final String WSDL5 = CONFIG.getESBSMSModuleURL();
+    private static final String WSDL6 = CONFIG.getUCGVoucherURL();
     private final SMSProcessor sp = new SMSProcessor();
     private static EsbGeneral_Service generalService;
     private static EsbGeneral general;
@@ -265,7 +264,7 @@ public class UtilMethods {
     public static String getWFMStatusForUSSD(String msisdn, String ticketId) {
         try {
             String returnMessage = null;
-            StringBuilder sb = new StringBuilder("http://172.29.11.19:28080/workforcemanager/v1/request/status_list");
+            StringBuilder sb = new StringBuilder(CONFIG.getWFMStatusList());
             sb.append("/").append(ticketId);
             sb.append("/").append("0").append(msisdn(msisdn));
             L.info(sb.toString());
@@ -291,7 +290,7 @@ public class UtilMethods {
 
     public static List<WFM> getWFMStatus(String msisdn, String ticketId) {
         try {
-            StringBuilder sb = new StringBuilder("http://172.29.11.19:28080/workforcemanager/v1/request/status_list");
+            StringBuilder sb = new StringBuilder(CONFIG.getWFMStatusList());
             sb.append("/").append(ticketId);
             sb.append("/").append("0").append(msisdn(msisdn));
             L.info(sb.toString());
@@ -310,7 +309,7 @@ public class UtilMethods {
         try {
             StaffDetail validatePhone = validatePhone(msisdn);
             if (validatePhone != null) {
-                StringBuilder sb = new StringBuilder("http://172.29.11.19:28080/workforcemanager/v1/mobile/update_status");
+                StringBuilder sb = new StringBuilder(CONFIG.getWFMUpdateStatus());
                 sb.append("?phone=").append("0").append(msisdn(msisdn));
                 L.info(sb.toString());
                 String sendPost = HttpUtil.sendPost(sb.toString(), GSON.toJson(w));
@@ -364,15 +363,14 @@ public class UtilMethods {
         try {
             StaffDetail validatePhone = validatePhone(msisdn);
             if (validatePhone != null) {
-                StringBuilder sb2 = new StringBuilder("http://172.29.11.87:8080/");
-                sb2.append("integration/submitReadingv2");
+                String sb2 = CONFIG.getSubmitMeterReadingURL();
                 EMCC.setMeterNumber(meterNumber);
                 EMCC.setMeterReading(meterReading);
                 EMCC.setDistrict(validatePhone.getDistricts());
                 EMCC.setPhone(msisdn(msisdn));
                 EMCC.setName(validatePhone.getName());
-                L.info(sb2.toString());
-                String retVal = HttpUtil.sendPost(sb2.toString(), GSON.toJson(EMCC));
+                L.info(sb2);
+                String retVal = HttpUtil.sendPost(sb2, GSON.toJson(EMCC));
                 L.info(retVal);
                 EMCCResponse eResp = GSON.fromJson(retVal, EMCCResponse.class);
                 return eResp.getDesc() + ". Powered by EKEDP";
@@ -389,7 +387,7 @@ public class UtilMethods {
     public static StaffDetail validatePhone(String msisdn) {
         try {
             //StringBuilder sb2 = new StringBuilder("http://81.26.64.42:8084/users/validatebyphone/");
-            StringBuilder sb = new StringBuilder("http://172.29.11.19:8084/users/validatebyphone/");
+            StringBuilder sb = new StringBuilder(CONFIG.getWFMValidateURL());
             sb.append("0").append(msisdn(msisdn));
             L.info(sb.toString());
             String retVal;
@@ -443,7 +441,7 @@ public class UtilMethods {
     public static String getLastPayment(String accountNumber) {
         String returnMessage;
         try {
-            String sendGet = HttpUtil.sendGet("http://172.29.11.8:28080/ucg/api/v1.0/sales/cashin/" + accountNumber);
+            String sendGet = HttpUtil.sendGet(CONFIG.getUCGLastPaymet() + accountNumber);
             UCG ucg = new Gson().fromJson(sendGet, UCG.class);
             System.out.println(ucg);
             if (ucg.getEntity() == null) {
@@ -467,7 +465,7 @@ public class UtilMethods {
     }
 
     public static String getPowerAvailability(String accountNumber) {
-        StringBuilder sb = new StringBuilder("http://172.29.11.87:8080/integration/checkFeederStatus/");
+        StringBuilder sb = new StringBuilder(CONFIG.getEMCCFeederStatus());
         sb.append(accountNumber);
         FeederStatusResponse fs = null;
         try {
@@ -481,7 +479,7 @@ public class UtilMethods {
                 FeederStatus f = fs.getObject();
                 if (f != null) {
                     if (f.getLowVoltageFeederId() != null) {
-                        retVal2 = HttpUtil.sendGet("http://172.29.11.87:8080/integration/findCurrentSchedule/" + f.getLowVoltageFeederId().getToken());
+                        retVal2 = HttpUtil.sendGet(CONFIG.getEMCCCurrentSchedule() + f.getLowVoltageFeederId().getToken());
                         PowerScheduleResponse pss = new Gson().fromJson(retVal2, PowerScheduleResponse.class);
                         if (pss != null) {
                             if (pss.getResp() == 0) {

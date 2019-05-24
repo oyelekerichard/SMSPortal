@@ -15,6 +15,7 @@ import com.crowninteractive.smsportal.parser.EkoDistribution;
 import com.crowninteractive.smsportal.sms.SMS;
 import com.crowninteractive.smsportal.sms.SMSProcessor;
 import com.crowninteractive.smsportal.sms.SmsSender;
+import com.crowninteractive.smsportal.util.Config;
 import com.crowninteractive.smsportal.util.DateTimeUtil;
 import com.crowninteractive.smsportal.websrv.EsbAccount;
 import com.crowninteractive.smsportal.websrv.EsbAccount_Service;
@@ -48,12 +49,14 @@ public class SMSServiceImpl {
     private final Logger L = Logger.getLogger(SMSServiceImpl.class);
     private final DBAccessBean accessbean = new DBAccessBean("SMSPortalPU");
     private final static SMSServiceImpl INSTANCE = new SMSServiceImpl();
-    private static final String WSDL1 = "http://99.81.162.1:28080/ESB/EsbGeneral?wsdl";
-    private static final String WSDL2 = "http://99.81.162.1:28080/ESB/EsbWorkforce?wsdl";
-    private static final String WSDL3 = "http://99.81.162.1:28080/ESB/EsbWallet?wsdl";
-    private static final String WSDL4 = "http://99.81.162.1:28080/ESB/EsbAccount?wsdl";
-    private static final String WSDL5 = "http://99.81.162.1:28080/ESB/SmsModule?wsdl";
-    private static final String WSDL6 = "http://99.81.162.1:28080/UCG/Voucher/Endpoint?wsdl";
+    private static final Config CONFIG = Config.getInstance();
+
+    private static final String WSDL1 = CONFIG.getESBGeneralURL();
+    private static final String WSDL2 = CONFIG.getESBWorkForceURL();
+    private static final String WSDL3 = CONFIG.getESBWalletURL();
+    private static final String WSDL4 = CONFIG.getESBAccountURL();
+    private static final String WSDL5 = CONFIG.getESBSMSModuleURL();
+    private static final String WSDL6 = CONFIG.getUCGVoucherURL();
     private final SMSProcessor sp = new SMSProcessor();
     private final EkoDistribution distribution = EkoDistribution.getInstance();
     private static final AccountManagementService ASERVICE = AccountManagementService.getInstance();

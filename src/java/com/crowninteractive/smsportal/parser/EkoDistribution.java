@@ -29,6 +29,7 @@ import com.crowninteractive.smsportal.model.SOutgoing;
 import com.crowninteractive.smsportal.service.DBAccessBean;
 import com.crowninteractive.smsportal.service.SMSServiceImpl;
 import com.crowninteractive.smsportal.sms.SMS;
+import com.crowninteractive.smsportal.util.Config;
 import com.crowninteractive.smsportal.util.DateTimeUtil;
 import com.crowninteractive.smsportal.util.HttpUtil;
 import com.crowninteractive.smsportal.util.ResponseCodes;
@@ -63,6 +64,7 @@ public class EkoDistribution {
     //private final EkoAcronyms ekoAcronyms = EkoAcronyms.getInstance();
     private final DBAccessBean accessbean;
     private static EkoDistribution INSTANCE = new EkoDistribution();
+    private static final Config CONFIG = Config.getInstance();
 
     private EkoDistribution() {
         accessbean = new DBAccessBean("SMSPortalPU");
@@ -164,7 +166,7 @@ public class EkoDistribution {
                 LOG.info("Checking last payment");
                 String lp = sms.getText().split("\\.")[1];
                 try {
-                    String sendGet = HttpUtil.sendGet("http://99.81.147.244:28080/ucg/api/v1.0/sales/cashin/" + lp);
+                    String sendGet = HttpUtil.sendGet(CONFIG.getUCGLastPaymet() + lp);
                     UCG ucg = new Gson().fromJson(sendGet, UCG.class);
                     System.out.println(ucg);
                     if (ucg.getEntity() == null) {
@@ -300,10 +302,7 @@ public class EkoDistribution {
                         Registrations smsr = new Registrations(sms.getMsisdn(), accountNumberOrMeterNumber, MeterType.NORMAL);
                         Registrations r = SMSServiceImpl.getInstance().createReg(smsr);
                         LOG.info("" + r);
-                        //sbuilder = new StringBuilder("http://172.29.11.87:8080/");//Prod
-                        sbuilder = new StringBuilder("http://172.29.10.130:8080/");//Staging
-                        //sbuilder = new StringBuilder("http://172.29.14.130:8080/");//Dev
-                        sbuilder.append("integration/updatePhoneByAccountNumber");
+                        sbuilder = new StringBuilder(CONFIG.getEMCCUpdatePhoneNumber());
                         emcc.setAccountNumber(accountNumberOrMeterNumber);
                         emcc.setPhone("0" + sms.getMsisdn());
                         LOG.info(sbuilder.toString());
@@ -326,10 +325,7 @@ public class EkoDistribution {
                         Registrations s = new Registrations(sms.getMsisdn(), accountNumberOrMeterNumber, MeterType.PPM);
                         Registrations reg = SMSServiceImpl.getInstance().createReg(s);
                         LOG.info("" + reg);
-                        //sbuilder = new StringBuilder("http://172.29.11.87:8080/");//Prod
-                        sbuilder = new StringBuilder("http://172.29.10.130:8080/");//Staging
-                        //sbuilder = new StringBuilder("http://172.29.14.130:8080/");//Dev
-                        sbuilder.append("integration/updatePhoneByMeterNumber");
+                        sbuilder = new StringBuilder(CONFIG.getEMCCUpdatePhoneNumber());
                         emcc.setMeterNumber(accountNumberOrMeterNumber);
                         emcc.setPhone("0" + sms.getMsisdn());
                         LOG.info(sbuilder.toString());
@@ -367,10 +363,7 @@ public class EkoDistribution {
                         Registrations smsr = new Registrations(sms.getMsisdn(), accountNumberOrMeterNumber2, MeterType.NORMAL);
                         Registrations r = SMSServiceImpl.getInstance().createReg(smsr);
                         LOG.info("" + r);
-                        //sbuilder = new StringBuilder("http://172.29.11.87:8080/");//Prod
-                        sbuilder = new StringBuilder("http://172.29.10.130:8080/");//Staging
-                        //sbuilder = new StringBuilder("http://172.29.14.130:8080/");//Dev
-                        sbuilder.append("integration/removePhoneByAccountNumber");
+                        sbuilder = new StringBuilder(CONFIG.getEMCCRemovePhoneNumber());
                         emcc.setAccountNumber(accountNumberOrMeterNumber2);
                         emcc.setPhone("0" + sms.getMsisdn());
                         LOG.info(sbuilder.toString());
@@ -393,10 +386,7 @@ public class EkoDistribution {
                         Registrations s = new Registrations(sms.getMsisdn(), accountNumberOrMeterNumber2, MeterType.PPM);
                         Registrations reg = SMSServiceImpl.getInstance().createReg(s);
                         LOG.info("" + reg);
-                        //sbuilder = new StringBuilder("http://172.29.11.87:8080/");//Prod
-                        sbuilder = new StringBuilder("http://172.29.10.130:8080/");//Staging
-                        //sbuilder = new StringBuilder("http://172.29.14.130:8080/");//Dev
-                        sbuilder.append("integration/removePhoneByMeterNumber");
+                        sbuilder = new StringBuilder(CONFIG.getEMCCRemovePhoneNumber());
                         emcc.setMeterNumber(accountNumberOrMeterNumber2);
                         emcc.setPhone("0" + sms.getMsisdn());
                         LOG.info(sbuilder.toString());
@@ -618,11 +608,7 @@ public class EkoDistribution {
                 String staffId = sms.getText().split("\\.")[1];
                 LOG.info("Incoming Staff Id ::: " + staffId);
                 //http://dev3.convergenceondemand.net/wfmservice/users/validatewithstaffcode/lk706
-                //StringBuilder sb = new StringBuilder("http://api-wfm.convergenceondemand.net/users/validate/");
-                StringBuilder sb = new StringBuilder("http://172.29.11.19:8084/users/validate/");
-                //StringBuilder sb = new StringBuilder("http://81.26.64.42:8084/users/validate/");
-                //StringBuilder sb = new StringBuilder("http://dev3.convergenceondemand.net/wfmservice/users/validatewithstaffcode/");
-                //StringBuilder sb = new StringBuilder("http://dev3.convergenceondemand.net/wfmservice/users/validate/");
+                StringBuilder sb = new StringBuilder(CONFIG.getWFMValidateURL());
                 sb.append(staffId);
                 LOG.info(sb.toString());
                 try {
@@ -672,7 +658,7 @@ public class EkoDistribution {
                 break;
             case "WFM":
                 //<editor-fold defaultstate="collapsed" desc="WFM">
-                StringBuilder wfmSb = new StringBuilder("http://172.29.11.19:8084/users/validatebyphone/");
+                StringBuilder wfmSb = new StringBuilder(CONFIG.getWFMValidateURL());
                 wfmSb.append("0").append(sms.getMsisdn());
                 LOG.info(wfmSb.toString());
                 String retVal2;
@@ -697,10 +683,7 @@ public class EkoDistribution {
                                 returnMessage = "Wrong syntax. Allowed syntax are WFM.TicketId and WFM.TicketId.Status";
                                 break;
                             case 2://WFM.TicketId
-                                //sb = new StringBuilder("http://172.29.11.111:28080/workforcemanager/v1/request/status_list");
-
-                                //"http://172.29.11.19:28080/workforcemanager/v1/request/status_list/172451/08037064014"
-                                sb = new StringBuilder("http://172.29.11.19:28080/workforcemanager/v1/request/status_list");
+                                sb = new StringBuilder(CONFIG.getWFMStatusList());
                                 sb.append("/").append(wfm[1].trim());
                                 sb.append("/").append("0").append(sms.getMsisdn());
                                 LOG.info(sb.toString());
@@ -721,8 +704,7 @@ public class EkoDistribution {
                                 }
                                 break;
                             case 3://WFM.TicketId.Status
-                                //sb = new StringBuilder("http://172.29.11.111:28080/workforcemanager/v1/request/status_list");//DEV
-                                sb = new StringBuilder("http://172.29.11.19:28080/workforcemanager/v1/request/status_list");//LIVE
+                                sb = new StringBuilder(CONFIG.getWFMStatusList());//LIVE
                                 sb.append("/").append(wfm[1].trim());
                                 sb.append("/").append(sms.getMsisdn());
                                 LOG.info(sb.toString());
@@ -737,9 +719,7 @@ public class EkoDistribution {
                                     w.setStatusToken(myWfm.getToken().trim());
                                     w.setStatusName(myWfm.getName().trim());
                                     w.setTicketId(Integer.parseInt(wfm[1].trim()));
-                                    //sb = new StringBuilder("http://172.29.11.111:28080/workforcemanager/v1/mobile/update_status");
-                                    sb = new StringBuilder("http://172.29.11.19:28080/workforcemanager/v1/mobile/update_status");
-                                    //sb = new StringBuilder("http://172.29.11.19:28080/workforcemanager/v1/mobile/update_status_v4");
+                                    sb = new StringBuilder(CONFIG.getWFMUpdateStatus());
                                     sb.append("?phone=").append("0").append(sms.getMsisdn());
                                     LOG.info(sb.toString());
                                     String sendPost = HttpUtil.sendPost(sb.toString(), gson.toJson(w));
@@ -788,7 +768,7 @@ public class EkoDistribution {
                 //07089886646
                 //StringBuilder sb2 = new StringBuilder("http://dev3.convergenceondemand.net/wfmservice/users/validatebyphone/");
                 //StringBuilder sb2 = new StringBuilder("http://api-wfm.convergenceondemand.net/users/validatebyphone/");
-                StringBuilder sb2 = new StringBuilder("http://172.29.11.19:8084/users/validatebyphone/");
+                StringBuilder sb2 = new StringBuilder(CONFIG.getWFMValidateURL());
                 //sb2.append("0").append(phone);
                 sb2.append("0").append(phone);
                 LOG.info(sb2.toString());
@@ -804,10 +784,7 @@ public class EkoDistribution {
                     if (sv.isSuccess()) {
                         sd = sv.getData()[0];
                         LOG.info("Starting EMCC call....");
-                        sb2 = new StringBuilder("http://99.80.99.68:8080/");//Prod
-                        //sb2 = new StringBuilder("http://172.29.10.130:8080/");//Staging
-                        //sb2 = new StringBuilder("http://172.29.14.130:8080/");//Dev
-                        sb2.append("integration/submitReadingv2");
+                        sb2 = new StringBuilder(CONFIG.getSubmitMeterReadingURL());
                         emcc.setMeterNumber(meterNumber);
                         emcc.setMeterReading(meterReading);
                         emcc.setDistrict(sd.getDistricts());
@@ -834,7 +811,7 @@ public class EkoDistribution {
             case "POWER":
                 //<editor-fold defaultstate="collapsed" desc="POWER">
                 String accountNumber = sms.getText().split("\\.")[1];
-                sb = new StringBuilder("http://99.80.99.68:8080/integration/checkFeederStatus/");
+                sb = new StringBuilder(CONFIG.getEMCCFeederStatus());
                 sb.append(accountNumber);
                 FeederStatusResponse fs = null;
                 try {
@@ -848,7 +825,7 @@ public class EkoDistribution {
                         FeederStatus f = fs.getObject();
                         if (f != null) {
                             if (f.getLowVoltageFeederId() != null) {
-                                retVal2 = HttpUtil.sendGet("http://99.80.99.68:8080/integration/findCurrentSchedule/" + f.getLowVoltageFeederId().getToken());
+                                retVal2 = HttpUtil.sendGet(CONFIG.getEMCCCurrentSchedule() + f.getLowVoltageFeederId().getToken());
                                 PowerScheduleResponse pss = gson.fromJson(retVal2, PowerScheduleResponse.class);
                                 if (pss != null) {
                                     if (pss.getResp() == 0) {
@@ -877,7 +854,7 @@ public class EkoDistribution {
                 try {
 
                     HttpUtil.sendPost("http://172.29.10.130:8080/integration/feeder_auto", new Gson().toJson(e2));//Staging
-                    String sendPost = HttpUtil.sendPost("http://99.80.99.68:8080/integration/feeder_auto", new Gson().toJson(e2));//Production
+                    String sendPost = HttpUtil.sendPost(CONFIG.getEMCCAlsd(), new Gson().toJson(e2));//Production
                     EMCCResponse respp = gson.fromJson(sendPost, EMCCResponse.class);
                     if (respp.getResp() == 0) {
                         returnMessage = "DONOTSENDMESSAGE";
