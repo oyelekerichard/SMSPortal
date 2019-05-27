@@ -21,6 +21,7 @@ import com.crowninteractive.smsportal.model.Settings;
 import com.crowninteractive.smsportal.model.UssdTransactionLog;
 import com.crowninteractive.smsportal.model.dto.DeliveryCount;
 import com.crowninteractive.smsportal.model.dto.SMSDetails;
+import com.crowninteractive.smsportal.util.Config;
 import com.crowninteractive.smsportal.util.DateTimeUtil;
 import com.crowninteractive.smsportal.util.HttpUtil;
 import com.crowninteractive.smsportal.util.ResponseCodes;
@@ -48,6 +49,7 @@ public class PortalManagementService {
     private static PortalManagementService INSTANCE = new PortalManagementService();
     private static final AccountManagementService ASERVICE = AccountManagementService.getInstance();
     private final Logger L = Logger.getLogger(AccountManagementService.class);
+    private static final Config CONFIG = Config.getInstance();
 
     public static PortalManagementService getInstance() {
         if (INSTANCE == null) {
@@ -245,6 +247,8 @@ public class PortalManagementService {
                     return processWFMRequest(sms.getMsisdn(), sms.getIncoming(), uniqueId);
                 } else if (sms.getIncoming().toUpperCase().startsWith("METER")) {
                     return processMeterReadingRequest(sms.getMsisdn(), sms.getIncoming(), uniqueId);
+                } else if (sms.getIncoming().toUpperCase().startsWith("Payment")) {
+                    return processMeterReadingRequest(sms.getMsisdn(), sms.getIncoming(), uniqueId);
                 } else if (sms.getIncoming().toUpperCase().startsWith("#")) {
                     return (BaseResponse) doCheckAvailability(sms.getIncoming());
                 }
@@ -260,9 +264,7 @@ public class PortalManagementService {
     public BaseResponse doCheckAvailability(String incoming) {
         String accountNumber = incoming.split("\\.")[1];
         Gson gson = new Gson();
-
-        //StringBuilder sb = new StringBuilder("http://81.26.66.87:8080/integration/checkFeederStatus/");
-        StringBuilder sb = new StringBuilder("http://99.80.99.68:8080/integration/checkFeederStatus/");
+        StringBuilder sb = new StringBuilder(CONFIG.getEMCCFeederStatus());
         sb.append(accountNumber);
         String retVal2 = "";
         FeederStatusResponse fs = null;
@@ -273,7 +275,7 @@ public class PortalManagementService {
             System.out.println(fs);
             System.out.println("===============================================================================");
             sb = new StringBuilder();
-            sb.append("Dear ").append("0251900811-01").append(" your feeder ").append(fs.getObject().getLowVoltageFeederId().getName().trim());
+            sb.append("Dear ").append(accountNumber).append(" your feeder ").append(fs.getObject().getLowVoltageFeederId().getName().trim());
             sb.append(" coming from ").append(fs.getObject().getInjectionSubstationId().getName().trim()).append(" Injection Substation");
             sb.append(" is currently ").append(fs.getObject().getStatus()).append(". Last updated on ").append(fs.getObject().getUpdated()).append(". Powered by EKEDP.");
             System.out.println(sb.toString());
@@ -286,8 +288,7 @@ public class PortalManagementService {
 
     public StaffValidate verifyPhoneNumber(String msisdn) {
         Gson gson = new Gson();
-        //StringBuilder sb = new StringBuilder("http://81.26.64.42:8084/users/validatebyphone/");
-        StringBuilder sb = new StringBuilder("http://172.29.11.19:8084/users/validatebyphone/");
+        StringBuilder sb = new StringBuilder(CONFIG.getWFMValidateURL());
         sb.append("0").append(msisdn);
         String retVal2 = "", returnMessage = "";
         StaffValidate sv = null;
@@ -305,8 +306,7 @@ public class PortalManagementService {
 
     public BaseResponse processWFMRequest(String msisdn, String incomingText, String uniqueId) {
         Gson gson = new Gson();
-        //StringBuilder sb = new StringBuilder("http://81.26.64.42:8084/users/validatebyphone/");
-        StringBuilder sb = new StringBuilder("http://172.29.11.19:8084/users/validatebyphone/");
+        StringBuilder sb = new StringBuilder(CONFIG.getWFMValidateURL());
         sb.append("0").append(msisdn);
         String retVal2, returnMessage = "";
         try {
@@ -327,10 +327,7 @@ public class PortalManagementService {
                     case 1:
                         returnMessage = "Wrong syntax. Allowed syntax are WFM.TicketId and WFM.TicketId.Status";
                     case 2://WFM.TicketId
-                        //sb = new StringBuilder("http://172.29.11.111:28080/workforcemanager/v1/request/status_list");
-                        //"http://172.29.11.19:28080/workforcemanager/v1/request/status_list/172451/08037064014" 81.26.64.42
-                        sb = new StringBuilder("http://172.29.11.19:28080/workforcemanager/v1/request/status_list");
-                        //sb = new StringBuilder("http://81.26.64.42:28080/workforcemanager/v1/request/status_list");
+                        sb = new StringBuilder(CONFIG.getWFMStatusList());
                         sb.append("/").append(wfm[1].trim());
                         sb.append("/").append("0").append(msisdn);
                         String message = HttpUtil.sendGet(sb.toString());
@@ -348,9 +345,7 @@ public class PortalManagementService {
                             returnMessage = sb.toString();
                         }
                     case 3://WFM.TicketId.Status
-                        //sb = new StringBuilder("http://172.29.11.111:28080/workforcemanager/v1/request/status_list");//DEV
-                        sb = new StringBuilder("http://172.29.11.19:28080/workforcemanager/v1/request/status_list");//LIVE
-                        //sb = new StringBuilder("http://81.26.64.42:28080/workforcemanager/v1/request/status_list");//LIVE
+                        sb = new StringBuilder(CONFIG.getWFMStatusList());
                         sb.append("/").append(wfm[1].trim());
                         sb.append("/").append(msisdn);
                         String respw = HttpUtil.sendGet(sb.toString());
@@ -364,10 +359,7 @@ public class PortalManagementService {
                             w.setStatusToken(myWfm.getToken().trim());
                             w.setStatusName(myWfm.getName().trim());
                             w.setTicketId(Integer.parseInt(wfm[1].trim()));
-                            //sb = new StringBuilder("http://172.29.11.111:28080/workforcemanager/v1/mobile/update_status");
-                            sb = new StringBuilder("http://172.29.11.19:28080/workforcemanager/v1/mobile/update_status");
-                            //sb = new StringBuilder("http://81.26.64.42:28080/workforcemanager/v1/mobile/update_status");
-                            //sb = new StringBuilder("http://172.29.11.19:28080/workforcemanager/v1/mobile/update_status_v4");
+                            sb = new StringBuilder(CONFIG.getWFMUpdateStatus());
                             sb.append("?phone=").append("0").append(msisdn);
                             String sendPost = HttpUtil.sendPost(sb.toString(), gson.toJson(w));
                             WFMResponse wfmResp = gson.fromJson(sendPost, WFMResponse.class);
@@ -413,11 +405,7 @@ public class PortalManagementService {
         String meterNumber = incomingText.split("\\.")[2];
         String meterReading = incomingText.split("\\.")[3];
         L.info("Incoming Staff Phone ::: " + msisdn);
-        //07089886646
-        //StringBuilder sb2 = new StringBuilder("http://dev3.convergenceondemand.net/wfmservice/users/validatebyphone/");
-        //StringBuilder sb2 = new StringBuilder("http://api-wfm.convergenceondemand.net/users/validatebyphone/");
-        StringBuilder sb2 = new StringBuilder("http://172.29.11.19:8084/users/validatebyphone/");
-        //StringBuilder sb2 = new StringBuilder("http://81.26.64.42:8084/users/validatebyphone/");
+        StringBuilder sb2 = new StringBuilder(CONFIG.getWFMValidateURL());
 
         //sb2.append("0").append(phone);
         sb2.append("0").append(msisdn);
@@ -433,12 +421,8 @@ public class PortalManagementService {
 
             if (sv.isSuccess()) {
                 StaffDetail sd = sv.getData()[0];
-                L.info("Starting EMCC call....");//
-                //sb2 = new StringBuilder("http://172.29.11.87:8080/");//Prod
-                sb2 = new StringBuilder("http://99.80.99.68:8080/");//Prod AWS
-                //sb2 = new StringBuilder("http://172.29.10.130:8080/");//Staging
-                //sb2 = new StringBuilder("http://172.29.14.130:8080/");//Dev
-                sb2.append("integration/submitReadingv2");
+                L.info("Starting EMCC call....");
+                sb2 = new StringBuilder(CONFIG.getSubmitMeterReadingURL());;
                 EMCC emcc = new EMCC();
                 emcc.setMeterNumber(meterNumber);
                 emcc.setMeterReading(meterReading);

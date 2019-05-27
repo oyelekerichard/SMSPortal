@@ -846,10 +846,6 @@ public class EkoDistribution {
                 break;
             default:
                 //<editor-fold defaultstate="collapsed" desc="DEFAULT">
-
-                //sb = new StringBuilder("http://172.29.11.87:8080/integration/feeder_auto");//Prod
-                //sb = new StringBuilder("http://172.29.14.130:8080/integration/feeder_auto"); //Dev
-                //sb = new StringBuilder("http://172.29.10.130:8080/integration/feeder_auto");//Staging
                 EMCC e2 = new EMCC(sms.getText(), "0" + sms.getMsisdn());
                 try {
 

@@ -86,11 +86,11 @@ public class Config extends Properties {
     }
 
     public String getEMCCFeederStatus() {
-        return getProperty("wfm.validate");
+        return getProperty("emcc.feeder.status");
     }
 
     public String getEMCCCurrentSchedule() {
-        return getProperty("ucg.last.payment");
+        return getProperty("emcc.feeder.schedule");
     }
 
     public String getEMCCUpdatePhoneNumber() {
