@@ -33,7 +33,6 @@ import com.crowninteractive.smsportal.util.Config;
 import com.crowninteractive.smsportal.util.DateTimeUtil;
 import com.crowninteractive.smsportal.util.HttpUtil;
 import com.crowninteractive.smsportal.util.ResponseCodes;
-import com.crowninteractive.smsportal.util.UtilMethods;
 import com.crowninteractive.smsportal.util.Validate;
 import com.crowninteractive.smsportal.util.VoucherUtil;
 import com.crowninteractive.smsportal.websrv.EsbAccount;
@@ -183,9 +182,6 @@ public class EkoDistribution {
                         sb.append(". Powered by EKEDP.");
                         returnMessage = sb.toString();
                     }
-
-                    sd = UtilMethods.validatePhone(sms.getMsisdn());
-
                 } catch (Exception exception) {
                     returnMessage = "We cannot process this request at the moment. Please try again later. Powered by EKEDP.";
                 }

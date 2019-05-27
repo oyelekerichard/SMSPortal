@@ -13,6 +13,7 @@ import com.crowninteractive.smsportal.dto.FeederStatusResponse;
 import com.crowninteractive.smsportal.dto.StaffDetail;
 import com.crowninteractive.smsportal.dto.StaffValidate;
 import com.crowninteractive.smsportal.dto.StaffValidateError;
+import com.crowninteractive.smsportal.dto.UCG;
 import com.crowninteractive.smsportal.dto.WFM;
 import com.crowninteractive.smsportal.dto.WFMResponse;
 import com.crowninteractive.smsportal.model.SMSDeliveryLog;
@@ -248,7 +249,7 @@ public class PortalManagementService {
                 } else if (sms.getIncoming().toUpperCase().startsWith("METER")) {
                     return processMeterReadingRequest(sms.getMsisdn(), sms.getIncoming(), uniqueId);
                 } else if (sms.getIncoming().toUpperCase().startsWith("Payment")) {
-                    return processMeterReadingRequest(sms.getMsisdn(), sms.getIncoming(), uniqueId);
+                    return processPaymentRequest(sms.getMsisdn(), sms.getIncoming(), uniqueId);
                 } else if (sms.getIncoming().toUpperCase().startsWith("#")) {
                     return (BaseResponse) doCheckAvailability(sms.getIncoming());
                 }
@@ -434,6 +435,61 @@ public class PortalManagementService {
                 L.info(retVal);
                 EMCCResponse eResp = new Gson().fromJson(retVal, EMCCResponse.class);
                 returnMessage = eResp.getDesc() + ". Powered by EKEDP";
+            } else {
+                returnMessage = "Not found. Invalid Staff Phone Number. Powered by EKEDP";
+            }
+            L.info(returnMessage);
+            L.info("=====================Finishing Staff Section=============================");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            returnMessage = "Invalid Staff Id. Powered by EKEDP";
+            L.info(returnMessage);
+            L.info("=====================Finishing Staff Section Exception Block=============================");
+        }
+        SOutgoing outgoing = findOutgoing(uniqueId);
+        outgoing.setText(returnMessage);
+        accessbean.merge(outgoing);
+        return new BaseResponse(returnMessage);
+    }
+
+    public BaseResponse processPaymentRequest(String msisdn, String incomingText, String uniqueId) {
+        String returnMessage;
+
+        try {
+            String accountNumber = incomingText.split("\\.")[1];
+            L.info("Incoming Staff Phone ::: " + msisdn);
+            StringBuilder sb2 = new StringBuilder(CONFIG.getWFMValidateURL());
+            sb2.append("0").append(msisdn);
+            L.info(sb2.toString());
+            String retVal;
+            retVal = HttpUtil.sendGet(sb2.toString());
+
+            L.info(retVal);
+            StaffValidate sv = new Gson().fromJson(retVal, StaffValidate.class);
+            L.info(sv.toString());
+
+            if (sv.isSuccess()) {
+                StaffDetail sd = sv.getData()[0];
+                sb2 = new StringBuilder(CONFIG.getUCGLastPaymet());
+                sb2.append(accountNumber);
+                retVal = HttpUtil.sendGet(sb2.toString());
+                L.info(retVal);
+                UCG ucg = new Gson().fromJson(retVal, UCG.class);
+                L.info(ucg);
+                if (ucg.getEntity() == null) {
+                    returnMessage = "You do not have any current bill for this period. Powered by EKEDP.";
+                } else {
+                    StringBuilder sb = new StringBuilder();
+                    sb.append("The last payment for ");
+                    sb.append(ucg.getEntity().getSecondaryUserId());
+                    sb.append(" is NGN");
+                    sb.append(ucg.getEntity().getAmount());
+                    sb.append(" on ");
+                    sb.append(DateTimeUtil.getDateFor(ucg.getEntity().getConfirmationTime()));
+                    sb.append(". TxRef : ").append(ucg.getEntity().getId());
+                    sb.append(". Powered by EKEDP.");
+                    returnMessage = sb.toString();
+                }
             } else {
                 returnMessage = "Not found. Invalid Staff Phone Number. Powered by EKEDP";
             }
