@@ -41,10 +41,11 @@ public final class SmsSender {
         StringBuilder sb = new StringBuilder("http://" + HOST + ":" + PORT);
         sb.append("/adapter/sendsms/");
         sb.append("?destination=").append(encode(destination));
-        if (!source.equals("EKEDP") && !source.equals("55999")) {
-            source = "CICOD";
-        }
-        sb.append("&source=").append(encode(source));
+//        if (!source.equals("EKEDP") && !source.equals("55999")) {
+//            //source = "CICOD";
+//            source = "55999";
+//        }
+
         sb.append("&text=").append(encode(text));
 
         /**
@@ -52,12 +53,15 @@ public final class SmsSender {
          */
         switch (source) {
             case "20120":
+                source = "20120";
                 SMSC = "vas2net";
                 break;
             case "7827":
+                source = "7827";
                 SMSC = "mtech";
                 break;
             case "55999":
+                source = "55999";
                 SMSC = "mtech";
                 break;
             case "EKEDP":
@@ -65,9 +69,11 @@ public final class SmsSender {
                 SMSC = "crownbulk";
                 break;
             default:
+                source = "55999";
                 SMSC = "mtech";
                 break;
         }
+        sb.append("&source=").append(encode(source));
         sb.append("&smscid=").append(encode(SMSC));
         return fetch(sb.toString());
     }

@@ -450,7 +450,21 @@ public class AccountManagementService {
             q.setParameter("identifier", identifier);
             return q.getSingleResult();
         } catch (Exception e) {
-            return null;
+            return findSetting();
+        } finally {
+            em.close();
+        }
+    }
+
+    private Settings findSetting() {
+        EntityManager em = accessbean.getEmf().createEntityManager();
+        try {
+            String query = "select s from Settings s where s.identifier =:identifier";
+            TypedQuery<Settings> q = em.createQuery(query, Settings.class);
+            q.setParameter("identifier", "SEND_SMS");
+            return q.getSingleResult();
+        } catch (Exception e) {
+            return findSetting("SEND_SMS");
         } finally {
             em.close();
         }

@@ -162,16 +162,12 @@ public class SMSServiceImpl {
     public void doBroadcast(List<String> msisdns, String message, String channel) {
         ExecutorService executorService = Executors.newFixedThreadPool(100);
         String batchId = DateTimeUtil.getCurrentDate().getTime() + "";
+        final Settings setting = ASERVICE.findSetting(channel);
         for (String msisdn : msisdns) {
             executorService.execute(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        Settings setting = null;
-                        setting = ASERVICE.findSetting(channel);
-                        if (setting == null) {
-                            setting = ASERVICE.findSetting("SEND_SMS");
-                        }
                         SmsSender.send(msisdn, setting.getCurrentValue(), message);
                         accessbean.create(new BroadcastLog(msisdn, message, channel, Status.MESSAGE_SENT, batchId));
                     } catch (Exception ex) {

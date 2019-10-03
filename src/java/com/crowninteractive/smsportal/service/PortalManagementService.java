@@ -84,7 +84,8 @@ public class PortalManagementService {
                     + " o.staff_id as 'staff_id', o.staff_name  as 'staff_name', o.district  as 'district',"
                     + " o.sent as 'outgoing_date' from SIncoming i, SOutgoing o "
                     + "where "
-                    + "o.text != 'DONOTSENDMESSAGE' and o.text != 'No available record' and i.text not like 'DO%' and i.text not like '#%' and "
+                    + "o.text != 'DONOTSENDMESSAGE' and o.text != 'No available record' and i.text not like 'AC Power Goes%' and i.text not like 'External%' "
+                    + "and i.text not like 'DO%' and i.text not like '#%' and "
                     + "i.uniqueId = o.uniqueId and i.msisdn = o.msisdn and i.recieved between '"
                     + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getStartOfDate(DateTimeUtil.getDateFor(start)))
                     + "' and '" + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getEndOfDate(DateTimeUtil.getDateFor(end))) + "' order by i.id desc";
@@ -102,7 +103,8 @@ public class PortalManagementService {
                     + " o.staff_id as 'staff_id', o.staff_name  as 'staff_name', o.district  as 'district',"
                     + " o.sent as 'outgoing_date' from SIncoming i, SOutgoing o "
                     + "where "
-                    + "o.text != 'DONOTSENDMESSAGE' and o.text != 'No available record' and i.text not like 'DO%' and i.text not like '#%' and "
+                    + "o.text != 'DONOTSENDMESSAGE' and o.text != 'No available record' and i.text not like 'AC Power Goes%' and i.text not like 'External%' "
+                    + "and i.text not like 'DO%' and i.text not like '#%' and "
                     + "i.uniqueId = o.uniqueId and i.msisdn = o.msisdn and i.recieved between '"
                     + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getStartOfDate(DateTimeUtil.getDateFor(start)))
                     + "' and '" + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getEndOfDate(DateTimeUtil.getDateFor(end))) + "' order by i.id desc";
@@ -124,6 +126,7 @@ public class PortalManagementService {
             sql = "select count(*) from SIncoming i, SOutgoing o "
                     + "where "
                     + "o.text != 'DONOTSENDMESSAGE' and o.text != 'No available record' and i.text not like 'DO%' and i.text not like '#%' and "
+                    + "i.text not like 'AC Power Goes%' and i.text not like 'External%' and "
                     + "i.uniqueId = o.uniqueId and i.msisdn = o.msisdn and i.recieved between '"
                     + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getStartOfDate(DateTimeUtil.getDateFor(start)))
                     + "' and '" + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getEndOfDate(DateTimeUtil.getDateFor(end))) + "' order by i.id desc";
@@ -153,6 +156,7 @@ public class PortalManagementService {
                     + "o.sent as 'outgoing_date' from SIncoming i, SOutgoing o "
                     + "where i.text like '%" + keyword + "%' and "
                     + "o.text != 'DONOTSENDMESSAGE' and o.text != 'No available record' and i.text not like 'DO%' and i.text not like '#%' and "
+                    + "i.text not like 'AC Power Goes%' and i.text not like 'External%' and "
                     + "i.uniqueId = o.uniqueId and i.msisdn = o.msisdn and i.recieved between '"
                     + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getStartOfDate(DateTimeUtil.getDateFor(start)))
                     + "' and '" + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getEndOfDate(DateTimeUtil.getDateFor(end))) + "' order by i.id desc";
@@ -169,6 +173,7 @@ public class PortalManagementService {
                     + " o.sent as 'outgoing_date' from SIncoming i, SOutgoing o "
                     + "where i.text like '%" + keyword + "%' and "
                     + "o.text != 'DONOTSENDMESSAGE' and o.text != 'No available record' and i.text not like 'DO%' and i.text not like '#%' and "
+                    + "i.text not like 'AC Power Goes%' and i.text not like 'External%' and "
                     + "i.uniqueId = o.uniqueId and i.msisdn = o.msisdn and i.recieved between '"
                     + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getStartOfDate(DateTimeUtil.getDateFor(start)))
                     + "' and '" + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getEndOfDate(DateTimeUtil.getDateFor(end))) + "' order by i.id desc";
@@ -190,6 +195,7 @@ public class PortalManagementService {
             sql = "select count(*) from SIncoming i, SOutgoing o "
                     + "where i.text like '%" + keyword + "%' and "
                     + "o.text != 'DONOTSENDMESSAGE' and o.text != 'No available record' and i.text not like 'DO%' and i.text not like '#%' and "
+                    + "i.text not like 'AC Power Goes%' and i.text not like 'External%' and "
                     + "i.uniqueId = o.uniqueId and i.msisdn = o.msisdn and i.recieved between '"
                     + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getStartOfDate(DateTimeUtil.getDateFor(start)))
                     + "' and '" + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getEndOfDate(DateTimeUtil.getDateFor(end))) + "' order by i.id desc";
@@ -219,6 +225,7 @@ public class PortalManagementService {
                     + " o.sent as 'outgoing_date' from SIncoming i, SOutgoing o "
                     + "where "
                     + "o.text != 'DONOTSENDMESSAGE' and o.text != 'No available record' and i.text not like 'DO%' and i.text not like '#%' and "
+                    + "i.text not like 'AC Power Goes%' and i.text not like 'External%' and "
                     + "i.uniqueId = o.uniqueId and i.msisdn = o.msisdn and i.recieved between '"
                     + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getStartOfDate(DateTimeUtil.getDateFor(start)))
                     + "' and '" + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getEndOfDate(DateTimeUtil.getDateFor(end))) + "' order by i.id desc";
@@ -238,6 +245,7 @@ public class PortalManagementService {
                     + " o.sent as 'outgoing_date' from SIncoming i, SOutgoing o "
                     + "where "
                     + "o.text != 'DONOTSENDMESSAGE' and o.text != 'No available record' and i.text not like 'DO%' and i.text not like '#%' and "
+                    + "i.text not like 'AC Power Goes%' and i.text not like 'External%' and "
                     + "i.uniqueId = o.uniqueId and i.msisdn = o.msisdn and i.uniqueId = '" + uniqueId + "'";
             Query query = em.createNativeQuery(sql, SMSDetails.class);
             List<SMSDetails> smsdetails = (List<SMSDetails>) query.getResultList();
@@ -516,6 +524,7 @@ public class PortalManagementService {
                     + " o.sent as 'outgoing_date' from SIncoming i, SOutgoing o "
                     + "where "
                     + "o.text != 'DONOTSENDMESSAGE' and o.text != 'No available record' and i.text not like 'DO%' and i.text not like '#%' and "
+                    + "i.text not like 'AC Power Goes%' and i.text not like 'External%' and "
                     + "i.uniqueId = o.uniqueId and i.uniqueId = '" + uniqueId + "'";
             Query query = em.createNativeQuery(sql, SMSDetails.class);
             List<SMSDetails> smsdetails = (List<SMSDetails>) query.getResultList();
@@ -581,6 +590,7 @@ public class PortalManagementService {
                     + " o.sent as 'outgoing_date' from SIncoming i, SOutgoing o "
                     + "where "
                     + "o.text != 'DONOTSENDMESSAGE' and o.text != 'No available record' and i.text not like 'DO%' and i.text not like '#%' and "
+                    + "i.text not like 'AC Power Goes%' and i.text not like 'External%' and "
                     + "i.uniqueId = o.uniqueId and i.msisdn = o.msisdn and i.msisdn like '%" + msisdn + "%'"
                     + " and i.recieved between '" + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getStartOfDate(DateTimeUtil.getDateFor(start)))
                     + "' and '" + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getEndOfDate(DateTimeUtil.getDateFor(end))) + "';";
@@ -606,6 +616,7 @@ public class PortalManagementService {
                     + " o.sent as 'outgoing_date' from SIncoming i, SOutgoing o "
                     + "where "
                     + "o.text != 'DONOTSENDMESSAGE' and o.text != 'No available record' and i.text not like 'DO%' and i.text not like '#%' and "
+                    + "i.text not like 'AC Power Goes%' and i.text not like 'External%' and "
                     + "i.uniqueId = o.uniqueId and i.msisdn = o.msisdn and i.text like '%" + incomingMessage + "%'"
                     + " and i.recieved between '"
                     + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getStartOfDate(DateTimeUtil.getDateFor(start)))
@@ -631,6 +642,7 @@ public class PortalManagementService {
                     + " o.sent as 'outgoing_date' from SIncoming i, SOutgoing o "
                     + "where "
                     + "o.text != 'DONOTSENDMESSAGE' and o.text != 'No available record' and i.text not like 'DO%' and i.text not like '#%' and "
+                    + "i.text not like 'AC Power Goes%' and i.text not like 'External%' and "
                     + "i.uniqueId = o.uniqueId and i.msisdn = o.msisdn and o.text like '%" + responseMessage + "%'"
                     + " and i.recieved between '"
                     + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getStartOfDate(DateTimeUtil.getDateFor(start)))
@@ -799,7 +811,7 @@ public class PortalManagementService {
         EntityManager em = accessbean.getEmf().createEntityManager();
         try {
             String sql = "SELECT * FROM sms_delivery_log u where u.src like "
-                    + "'%" + searchString + "%' and u.delivery_date between '"
+                    + "'%" + searchString + "%' and u.dest != '7827' and u.delivery_date between '"
                     + DateTimeUtil.getShortDate("yyyy-MM-dd", DateTimeUtil.getStartOfDate(DateTimeUtil.getDateFor(start)))
                     + "' and '" + DateTimeUtil.getShortDate("yyyy-MM-dd", DateTimeUtil.getEndOfDate(DateTimeUtil.getDateFor(end))) + "'";
 
@@ -817,7 +829,8 @@ public class PortalManagementService {
         List<DeliveryCount> smsdetails = null;
         EntityManager em = accessbean.getEmf().createEntityManager();
         try {
-            String sql = "select distinct(stat) as 'stat', count(*) as 'count', id, delivery_date as 'name' from sms_delivery_log s where s.delivery_date between  '"
+            String sql = "select distinct(stat) as 'stat', count(*) as 'count', id, delivery_date as 'name' from sms_delivery_log s where s.dest != '7827' and "
+                    + "s.delivery_date between  '"
                     + DateTimeUtil.getShortDate("yyyy-MM-dd", DateTimeUtil.getStartOfDate(DateTimeUtil.getDateFor(start)))
                     + "' and '" + DateTimeUtil.getShortDate("yyyy-MM-dd", DateTimeUtil.getEndOfDate(DateTimeUtil.getDateFor(end))) + "' group by delivery_date, stat";
 

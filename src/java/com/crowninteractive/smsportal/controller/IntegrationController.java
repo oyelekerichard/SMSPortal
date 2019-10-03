@@ -34,7 +34,7 @@ import org.apache.log4j.Logger;
 @Path("/integration/")
 public class IntegrationController {
 
-    private final Logger L = Logger.getLogger(PortalManagementController.class);
+    private final Logger L = Logger.getLogger(IntegrationController.class);
 
     @Context
     private HttpServletRequest servletRequest;
