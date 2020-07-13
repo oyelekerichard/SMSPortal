@@ -113,6 +113,11 @@ app.config(["$routeProvider", function ($routeProvider, $http) {
                             controller: 'DeliveryReportController',
                             templateUrl: 'app/partials/searchdeliveryreports.html'
                         })
+                .when('/allsms',
+                        {
+                            controller: 'AllSMSController',
+                            templateUrl: 'app/partials/allsms.html'
+                        })        
                 .when('/dashboard',
                         {
                             controller: 'DashboardController',

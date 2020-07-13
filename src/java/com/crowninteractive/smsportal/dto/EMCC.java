@@ -85,4 +85,9 @@ public class EMCC {
         this.accountNumber = accountNumber;
     }
 
+    @Override
+    public String toString() {
+        return "EMCC{" + "message=" + message + ", phone=" + phone + ", name=" + name + ", meterReading=" + meterReading + ", meterNumber=" + meterNumber + ", district=" + district + ", accountNumber=" + accountNumber + '}';
+    }
+
 }

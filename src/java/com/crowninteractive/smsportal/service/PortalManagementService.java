@@ -16,6 +16,7 @@ import com.crowninteractive.smsportal.dto.StaffValidateError;
 import com.crowninteractive.smsportal.dto.UCG;
 import com.crowninteractive.smsportal.dto.WFM;
 import com.crowninteractive.smsportal.dto.WFMResponse;
+import com.crowninteractive.smsportal.model.SIncoming;
 import com.crowninteractive.smsportal.model.SMSDeliveryLog;
 import com.crowninteractive.smsportal.model.SOutgoing;
 import com.crowninteractive.smsportal.model.Settings;
@@ -49,7 +50,7 @@ public class PortalManagementService {
     private final DBAccessBean accessbean;
     private static PortalManagementService INSTANCE = new PortalManagementService();
     private static final AccountManagementService ASERVICE = AccountManagementService.getInstance();
-    private final Logger L = Logger.getLogger(AccountManagementService.class);
+    private final Logger L = Logger.getLogger(PortalManagementService.class);
     private static final Config CONFIG = Config.getInstance();
 
     public static PortalManagementService getInstance() {
@@ -542,7 +543,7 @@ public class PortalManagementService {
 
     private String postResponse(String msisdn, String response) {
         try {
-            StringBuilder sb = new StringBuilder("http://localhost:8080");
+            StringBuilder sb = new StringBuilder("http://localhost:28080");
             sb.append("/adapter/sendsms/");
             sb.append("?destination=").append(URLEncoder.encode(msisdn));
             sb.append("&source=").append(URLEncoder.encode("55999"));
@@ -566,7 +567,7 @@ public class PortalManagementService {
 
     private String postEKEDPResponse(String msisdn, String response) {
         try {
-            StringBuilder sb = new StringBuilder("http://localhost:8080");
+            StringBuilder sb = new StringBuilder("http://localhost:28080");
             sb.append("/adapter/sendsms/");
             sb.append("?destination=").append(URLEncoder.encode(msisdn));
             sb.append("&source=").append(URLEncoder.encode("EKEDP"));
@@ -671,6 +672,55 @@ public class PortalManagementService {
                 break;
         }
         return new BaseResponse(retVals);
+    }
+
+    public BaseResponse allSMSBySearchCriterion(String criterion, String searchMessage, long start, long end) {
+        List<SIncoming> retVals = new ArrayList<>();
+        switch (criterion.toUpperCase()) {
+            case "CUSTOMER_PHONE":
+                retVals = getAllSMSByMSISDN(searchMessage, start, end);
+                break;
+            case "MESSAGE":
+                retVals = getAllSMSByIncomingMessage(searchMessage, start, end);
+                break;
+        }
+        return new BaseResponse(retVals);
+    }
+
+    public List<SIncoming> getAllSMSByMSISDN(String msisdn, long start, long end) {
+        List<SIncoming> smsdetails = null;
+        EntityManager em = accessbean.getEmf().createEntityManager();
+        try {
+            String sql = "select * from SIncoming i where i.msisdn = '" + msisdn + "'"
+                    + " and i.recieved between '" + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getStartOfDate(DateTimeUtil.getDateFor(start)))
+                    + "' and '" + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getEndOfDate(DateTimeUtil.getDateFor(end))) + "';";
+            L.info(sql);
+            Query query = em.createNativeQuery(sql, SIncoming.class);
+            query.setFirstResult(0);
+            query.setMaxResults(200);
+            smsdetails = (List<SIncoming>) query.getResultList();
+        } finally {
+            em.close();
+        }
+        return smsdetails;
+    }
+
+    public List<SIncoming> getAllSMSByIncomingMessage(String message, long start, long end) {
+        List<SIncoming> smsdetails = null;
+        EntityManager em = accessbean.getEmf().createEntityManager();
+        try {
+            String sql = "select * from SIncoming i where i.text like '%" + message + "%'"
+                    + " and i.recieved between '" + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getStartOfDate(DateTimeUtil.getDateFor(start)))
+                    + "' and '" + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getEndOfDate(DateTimeUtil.getDateFor(end))) + "';";
+            L.info(sql);
+            Query query = em.createNativeQuery(sql, SIncoming.class);
+            query.setFirstResult(0);
+            query.setMaxResults(200);
+            smsdetails = (List<SIncoming>) query.getResultList();
+        } finally {
+            em.close();
+        }
+        return smsdetails;
     }
 
     public List<UssdTransactionLog> getUSSDDataByMSISDN(String msisdn, long start, long end) {

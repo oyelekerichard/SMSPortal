@@ -52,9 +52,7 @@ public class IntegrationController {
             @QueryParam("scode") String scode,
             @QueryParam("text") String text,
             @QueryParam("adapter") String adapter) {
-        L.info("=======================================================");
         SMSServiceImpl.getInstance().processor(msisdn, scode, text, adapter);
-        L.info("=======================================================");
     }
 
     @GET
@@ -83,6 +81,13 @@ public class IntegrationController {
     public BaseResponse doBroadcast(Broadcast broadcast) {
         SMSSERVICE.doBroadcast(broadcast.getMsisdns(), broadcast.getMessage(), broadcast.getChannel());
         return new BaseResponse(broadcast.getMsisdns().size());
+    }
+
+    @GET
+    @Path(value = "getSMSUnitsCount")
+    @Produces(MediaType.APPLICATION_JSON)
+    public BaseResponse getSMSUnitsCount() {
+        return SMSSERVICE.getSMSUnitsCount();
     }
 
     @POST

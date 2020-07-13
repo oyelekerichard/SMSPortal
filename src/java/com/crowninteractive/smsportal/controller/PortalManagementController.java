@@ -13,6 +13,7 @@ import com.crowninteractive.smsportal.model.dto.GenericCount;
 import com.crowninteractive.smsportal.model.dto.SMSDetails;
 import com.crowninteractive.smsportal.service.DownloadService;
 import com.crowninteractive.smsportal.service.PortalManagementService;
+import com.crowninteractive.smsportal.service.SMSServiceImpl;
 import com.crowninteractive.smsportal.service.UssdTxnServiceImpl;
 import com.crowninteractive.smsportal.util.DateTimeUtil;
 import com.google.gson.Gson;
@@ -46,6 +47,7 @@ public class PortalManagementController {
     private final PortalManagementService PORTALSERVICE = PortalManagementService.getInstance();
     private final DownloadService DOWNLOADSERVICE = DownloadService.getInstance();
     private final UssdTxnServiceImpl TXNINSTANCE = UssdTxnServiceImpl.getInstance();
+    private final SMSServiceImpl SMSINSTANCE = SMSServiceImpl.getInstance();
     private final Logger L = Logger.getLogger(PortalManagementController.class);
     private static final Gson GSON = new Gson();
 
@@ -66,6 +68,13 @@ public class PortalManagementController {
     }
 
     @GET
+    @Path(value = "getSMSUnitsCount")
+    @Produces(MediaType.APPLICATION_JSON)
+    public BaseResponse getSMSUnitsCount() {
+        return SMSINSTANCE.getSMSUnitsCount();
+    }
+
+    @GET
     @Path(value = "searchByCriterion/{criterion}/{message}/{start}/{end}")
     @Produces(MediaType.APPLICATION_JSON)
     public BaseResponse searchByCriterion(
@@ -74,6 +83,17 @@ public class PortalManagementController {
             @PathParam("start") long start,
             @PathParam("end") long end) {
         return PORTALSERVICE.getDataByCriterion(criterion, message, start, end);
+    }
+
+    @GET
+    @Path(value = "allSMSBySearchCriterion/{criterion}/{message}/{start}/{end}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public BaseResponse allSMSBySearchCriterion(
+            @PathParam("criterion") String criterion,
+            @PathParam("message") String message,
+            @PathParam("start") long start,
+            @PathParam("end") long end) {
+        return PORTALSERVICE.allSMSBySearchCriterion(criterion, message, start, end);
     }
 
     @GET

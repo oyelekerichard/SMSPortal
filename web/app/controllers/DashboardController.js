@@ -36,6 +36,10 @@ app.controller('SMSController', function ($scope, $rootScope, smsService, notifi
             console.log(response.data);
             $rootScope.isRouteLoading = false;
         });
+        smsService.getSMSUnitsCount($scope.p.range, $scope.p.page, $scope.p.size).then(function (response) {
+            $scope.p.smscount = response.data.obj;
+            $rootScope.isRouteLoading = false;
+        });
         $scope.p.tcolor = 'btn-warning';
         $scope.p.wcolor = 'btn-primary';
         $scope.p.mcolor = 'btn-primary';
@@ -51,6 +55,7 @@ app.controller('SMSController', function ($scope, $rootScope, smsService, notifi
                     $rootScope.isRouteLoading = false;
                 });
             }
+            
         }, $scope.p.interval);
     }
     ;
@@ -995,6 +1000,38 @@ app.controller('DeliveryReportController', function ($scope, $rootScope, userSer
             var to = new Date($scope.p.to).getTime();
             smsService.searchDeliveryReports($scope.p.criterion, $scope.p.searchText, from, to).then(function (response) {
                 $scope.deliveries = response.data.obj;
+            });
+        }
+    };
+});
+
+app.controller('AllSMSController', function ($scope, $rootScope, smsService, notificationService, $modal, $log, $interval) {
+
+    init();
+    function init() {
+        $scope.p = {};
+        $scope.p.showData = false;
+        $scope.p.data = [];
+    }
+    ;
+
+    $scope.findData = function () {
+        if ($scope.p.criterion === undefined || $scope.p.criterion === 'NaN' || $scope.p.criterion === null) {
+            notificationService.warning("Message", "Please select a criterion");
+        } else if ($scope.p.searchText === undefined || $scope.p.searchText === 'NaN' || $scope.p.searchText === null) {
+            notificationService.warning("Message", "Please enter your search string.");
+        } else if ($scope.p.to === undefined || $scope.p.to === 'NaN' || $scope.p.to === null) {
+            notificationService.warning("Message", "Please select an end date");
+        } else if ($scope.p.from === undefined || $scope.p.from === 'NaN' || $scope.p.from === null) {
+            notificationService.warning("Message", "Please select a start date");
+        } else {
+            $rootScope.isRouteLoading = true;
+            var from = new Date($scope.p.from).getTime();
+            var to = new Date($scope.p.to).getTime();
+            smsService.allSMSBySearchCriterion($scope.p.criterion, $scope.p.searchText, from, to).then(function (response) {
+                $rootScope.isRouteLoading = false;
+                $scope.p.data = response.data.obj;
+                $scope.p.showData = true;
             });
         }
     };

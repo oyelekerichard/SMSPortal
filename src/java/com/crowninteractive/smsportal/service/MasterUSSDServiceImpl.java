@@ -59,7 +59,6 @@ public class MasterUSSDServiceImpl {
     }
 
     public ShortCode findShortCode(String incoming) {
-        EntityManager em = accessbean.getEmf().createEntityManager();
         ShortCode sc = null;
         String query = "select s from ShortCode s where s.shortCode =:shortcode";
         try {

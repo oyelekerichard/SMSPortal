@@ -81,6 +81,10 @@ public class Config extends Properties {
         return getProperty("wfm.validate");
     }
 
+    public String getWFMValidateByStaffIdURL() {
+        return getProperty("wfm.validate.staff.id");
+    }
+
     public String getUCGLastPaymet() {
         return getProperty("ucg.last.payment");
     }
@@ -103,5 +107,9 @@ public class Config extends Properties {
 
     public String getEMCCAlsd() {
         return getProperty("emcc.alsd");
+    }
+
+    public String getEMCCAlsdStaging() {
+        return getProperty("emcc.alsd.staging");
     }
 }

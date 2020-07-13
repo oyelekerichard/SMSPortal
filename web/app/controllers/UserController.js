@@ -450,7 +450,7 @@ app.controller('SettingsController', function ($scope, $modal, $log, userService
     function init() {
         console.log("SettingsController initiated!!!!");
         $scope.p = {};
-        $scope.p.size = 10;
+        $scope.p.size = 50;
         $scope.p.page = 0;
         userService.findSettings($scope.p.page, $scope.p.size).then(function (response) {
             $scope.p.settings = response.data.settings;

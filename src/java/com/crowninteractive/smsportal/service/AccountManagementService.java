@@ -61,8 +61,6 @@ public class AccountManagementService {
         } finally {
             em.close();
         }
-
-        //return accessbean.findAll(User.class, page, size);
     }
 
     public List<Role> findRoles() {
@@ -83,7 +81,7 @@ public class AccountManagementService {
                     + "(select CONCAT_WS(' ', u.first_name, u.last_name) from sms_user u where u.id = h.created_by) as 'created_by',"
                     + "(select CONCAT_WS(' ', u.first_name, u.last_name) from sms_user u where u.id = h.modified_by) as 'modified_by'"
                     + "from sms_role h;";
-            Query nativeQuery = accessbean.createNativeQuery(query, GenericModel.class);
+            Query nativeQuery = em.createNativeQuery(query, GenericModel.class);
             return (List<GenericModel>) nativeQuery.getResultList();
         } finally {
             em.close();
@@ -209,7 +207,7 @@ public class AccountManagementService {
 
                 Notification notif = new Notification();
                 notif.setFullName(user.getLastName() + " " + user.getFirstName());
-                notif.setLink("http://81.26.64.41:28080/smsportal/login.jsp");
+                notif.setLink("http://52.16.110.104:28080/smsportal/login.jsp");
                 notif.setUserEmail(user.getEmail());
                 notif.setPassword(user.getPassword());
                 notif.setProvider("Crown Interactive");
@@ -261,11 +259,13 @@ public class AccountManagementService {
     }
 
     public User login(String username, String password) {
+        EntityManager em = accessbean.getEmf().createEntityManager();
         User mergedUser = null;
-        String query = "SELECT u FROM User u where u.email =:email";
-        Query createQuery = accessbean.createQuery(query, User.class);
-        createQuery.setParameter("email", username);
         try {
+            String query = "SELECT u FROM User u where u.email =:email";
+            Query createQuery = em.createQuery(query, User.class);
+            createQuery.setParameter("email", username);
+
             User user = (User) createQuery.getSingleResult();
             String incoming = password;
             if (incoming.equals(user.getPassword())) {
@@ -273,7 +273,7 @@ public class AccountManagementService {
                     user.setLastLoginDate(user.getCurrentLoginDate());
                     user.setCurrentLoginDate(DateTimeUtil.getCurrentDate());
                     user.setUserState(UserState.LOGGED_IN);
-                    mergedUser = accessbean.merge(user);
+                    mergedUser = em.merge(user);
                 } else {
                     mergedUser = user;
                 }
@@ -282,6 +282,8 @@ public class AccountManagementService {
         } catch (Exception e) {
             e.printStackTrace();
             return mergedUser;
+        } finally {
+            em.close();
         }
     }
 
@@ -450,6 +452,7 @@ public class AccountManagementService {
             q.setParameter("identifier", identifier);
             return q.getSingleResult();
         } catch (Exception e) {
+            L.info("********************Connection Exception happening************************");
             return findSetting();
         } finally {
             em.close();
@@ -459,12 +462,17 @@ public class AccountManagementService {
     private Settings findSetting() {
         EntityManager em = accessbean.getEmf().createEntityManager();
         try {
+            L.info("***************************Using default DB find!**************************");
             String query = "select s from Settings s where s.identifier =:identifier";
             TypedQuery<Settings> q = em.createQuery(query, Settings.class);
             q.setParameter("identifier", "SEND_SMS");
             return q.getSingleResult();
         } catch (Exception e) {
-            return findSetting("SEND_SMS");
+            L.info("*********Connection Exception happening. Now using default**********************");
+            Settings s = new Settings();
+            s.setCurrentValue("55999");
+            s.setIdentifier("SEND_SMS");
+            return s;
         } finally {
             em.close();
         }
@@ -504,8 +512,8 @@ public class AccountManagementService {
         List<Settings> settings = accessbean.findAll(Settings.class, page, size);
         map.put("settings", settings);
         Integer count = accessbean.findCount(Settings.class);
-        String query = "select s from settings s;";
-        accessbean.createNativeQuery(query, Settings.class);
+//        String query = "select s from settings s;";
+//        accessbean.createNativeQuery(query, Settings.class);
         map.put("total", count);
         map.put("size", count < size ? count : size);
         map.put("page", page);

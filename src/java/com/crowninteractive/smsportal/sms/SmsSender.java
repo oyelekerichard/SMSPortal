@@ -15,8 +15,8 @@ import java.net.URLEncoder;
 public final class SmsSender {
 
     private static String SMSC = "mtech";
-    private static final String HOST = "172.29.11.17";
-    private static final int PORT = 8080;
+    private static final String HOST = "localhost";
+    private static final int PORT = 28080;
     private static final int TIMEOUT = 20; // Timeout in seconds.
 
     private SmsSender() {
@@ -33,20 +33,36 @@ public final class SmsSender {
      */
     public static String send(String destination, String source, String text)
             throws IllegalArgumentException, Exception {
-//        if (Inputs.hasBlank(destination, source, text)) {
-//            // Log event.
-//            throw new IllegalArgumentException("Inputs cannot contain blanks.");
-//        }
 
+        if (destination.equalsIgnoreCase("UNKNOWN")) {
+            return "Message not sent to " + destination;
+        } else if (destination.contains("-")) {
+            return "Message not sent to " + destination;
+        } else if (destination.contains(",")) {
+            String[] split = destination.split(",");
+            for (String s : split) {
+                send(s, source, text);
+            }
+            return "Message sent";
+        } else if (destination.contains(" ")) {
+            destination = destination.replaceAll(" ", "");
+        } else if (destination.length() > 15) {
+            return destination + " as destination phone number is too long!";
+        } else {
+            destination = destination.trim();
+        }
+
+        if (destination.isEmpty()) {
+            return "Message not sent to empty phone number";
+        }
         StringBuilder sb = new StringBuilder("http://" + HOST + ":" + PORT);
         sb.append("/adapter/sendsms/");
         sb.append("?destination=").append(encode(destination));
-//        if (!source.equals("EKEDP") && !source.equals("55999")) {
-//            //source = "CICOD";
-//            source = "55999";
-//        }
-
-        sb.append("&text=").append(encode(text));
+        if (text.length() > 254) {
+            sb.append("&text=").append(encode(text.substring(0, 253)));
+        } else {
+            sb.append("&text=").append(encode(text));
+        }
 
         /**
          * Externalize shortcode against SMSC
@@ -66,6 +82,10 @@ public final class SmsSender {
                 break;
             case "EKEDP":
             case "CICOD":
+                SMSC = "crownbulk";
+                break;
+            case "PAYCONVENIENCE":
+                source = "CICOD";
                 SMSC = "crownbulk";
                 break;
             default:

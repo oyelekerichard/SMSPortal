@@ -138,9 +138,11 @@ public class SMSServiceImpl {
                         L.info("Do not send message command given. Not sending any message.....");
                     } else if (!returnedMessage.equals("")) {
                         SmsSender.send(sms.getMsisdn(), sms.getScode(), returnedMessage);
+                        updateCount(1);
                     } else {
                         returnedMessage = "Unrecognised SMS command. Please check your command is correct and try again. Thank you.";
                         SmsSender.send(sms.getMsisdn(), sms.getScode(), returnedMessage);
+                        updateCount(1);
                     }
 
                 } catch (Exception exception) {
@@ -162,14 +164,21 @@ public class SMSServiceImpl {
     public void doBroadcast(List<String> msisdns, String message, String channel) {
         ExecutorService executorService = Executors.newFixedThreadPool(100);
         String batchId = DateTimeUtil.getCurrentDate().getTime() + "";
+        L.info("Message ::: " + message);
+        L.info("Channel ::: " + channel);
         final Settings setting = ASERVICE.findSetting(channel);
         for (String msisdn : msisdns) {
             executorService.execute(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        SmsSender.send(msisdn, setting.getCurrentValue(), message);
-                        accessbean.create(new BroadcastLog(msisdn, message, channel, Status.MESSAGE_SENT, batchId));
+                        if (msisdn != null) {
+                            L.info("Sending SMS");
+                            SmsSender.send(msisdn, setting.getCurrentValue(), message);
+                            L.info("SMS Sent");
+                            accessbean.create(new BroadcastLog(msisdn, message, channel, Status.MESSAGE_SENT, batchId));
+                            updateCount(1);
+                        }
                     } catch (Exception ex) {
                         L.info("Exception! Could not send message!");
                         accessbean.create(new BroadcastLog(msisdn, message, channel, Status.MESSAGE_NOT_SENT, batchId));
@@ -178,6 +187,23 @@ public class SMSServiceImpl {
             });
         }
         executorService.shutdown();
+    }
+
+    public BaseResponse getSMSUnitsCount() {
+        Settings setting = ASERVICE.findSetting("SMS_UNITS_COUNT");
+        BaseResponse resp = new BaseResponse(setting.getCurrentValue());
+        return resp;
+    }
+
+    public synchronized BaseResponse updateCount(int count) {
+        Settings setting = ASERVICE.findSetting("SMS_UNITS_COUNT");
+        setting.setLastValue(setting.getCurrentValue());
+        Integer newValue = Integer.parseInt(setting.getCurrentValue()) - count;
+        setting.setCurrentValue(newValue.toString());
+        setting.setModifiedDate(DateTimeUtil.getCurrentDate());
+        accessbean.merge(setting);
+        BaseResponse resp = new BaseResponse(setting.getCurrentValue());
+        return resp;
     }
 
     public void doBroadcastTest(List<String> msisdns, String message, String channel) {

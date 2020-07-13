@@ -81,10 +81,11 @@ public class EkoDistribution {
             EsbWorkforce workforce,
             EsbWallet esbWallet,
             EsbAccount esbAccount, SmsModule smsmod, String uniqueTransId) {
-        String returnMessage = "", returnVal = "";
+        String returnMessage = "", returnVal = "", emccData = "", sendPost = "";
         Gson gson = new Gson();
         EMCC emcc = new EMCC();
         EMCCResponse eResp;
+        EMCC e2;
         StaffDetail sd = null;
         StringBuilder sbuilder;
         String keyword;
@@ -604,8 +605,8 @@ public class EkoDistribution {
                 String staffId = sms.getText().split("\\.")[1];
                 LOG.info("Incoming Staff Id ::: " + staffId);
                 //http://dev3.convergenceondemand.net/wfmservice/users/validatewithstaffcode/lk706
-                StringBuilder sb = new StringBuilder(CONFIG.getWFMValidateURL());
-                sb.append(staffId);
+                StringBuilder sb = new StringBuilder(CONFIG.getWFMValidateByStaffIdURL());
+                sb.append(staffId.trim());
                 LOG.info(sb.toString());
                 try {
                     LOG.info("==================================================");
@@ -642,7 +643,7 @@ public class EkoDistribution {
                 sb = new StringBuilder("http://172.29.10.130:8080/integration/smsAcceptPowerSchedule/");
                 sb.append(approvalCode).append("/").append(sid).append("/").append(sms.getMsisdn());
                 try {
-                    String sendPost = HttpUtil.sendGet(sb.toString());
+                    sendPost = HttpUtil.sendGet(sb.toString());
                     EMCCResponse respp = gson.fromJson(sendPost, EMCCResponse.class);
                     returnMessage = respp.getDesc();
                     LOG.info(sendPost);
@@ -718,7 +719,7 @@ public class EkoDistribution {
                                     sb = new StringBuilder(CONFIG.getWFMUpdateStatus());
                                     sb.append("?phone=").append("0").append(sms.getMsisdn());
                                     LOG.info(sb.toString());
-                                    String sendPost = HttpUtil.sendPost(sb.toString(), gson.toJson(w));
+                                    sendPost = HttpUtil.sendPost(sb.toString(), gson.toJson(w));
                                     LOG.info(sendPost);
                                     WFMResponse2 wfmResp = gson.fromJson(sendPost, WFMResponse2.class);
                                     List<WFM3> obj = wfmResp.getObject();
@@ -741,7 +742,6 @@ public class EkoDistribution {
                                         returnMessage = sb.toString();
                                     }
                                 }
-
                                 break;
                         }
                     } else {
@@ -842,11 +842,14 @@ public class EkoDistribution {
                 break;
             default:
                 //<editor-fold defaultstate="collapsed" desc="DEFAULT">
-                EMCC e2 = new EMCC(sms.getText(), "0" + sms.getMsisdn());
+                e2 = new EMCC(sms.getText(), "0" + sms.getMsisdn());
                 try {
-
-                    HttpUtil.sendPost("http://172.29.10.130:8080/integration/feeder_auto", new Gson().toJson(e2));//Staging
-                    String sendPost = HttpUtil.sendPost(CONFIG.getEMCCAlsd(), new Gson().toJson(e2));//Production
+                    emccData = new Gson().toJson(e2);
+                    LOG.info(emccData);
+                    sendPost = HttpUtil.sendPost(CONFIG.getEMCCAlsdStaging(), emccData); //Staging
+                    LOG.info("Staging response ::: " + sendPost);
+                    sendPost = HttpUtil.sendPost(CONFIG.getEMCCAlsd(), emccData);//Production
+                    LOG.info("Production response ::: " + sendPost);
                     EMCCResponse respp = gson.fromJson(sendPost, EMCCResponse.class);
                     if (respp.getResp() == 0) {
                         returnMessage = "DONOTSENDMESSAGE";

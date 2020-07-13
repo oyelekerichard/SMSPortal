@@ -44,8 +44,8 @@
     </target>
     <target name="wsimport-client-EsbGameplay" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/EsbGameplay"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/EsbGameplay" destdir="${build.generated.dir}/jax-wsCache/EsbGameplay" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/EsbGameplay/wsdl/81.26.64.34_8080/ESB/EsbGameplay.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://81.26.64.34:8080/ESB/EsbGameplay?wsdl" xnocompile="true" xendorsed="true" package="com.crowninteractive.smsportal.websrv.gameplay">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/EsbGameplay/wsdl/81.26.64.34_8080/ESB/EsbGameplay.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/EsbGameplay" destdir="${build.generated.dir}/jax-wsCache/EsbGameplay" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/EsbGameplay/wsdl/99.81.162.1_28080/ESB/EsbGameplay.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://81.26.64.34:8080/ESB/EsbGameplay?wsdl" xnocompile="true" xendorsed="true" package="com.crowninteractive.smsportal.websrv.gameplay">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/EsbGameplay/wsdl/99.81.162.1_28080/ESB/EsbGameplay.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/EsbGameplay"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
@@ -60,8 +60,8 @@
     </target>
     <target name="wsimport-client-EsbWallet" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/EsbWallet"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/EsbWallet" destdir="${build.generated.dir}/jax-wsCache/EsbWallet" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/EsbWallet/wsdl/81.26.64.34_8080/ESB/EsbWallet.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://81.26.64.34:8080/ESB/EsbWallet?wsdl" xnocompile="true" xendorsed="true" package="com.crowninteractive.smsportal.websrv.wallet">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/EsbWallet/wsdl/81.26.64.34_8080/ESB/EsbWallet.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/EsbWallet" destdir="${build.generated.dir}/jax-wsCache/EsbWallet" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/EsbWallet/wsdl/99.81.162.1_28080/ESB/EsbWallet.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://81.26.64.34:8080/ESB/EsbWallet?wsdl" xnocompile="true" xendorsed="true" package="com.crowninteractive.smsportal.websrv.wallet">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/EsbWallet/wsdl/99.81.162.1_28080/ESB/EsbWallet.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/EsbWallet"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
@@ -76,8 +76,8 @@
     </target>
     <target name="wsimport-client-EsbGeneral" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/EsbGeneral"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/EsbGeneral" destdir="${build.generated.dir}/jax-wsCache/EsbGeneral" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/EsbGeneral/wsdl/81.26.64.34_8080/ESB/EsbGeneral.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://81.26.64.34:8080/ESB/EsbGeneral?wsdl" xnocompile="true" xendorsed="true" package="com.crowninteractive.smsportal.websrv.general">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/EsbGeneral/wsdl/81.26.64.34_8080/ESB/EsbGeneral.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/EsbGeneral" destdir="${build.generated.dir}/jax-wsCache/EsbGeneral" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/EsbGeneral/wsdl/99.81.162.1_28080/ESB/EsbGeneral.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://81.26.64.34:8080/ESB/EsbGeneral?wsdl" xnocompile="true" xendorsed="true" package="com.crowninteractive.smsportal.websrv.general">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/EsbGeneral/wsdl/99.81.162.1_28080/ESB/EsbGeneral.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/EsbGeneral"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
@@ -92,8 +92,8 @@
     </target>
     <target name="wsimport-client-EsbWorkforce" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/EsbWorkforce"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/EsbWorkforce" destdir="${build.generated.dir}/jax-wsCache/EsbWorkforce" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/EsbWorkforce/wsdl/81.26.64.34_8080/ESB/EsbWorkforce.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://81.26.64.34:8080/ESB/EsbWorkforce?wsdl" xnocompile="true" xendorsed="true" package="com.crowninteractive.smsportal.websrv.workforce">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/EsbWorkforce/wsdl/81.26.64.34_8080/ESB/EsbWorkforce.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/EsbWorkforce" destdir="${build.generated.dir}/jax-wsCache/EsbWorkforce" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/EsbWorkforce/wsdl/99.81.162.1_28080/ESB/EsbWorkforce.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://81.26.64.34:8080/ESB/EsbWorkforce?wsdl" xnocompile="true" xendorsed="true" package="com.crowninteractive.smsportal.websrv.workforce">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/EsbWorkforce/wsdl/99.81.162.1_28080/ESB/EsbWorkforce.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/EsbWorkforce"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
@@ -108,8 +108,8 @@
     </target>
     <target name="wsimport-client-Endpoint" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/Endpoint"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Endpoint" destdir="${build.generated.dir}/jax-wsCache/Endpoint" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Endpoint/wsdl/81.26.64.111_28080/UCG/Voucher/Endpoint.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://81.26.64.111:28080/UCG/Voucher/Endpoint?wsdl" xnocompile="true" xendorsed="true" package="com.crowninteractive.smsportal.websrv.ucg">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Endpoint/wsdl/81.26.64.111_28080/UCG/Voucher/Endpoint.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Endpoint" destdir="${build.generated.dir}/jax-wsCache/Endpoint" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Endpoint/wsdl/99.81.162.1_28080/UCG/Voucher/Endpoint.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://81.26.64.111:28080/UCG/Voucher/Endpoint?wsdl" xnocompile="true" xendorsed="true" package="com.crowninteractive.smsportal.websrv.ucg">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Endpoint/wsdl/99.81.162.1_28080/UCG/Voucher/Endpoint.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/Endpoint"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
@@ -124,8 +124,8 @@
     </target>
     <target name="wsimport-client-SmsModule" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/SmsModule"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/SmsModule" destdir="${build.generated.dir}/jax-wsCache/SmsModule" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/SmsModule/wsdl/81.26.64.111_28080/ESB/SmsModule.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://81.26.64.111:28080/ESB/SmsModule?wsdl" xnocompile="true" xendorsed="true" package="com.crowninteractive.smsportal.websrv.sms">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/SmsModule/wsdl/81.26.64.111_28080/ESB/SmsModule.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/SmsModule" destdir="${build.generated.dir}/jax-wsCache/SmsModule" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/SmsModule/wsdl/99.81.162.1_28080/ESB/SmsModule.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://81.26.64.111:28080/ESB/SmsModule?wsdl" xnocompile="true" xendorsed="true" package="com.crowninteractive.smsportal.websrv.sms">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/SmsModule/wsdl/99.81.162.1_28080/ESB/SmsModule.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/SmsModule"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">

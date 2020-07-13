@@ -1,0 +1,521 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.esb.convergenceondemand.net/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="SmsModule" targetNamespace="http://service.esb.convergenceondemand.net/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.esb.convergenceondemand.net/" elementFormDefault="unqualified" targetNamespace="http://service.esb.convergenceondemand.net/" version="1.0">
+
+  <xs:element name="billing" type="tns:billing"/>
+
+  <xs:element name="createUtilityAccount" type="tns:createUtilityAccount"/>
+
+  <xs:element name="createUtilityAccountResponse" type="tns:createUtilityAccountResponse"/>
+
+  <xs:element name="eBaseResponse" type="tns:eBaseResponse"/>
+
+  <xs:element name="getLastUtilityAccountInvoice" type="tns:getLastUtilityAccountInvoice"/>
+
+  <xs:element name="getLastUtilityAccountInvoiceResponse" type="tns:getLastUtilityAccountInvoiceResponse"/>
+
+  <xs:element name="getReservedInventory" type="tns:getReservedInventory"/>
+
+  <xs:element name="getReservedInventoryResponse" type="tns:getReservedInventoryResponse"/>
+
+  <xs:element name="loadVoucher" type="tns:loadVoucher"/>
+
+  <xs:element name="loadVoucherResponse" type="tns:loadVoucherResponse"/>
+
+  <xs:element name="logBillingTransaction" type="tns:logBillingTransaction"/>
+
+  <xs:element name="logBillingTransactionResponse" type="tns:logBillingTransactionResponse"/>
+
+  <xs:element name="pickInventory" type="tns:pickInventory"/>
+
+  <xs:element name="pickInventoryResponse" type="tns:pickInventoryResponse"/>
+
+  <xs:element name="smsPickInventoryResponse" type="tns:smsPickInventoryResponse"/>
+
+  <xs:element name="smsReservedInventoryResponse" type="tns:smsReservedInventoryResponse"/>
+
+  <xs:element name="stagedCashin" type="tns:stagedCashin"/>
+
+  <xs:element name="utilityAccountCreationResponse" type="tns:utilityAccountCreationResponse"/>
+
+  <xs:element name="walletResponse" type="tns:walletResponse"/>
+
+  <xs:complexType name="getReservedInventory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ticketId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getReservedInventoryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:smsReservedInventoryResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="smsReservedInventoryResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="approver" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="reservedInventories" type="tns:reservedInventory"/>
+          <xs:element minOccurs="0" name="ticketId" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="eBaseResponse">
+    <xs:sequence>
+      <xs:element name="retn" nillable="true" type="xs:int"/>
+      <xs:element name="desc" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="reservedInventory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="address" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="inventoryName" type="xs:string"/>
+      <xs:element minOccurs="0" name="listNumber" type="xs:int"/>
+      <xs:element minOccurs="0" name="quantity" type="xs:int"/>
+      <xs:element minOccurs="0" name="store" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="loadVoucher">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="pin" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="loadVoucherResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:walletResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="walletResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="balance" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="stagedCashin" type="tns:stagedCashin"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="stagedCashin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="agentId" type="xs:string"/>
+      <xs:element minOccurs="0" name="agentName" type="xs:string"/>
+      <xs:element minOccurs="0" name="amount" type="xs:double"/>
+      <xs:element minOccurs="0" name="businessUnit" type="xs:string"/>
+      <xs:element minOccurs="0" name="cashOffice" type="xs:string"/>
+      <xs:element minOccurs="0" name="confirmationTime" type="xs:string"/>
+      <xs:element name="convenienceCharge" type="xs:int"/>
+      <xs:element minOccurs="0" name="customerAccountType" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerBusinessUnit" type="xs:string"/>
+      <xs:element minOccurs="0" name="extraData" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="initiationTime" type="xs:string"/>
+      <xs:element minOccurs="0" name="merchantId" type="xs:string"/>
+      <xs:element minOccurs="0" name="paymentPartner" type="xs:string"/>
+      <xs:element minOccurs="0" name="providerMessage" type="xs:string"/>
+      <xs:element minOccurs="0" name="providerRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="purpose" type="xs:string"/>
+      <xs:element minOccurs="0" name="secondaryUserId" type="xs:string"/>
+      <xs:element minOccurs="0" name="status" type="xs:int"/>
+      <xs:element minOccurs="0" name="tamAgentId" type="xs:string"/>
+      <xs:element minOccurs="0" name="tamAgentName" type="xs:string"/>
+      <xs:element minOccurs="0" name="tenantId" type="xs:string"/>
+      <xs:element minOccurs="0" name="terminalId" type="xs:string"/>
+      <xs:element minOccurs="0" name="ucgChannel" type="xs:string"/>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createUtilityAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountDetails" type="tns:utilityAccountDetails"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="utilityAccountDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountId" type="xs:string"/>
+      <xs:element minOccurs="0" name="billMode" type="tns:billingMode"/>
+      <xs:element minOccurs="0" name="birthDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="businessDistrict" type="xs:string"/>
+      <xs:element minOccurs="0" name="creationDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerType" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="entityType" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+      <xs:element minOccurs="0" name="houseNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="idNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="idType" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastModifiedDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+      <xs:element minOccurs="0" name="meterNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="otherPhone" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element minOccurs="0" name="phoneNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="preferedContactMethod" type="xs:string"/>
+      <xs:element minOccurs="0" name="preferredLanguage" type="xs:string"/>
+      <xs:element minOccurs="0" name="registrationChannel" type="xs:string"/>
+      <xs:element minOccurs="0" name="stateOfResidence" type="xs:string"/>
+      <xs:element minOccurs="0" name="streetAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="tariff" type="xs:string"/>
+      <xs:element minOccurs="0" name="vsoIdentifier" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createUtilityAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:utilityAccountCreationResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="utilityAccountCreationResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element name="token" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="pickInventory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="requestString" type="xs:string"/>
+      <xs:element minOccurs="0" name="ticketId" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pickInventoryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:smsPickInventoryResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="smsPickInventoryResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateTime" type="xs:string"/>
+          <xs:element minOccurs="0" name="engineerName" type="xs:string"/>
+          <xs:element minOccurs="0" name="finalApproval" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="inventories" type="tns:inventory"/>
+          <xs:element minOccurs="0" name="ticketId" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="inventory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="inventoryName" type="xs:string"/>
+      <xs:element minOccurs="0" name="quantity" type="xs:int"/>
+      <xs:element minOccurs="0" name="storeName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getLastUtilityAccountInvoice">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="meterNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getLastUtilityAccountInvoiceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:invoiceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="invoiceResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="invoices" nillable="true" type="tns:billing"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="billing">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="adc" type="xs:string"/>
+      <xs:element minOccurs="0" name="adjustment" type="xs:int"/>
+      <xs:element minOccurs="0" name="billAmountWithinPeriod" type="xs:double"/>
+      <xs:element minOccurs="0" name="billCycle" type="xs:string"/>
+      <xs:element minOccurs="0" name="billDueDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="billEmbededPowerCharges" type="xs:double"/>
+      <xs:element minOccurs="0" name="billProductionDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="billingDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="billingId" type="xs:long"/>
+      <xs:element minOccurs="0" name="billingMode" type="tns:billingMode"/>
+      <xs:element minOccurs="0" name="billingPeriods" type="xs:string"/>
+      <xs:element minOccurs="0" name="closingBalance" type="xs:double"/>
+      <xs:element minOccurs="0" name="consumption" type="xs:double"/>
+      <xs:element minOccurs="0" name="costPerUnitPod" type="xs:double"/>
+      <xs:element minOccurs="0" name="costPerUnitPog" type="xs:double"/>
+      <xs:element minOccurs="0" name="createdDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="embeddedPowerRate" type="xs:double"/>
+      <xs:element minOccurs="0" name="energyCharge" type="xs:double"/>
+      <xs:element minOccurs="0" name="fc" type="xs:double"/>
+      <xs:element minOccurs="0" name="fixed" type="xs:string"/>
+      <xs:element minOccurs="0" name="invoiceNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="kvaConsumptions" type="xs:int"/>
+      <xs:element minOccurs="0" name="kvaDemandChage" type="xs:double"/>
+      <xs:element minOccurs="0" name="kvaMultiplier" type="xs:double"/>
+      <xs:element minOccurs="0" name="kvaRate" type="xs:string"/>
+      <xs:element minOccurs="0" name="kvaReadCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="kvaReadDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="lar" type="xs:int"/>
+      <xs:element minOccurs="0" name="larDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastPayment" type="xs:double"/>
+      <xs:element minOccurs="0" name="meteredStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="mmc" type="xs:string"/>
+      <xs:element minOccurs="0" name="multiplier" type="xs:double"/>
+      <xs:element minOccurs="0" name="netArrears" type="xs:double"/>
+      <xs:element minOccurs="0" name="newCharges" type="xs:double"/>
+      <xs:element minOccurs="0" name="nextInvoicePeriod" type="xs:string"/>
+      <xs:element minOccurs="0" name="noEstimates" type="xs:string"/>
+      <xs:element minOccurs="0" name="nodials" type="xs:int"/>
+      <xs:element minOccurs="0" name="paid" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="payment" type="xs:double"/>
+      <xs:element minOccurs="0" name="premiumServiceSubscription" type="xs:double"/>
+      <xs:element minOccurs="0" name="presentCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="presentReading" type="xs:double"/>
+      <xs:element minOccurs="0" name="presentReadingDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="previousBalance" type="xs:double"/>
+      <xs:element minOccurs="0" name="previousReadingAmount" type="xs:double"/>
+      <xs:element minOccurs="0" name="previousReadingDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="statusCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="tariff" type="xs:string"/>
+      <xs:element minOccurs="0" name="totalAmountDue" type="xs:double"/>
+      <xs:element minOccurs="0" name="totalCharge" type="xs:double"/>
+      <xs:element minOccurs="0" name="totalUsages" type="xs:double"/>
+      <xs:element minOccurs="0" name="unitsConsumedPod" type="xs:double"/>
+      <xs:element minOccurs="0" name="unitsConsumedPog" type="xs:double"/>
+      <xs:element minOccurs="0" name="vat" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="logBillingTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="billingTransactionParams" type="tns:billingTransactionParams"/>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="billingTransactionParams">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="accountType" type="xs:string"/>
+      <xs:element minOccurs="0" name="amount" type="xs:double"/>
+      <xs:element minOccurs="0" name="billProductionDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="businessUnitName" type="xs:string"/>
+      <xs:element minOccurs="0" name="cashOffice" type="xs:string"/>
+      <xs:element name="extraData">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string"/>
+                  <xs:element minOccurs="0" name="value" type="xs:string"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="provider" type="xs:string"/>
+      <xs:element minOccurs="0" name="purpose" type="xs:string"/>
+      <xs:element minOccurs="0" name="tamAgentId" type="xs:string"/>
+      <xs:element minOccurs="0" name="tamAgentName" type="xs:string"/>
+      <xs:element minOccurs="0" name="transactionDateTime" type="xs:string"/>
+      <xs:element minOccurs="0" name="transactionRef" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="logBillingTransactionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="billingMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OFFLINE_PREPAID"/>
+      <xs:enumeration value="OFFLINE_POSTPAID"/>
+      <xs:enumeration value="NOT_METTERED"/>
+      <xs:enumeration value="ONLINE_PREPAID"/>
+      <xs:enumeration value="ONLINE_POSTPAID"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="loadVoucherResponse">
+    <wsdl:part element="tns:loadVoucherResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="logBillingTransactionResponse">
+    <wsdl:part element="tns:logBillingTransactionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getReservedInventory">
+    <wsdl:part element="tns:getReservedInventory" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getReservedInventoryResponse">
+    <wsdl:part element="tns:getReservedInventoryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loadVoucher">
+    <wsdl:part element="tns:loadVoucher" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createUtilityAccountResponse">
+    <wsdl:part element="tns:createUtilityAccountResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLastUtilityAccountInvoiceResponse">
+    <wsdl:part element="tns:getLastUtilityAccountInvoiceResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pickInventoryResponse">
+    <wsdl:part element="tns:pickInventoryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createUtilityAccount">
+    <wsdl:part element="tns:createUtilityAccount" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pickInventory">
+    <wsdl:part element="tns:pickInventory" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLastUtilityAccountInvoice">
+    <wsdl:part element="tns:getLastUtilityAccountInvoice" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="logBillingTransaction">
+    <wsdl:part element="tns:logBillingTransaction" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SmsModule">
+    <wsdl:operation name="getReservedInventory">
+      <wsdl:input message="tns:getReservedInventory" name="getReservedInventory">
+    </wsdl:input>
+      <wsdl:output message="tns:getReservedInventoryResponse" name="getReservedInventoryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadVoucher">
+      <wsdl:input message="tns:loadVoucher" name="loadVoucher">
+    </wsdl:input>
+      <wsdl:output message="tns:loadVoucherResponse" name="loadVoucherResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createUtilityAccount">
+      <wsdl:input message="tns:createUtilityAccount" name="createUtilityAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:createUtilityAccountResponse" name="createUtilityAccountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pickInventory">
+      <wsdl:input message="tns:pickInventory" name="pickInventory">
+    </wsdl:input>
+      <wsdl:output message="tns:pickInventoryResponse" name="pickInventoryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLastUtilityAccountInvoice">
+      <wsdl:input message="tns:getLastUtilityAccountInvoice" name="getLastUtilityAccountInvoice">
+    </wsdl:input>
+      <wsdl:output message="tns:getLastUtilityAccountInvoiceResponse" name="getLastUtilityAccountInvoiceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logBillingTransaction">
+      <wsdl:input message="tns:logBillingTransaction" name="logBillingTransaction">
+    </wsdl:input>
+      <wsdl:output message="tns:logBillingTransactionResponse" name="logBillingTransactionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SmsModuleSoapBinding" type="tns:SmsModule">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getReservedInventory">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getReservedInventory">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getReservedInventoryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadVoucher">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="loadVoucher">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="loadVoucherResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createUtilityAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createUtilityAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createUtilityAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pickInventory">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="pickInventory">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="pickInventoryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLastUtilityAccountInvoice">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getLastUtilityAccountInvoice">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLastUtilityAccountInvoiceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logBillingTransaction">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="logBillingTransaction">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="logBillingTransactionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SmsModule">
+    <wsdl:port binding="tns:SmsModuleSoapBinding" name="SmsModulePort">
+      <soap:address location="https://prod1.convergenceondemand.net/ESB/SmsModule"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

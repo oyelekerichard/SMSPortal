@@ -335,6 +335,12 @@
                                         <span class="title">Search Delivery Reports</span>
                                     </a>
                                 </li>
+                                <li class="start" data-ng-class="{'active':getClass('/allsms')}">
+                                    <a href="#/allsms">
+                                        <i class="fa fa-map-marker"></i>
+                                        <span class="title">All SMS</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 

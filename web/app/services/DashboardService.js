@@ -416,6 +416,21 @@ app.service('smsService', function ($http) {
 
         return promise;
     };
+    this.getSMSUnitsCount = function (rangeType, page, size) {
+        var promise = $http({
+            method: 'GET',
+            url: 'web/portal/getSMSUnitsCount'
+        }).success(function (data, status, headers, config) {
+            if (data.retn !== 0) {
+                warning("Warning", data.desc);
+            }
+            return data;
+        }).error(function (data, status, headers, config) {
+            errorToastr('Error', status);
+        });
+
+        return promise;
+    };
     this.downloadSMSData = function (start, end) {
         var promise = $http({
             method: 'GET',
@@ -469,6 +484,21 @@ app.service('smsService', function ($http) {
         var promise = $http({
             method: 'GET',
             url: 'web/portal/searchByCriterion/' + criterion + '/' + searchText + '/' + start + '/' + end
+        }).success(function (data, status, headers, config) {
+            if (data.retn !== 0) {
+                warning("Warning", data.desc);
+            }
+            return data;
+        }).error(function (data, status, headers, config) {
+            errorToastr('Error', status);
+        });
+
+        return promise;
+    };
+    this.allSMSBySearchCriterion = function (criterion, searchText, start, end) {
+        var promise = $http({
+            method: 'GET',
+            url: 'web/portal/allSMSBySearchCriterion/' + criterion + '/' + searchText + '/' + start + '/' + end
         }).success(function (data, status, headers, config) {
             if (data.retn !== 0) {
                 warning("Warning", data.desc);

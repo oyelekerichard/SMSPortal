@@ -23,10 +23,10 @@ import org.apache.log4j.Logger;
 public class HttpUtil {
 
     private final static String USER_AGENT = "Mozilla/5.0";
-    private final Logger L = Logger.getLogger(HttpUtil.class);
+    private final static Logger L = Logger.getLogger(HttpUtil.class);
 
     public static String sendGet(String url) throws Exception {
-        System.out.println(url);
+        L.info(url);
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -38,7 +38,7 @@ public class HttpUtil {
         con.setRequestProperty("User-Agent", USER_AGENT);
 
         int responseCode = con.getResponseCode();
-        System.out.println("Response Code : " + responseCode);
+        L.info("Response Code : " + responseCode);
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(con.getInputStream()));
         String inputLine;
@@ -48,13 +48,13 @@ public class HttpUtil {
             response.append(inputLine);
         }
         in.close();
-        System.out.println("Response in HttpUtil ---->  " + response.toString());
+        L.info("Response in HttpUtil ---->  " + response.toString());
         return response.toString();
     }
 
     public static String sendPost(String url, String jsonString) throws Exception {
-        System.out.println("\nSending 'POST' request to URL : " + url);
-        System.out.println("Post parameters : " + jsonString);
+        L.info("Sending 'POST' request to URL : " + url);
+        L.info("Post parameters : " + jsonString);
         URL obj = new URL(url);
         //HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -71,7 +71,7 @@ public class HttpUtil {
 
         int responseCode = con.getResponseCode();
 
-        System.out.println("Response Code : " + responseCode);
+        L.info("Response Code : " + responseCode);
 
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(con.getInputStream()));
@@ -83,7 +83,7 @@ public class HttpUtil {
         }
         in.close();
 
-        System.out.println(response.toString());
+        L.info(response.toString());
         return response.toString();
 
     }

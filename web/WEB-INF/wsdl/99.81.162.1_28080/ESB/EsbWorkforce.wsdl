@@ -1,0 +1,938 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.esb.convergenceondemand.net/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="EsbWorkforce" targetNamespace="http://service.esb.convergenceondemand.net/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.esb.convergenceondemand.net/" elementFormDefault="unqualified" targetNamespace="http://service.esb.convergenceondemand.net/" version="1.0">
+
+  <xs:element name="addremark" type="tns:addremark"/>
+
+  <xs:element name="addremarkResponse" type="tns:addremarkResponse"/>
+
+  <xs:element name="eBaseResponse" type="tns:eBaseResponse"/>
+
+  <xs:element name="getAllQueues" type="tns:getAllQueues"/>
+
+  <xs:element name="getAllQueuesByChannel" type="tns:getAllQueuesByChannel"/>
+
+  <xs:element name="getAllQueuesByChannelResponse" type="tns:getAllQueuesByChannelResponse"/>
+
+  <xs:element name="getAllQueuesResponse" type="tns:getAllQueuesResponse"/>
+
+  <xs:element name="getAssignedResourceWithWorkOrders" type="tns:getAssignedResourceWithWorkOrders"/>
+
+  <xs:element name="getAssignedResourceWithWorkOrdersResponse" type="tns:getAssignedResourceWithWorkOrdersResponse"/>
+
+  <xs:element name="getDuplicateWorkOrders" type="tns:getDuplicateWorkOrders"/>
+
+  <xs:element name="getDuplicateWorkOrdersResponse" type="tns:getDuplicateWorkOrdersResponse"/>
+
+  <xs:element name="getEngineerName" type="tns:getEngineerName"/>
+
+  <xs:element name="getEngineerNameResponse" type="tns:getEngineerNameResponse"/>
+
+  <xs:element name="getFaultTypes" type="tns:getFaultTypes"/>
+
+  <xs:element name="getFaultTypesResponse" type="tns:getFaultTypesResponse"/>
+
+  <xs:element name="getQueueTypes" type="tns:getQueueTypes"/>
+
+  <xs:element name="getQueueTypesByQueueName" type="tns:getQueueTypesByQueueName"/>
+
+  <xs:element name="getQueueTypesByQueueNameByChannel" type="tns:getQueueTypesByQueueNameByChannel"/>
+
+  <xs:element name="getQueueTypesByQueueNameByChannelResponse" type="tns:getQueueTypesByQueueNameByChannelResponse"/>
+
+  <xs:element name="getQueueTypesByQueueNameResponse" type="tns:getQueueTypesByQueueNameResponse"/>
+
+  <xs:element name="getQueueTypesResponse" type="tns:getQueueTypesResponse"/>
+
+  <xs:element name="getWorkOrder" type="tns:getWorkOrder"/>
+
+  <xs:element name="getWorkOrderList" type="tns:getWorkOrderList"/>
+
+  <xs:element name="getWorkOrderListResponse" type="tns:getWorkOrderListResponse"/>
+
+  <xs:element name="getWorkOrderResponse" type="tns:getWorkOrderResponse"/>
+
+  <xs:element name="getWorkOrderUpdates" type="tns:getWorkOrderUpdates"/>
+
+  <xs:element name="getWorkOrderUpdatesResponse" type="tns:getWorkOrderUpdatesResponse"/>
+
+  <xs:element name="getWorkRemarks" type="tns:getWorkRemarks"/>
+
+  <xs:element name="getWorkRemarksResponse" type="tns:getWorkRemarksResponse"/>
+
+  <xs:element name="reportWorkOrderByQueueName" type="tns:reportWorkOrderByQueueName"/>
+
+  <xs:element name="reportWorkOrderByQueueNameResponse" type="tns:reportWorkOrderByQueueNameResponse"/>
+
+  <xs:element name="sendEmail" type="tns:sendEmail"/>
+
+  <xs:element name="sendEmailResponse" type="tns:sendEmailResponse"/>
+
+  <xs:element name="stringObjResponse" type="tns:stringObjResponse"/>
+
+  <xs:element name="verifyAccountViaEMS" type="tns:verifyAccountViaEMS"/>
+
+  <xs:element name="verifyAccountViaEMSResponse" type="tns:verifyAccountViaEMSResponse"/>
+
+  <xs:element name="workOrderRemarkResponse" type="tns:workOrderRemarkResponse"/>
+
+  <xs:complexType name="getAssignedResourceWithWorkOrders">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="tenantKey" type="xs:string"/>
+      <xs:element minOccurs="0" name="ticketId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAssignedResourceWithWorkOrdersResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:standardObjResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="standardObjResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="standardObjectList" nillable="true" type="xs:anyType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="eBaseResponse">
+    <xs:sequence>
+      <xs:element name="retn" nillable="true" type="xs:int"/>
+      <xs:element name="desc" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getEngineerName">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="tenantKey" type="xs:string"/>
+      <xs:element minOccurs="0" name="ticketId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getEngineerNameResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:stringObjResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="stringObjResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getWorkRemarks">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="tenantKey" type="xs:string"/>
+      <xs:element minOccurs="0" name="ticketId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getWorkRemarksResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:workOrderRemarkResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="workOrderRemarkResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="remarks" type="tns:workOrderRemark"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="workOrderRemark">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="comment" type="xs:string"/>
+      <xs:element minOccurs="0" name="creator" type="xs:string"/>
+      <xs:element minOccurs="0" name="timestamp" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getQueueTypesByQueueName">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="tenantKey" type="xs:string"/>
+      <xs:element minOccurs="0" name="queueId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getQueueTypesByQueueNameResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:simpleObjResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="simpleObjResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="simpleObjList" nillable="true" type="tns:simpleObj"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="simpleObj">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element name="parentId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="verifyAccountViaEMS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="billingId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="verifyAccountViaEMSResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:memmcolResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="memmcolResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="c" type="tns:mCustomer"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="mCustomer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="businessUnit" type="xs:string"/>
+      <xs:element minOccurs="0" name="businessUnitId" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerArrears" type="xs:double"/>
+      <xs:element minOccurs="0" name="customerName" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="minimumPurchase" type="xs:double"/>
+      <xs:element minOccurs="0" name="undertaking" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getWorkOrderUpdates">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="tenantKey" type="xs:string"/>
+      <xs:element minOccurs="0" name="ticketId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getWorkOrderUpdatesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:workOrderUpdateObjResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="workOrderUpdateObjResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="simpleObjList" nillable="true" type="tns:workOrderUpdateObj"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="workOrderUpdateObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="comment" type="xs:string"/>
+      <xs:element minOccurs="0" name="createTime" type="xs:string"/>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="reportWorkOrderByQueueName">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="workOrderObj" type="tns:wfmOrder"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="wfmOrder">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="address" type="xs:string"/>
+      <xs:element minOccurs="0" name="billingID" type="xs:string"/>
+      <xs:element minOccurs="0" name="businessUnit" type="xs:string"/>
+      <xs:element minOccurs="0" name="channel" type="xs:string"/>
+      <xs:element minOccurs="0" name="city" type="xs:string"/>
+      <xs:element minOccurs="0" name="contactNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="inventoryDescription" type="xs:string"/>
+      <xs:element minOccurs="0" name="inventoryRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="queueName" type="xs:string"/>
+      <xs:element minOccurs="0" name="queueTypeId" type="xs:string"/>
+      <xs:element minOccurs="0" name="relatedWorkOrderId" type="xs:string"/>
+      <xs:element minOccurs="0" name="reportedBy" type="xs:string"/>
+      <xs:element minOccurs="0" name="summary" type="xs:string"/>
+      <xs:element minOccurs="0" name="tariff" type="xs:string"/>
+      <xs:element minOccurs="0" name="tenantkey" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="reportWorkOrderByQueueNameResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:simpleObjResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sendEmail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="qwValue" type="xs:string"/>
+      <xs:element minOccurs="0" name="subject" type="xs:string"/>
+      <xs:element minOccurs="0" name="recipient" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sendEmailResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addremark">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="createdBy" type="xs:string"/>
+      <xs:element minOccurs="0" name="ticketId" type="xs:string"/>
+      <xs:element minOccurs="0" name="remark" type="xs:string"/>
+      <xs:element minOccurs="0" name="tenantKey" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addremarkResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:eBaseResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllQueues">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="tenantKey" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllQueuesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:simpleObjResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getDuplicateWorkOrders">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="assetToken" type="xs:string"/>
+      <xs:element minOccurs="0" name="queueTypeId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getDuplicateWorkOrdersResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:duplicateWorkOrderResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="duplicateWorkOrderResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="w" nillable="true" type="tns:duplicatedWorkOrder"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="duplicatedWorkOrder">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountType" type="xs:string"/>
+      <xs:element minOccurs="0" name="addressLine1" type="xs:string"/>
+      <xs:element minOccurs="0" name="addressLine2" type="xs:string"/>
+      <xs:element name="assignedBy" type="xs:int"/>
+      <xs:element minOccurs="0" name="businessUnit" type="xs:string"/>
+      <xs:element minOccurs="0" name="city" type="xs:string"/>
+      <xs:element minOccurs="0" name="closedTime" type="xs:string"/>
+      <xs:element minOccurs="0" name="contactNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="createTime" type="xs:string"/>
+      <xs:element name="createdBy" type="xs:int"/>
+      <xs:element minOccurs="0" name="creator" type="xs:string"/>
+      <xs:element minOccurs="0" name="currentStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerCategory" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerEmail" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerName" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerTariff" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="isActive" type="xs:int"/>
+      <xs:element name="isClosed" type="xs:int"/>
+      <xs:element name="ownerId" type="xs:int"/>
+      <xs:element minOccurs="0" name="priority" type="xs:string"/>
+      <xs:element name="queueId" type="xs:int"/>
+      <xs:element name="queueTypeId" type="xs:int"/>
+      <xs:element minOccurs="0" name="referenceType" type="xs:string"/>
+      <xs:element minOccurs="0" name="referenceTypeData" type="xs:string"/>
+      <xs:element minOccurs="0" name="reportedBy" type="xs:string"/>
+      <xs:element name="sentToEmcc" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="state" type="xs:string"/>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+      <xs:element minOccurs="0" name="summary" type="xs:string"/>
+      <xs:element name="ticketId" type="xs:int"/>
+      <xs:element minOccurs="0" name="token" type="xs:string"/>
+      <xs:element minOccurs="0" name="updateTime" type="xs:string"/>
+      <xs:element name="updatedBy" type="xs:int"/>
+      <xs:element minOccurs="0" name="updater" type="xs:string"/>
+      <xs:element minOccurs="0" name="workOrderStatusId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getQueueTypesByQueueNameByChannel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="tenantKey" type="xs:string"/>
+      <xs:element minOccurs="0" name="queueId" type="xs:string"/>
+      <xs:element minOccurs="0" name="channel" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getQueueTypesByQueueNameByChannelResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:queueTypeObjResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="queueTypeObjResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="queueType" nillable="true" type="tns:queueTypeObj"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="queueTypeObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="channelNeedsAuth" type="xs:boolean"/>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element name="needsAuth" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getWorkOrder">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="billingId" type="xs:string"/>
+      <xs:element minOccurs="0" name="tenantKey" type="xs:string"/>
+      <xs:element minOccurs="0" name="ticketId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getWorkOrderResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:workOrderObjResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="workOrderObjResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:eBaseResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="w" nillable="true" type="tns:workOrderObj"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="workOrderObj">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="createTime" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="queueType" type="xs:string"/>
+      <xs:element minOccurs="0" name="summary" type="xs:string"/>
+      <xs:element minOccurs="0" name="ticketId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllQueuesByChannel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="tenantKey" type="xs:string"/>
+      <xs:element minOccurs="0" name="channel" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllQueuesByChannelResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:simpleObjResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFaultTypes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="tenantKey" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFaultTypesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:simpleObjResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getQueueTypes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="tenantKey" type="xs:string"/>
+      <xs:element minOccurs="0" name="queueId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getQueueTypesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:simpleObjResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getWorkOrderList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appId" type="xs:string"/>
+      <xs:element minOccurs="0" name="billingId" type="xs:string"/>
+      <xs:element minOccurs="0" name="tenantKey" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getWorkOrderListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:workOrderObjResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getAssignedResourceWithWorkOrders">
+    <wsdl:part element="tns:getAssignedResourceWithWorkOrders" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEngineerName">
+    <wsdl:part element="tns:getEngineerName" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAssignedResourceWithWorkOrdersResponse">
+    <wsdl:part element="tns:getAssignedResourceWithWorkOrdersResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyAccountViaEMS">
+    <wsdl:part element="tns:verifyAccountViaEMS" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reportWorkOrderByQueueNameResponse">
+    <wsdl:part element="tns:reportWorkOrderByQueueNameResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendEmail">
+    <wsdl:part element="tns:sendEmail" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDuplicateWorkOrdersResponse">
+    <wsdl:part element="tns:getDuplicateWorkOrdersResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllQueuesByChannelResponse">
+    <wsdl:part element="tns:getAllQueuesByChannelResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWorkOrderResponse">
+    <wsdl:part element="tns:getWorkOrderResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEngineerNameResponse">
+    <wsdl:part element="tns:getEngineerNameResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllQueues">
+    <wsdl:part element="tns:getAllQueues" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDuplicateWorkOrders">
+    <wsdl:part element="tns:getDuplicateWorkOrders" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyAccountViaEMSResponse">
+    <wsdl:part element="tns:verifyAccountViaEMSResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getQueueTypesByQueueNameByChannel">
+    <wsdl:part element="tns:getQueueTypesByQueueNameByChannel" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWorkOrder">
+    <wsdl:part element="tns:getWorkOrder" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllQueuesByChannel">
+    <wsdl:part element="tns:getAllQueuesByChannel" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWorkRemarks">
+    <wsdl:part element="tns:getWorkRemarks" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWorkRemarksResponse">
+    <wsdl:part element="tns:getWorkRemarksResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllQueuesResponse">
+    <wsdl:part element="tns:getAllQueuesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getQueueTypesByQueueName">
+    <wsdl:part element="tns:getQueueTypesByQueueName" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWorkOrderUpdatesResponse">
+    <wsdl:part element="tns:getWorkOrderUpdatesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWorkOrderListResponse">
+    <wsdl:part element="tns:getWorkOrderListResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWorkOrderUpdates">
+    <wsdl:part element="tns:getWorkOrderUpdates" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reportWorkOrderByQueueName">
+    <wsdl:part element="tns:reportWorkOrderByQueueName" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addremark">
+    <wsdl:part element="tns:addremark" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getQueueTypesByQueueNameResponse">
+    <wsdl:part element="tns:getQueueTypesByQueueNameResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getQueueTypesResponse">
+    <wsdl:part element="tns:getQueueTypesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendEmailResponse">
+    <wsdl:part element="tns:sendEmailResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addremarkResponse">
+    <wsdl:part element="tns:addremarkResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFaultTypesResponse">
+    <wsdl:part element="tns:getFaultTypesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getQueueTypesByQueueNameByChannelResponse">
+    <wsdl:part element="tns:getQueueTypesByQueueNameByChannelResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFaultTypes">
+    <wsdl:part element="tns:getFaultTypes" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getQueueTypes">
+    <wsdl:part element="tns:getQueueTypes" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getWorkOrderList">
+    <wsdl:part element="tns:getWorkOrderList" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EsbWorkforce">
+    <wsdl:operation name="getAssignedResourceWithWorkOrders">
+      <wsdl:input message="tns:getAssignedResourceWithWorkOrders" name="getAssignedResourceWithWorkOrders">
+    </wsdl:input>
+      <wsdl:output message="tns:getAssignedResourceWithWorkOrdersResponse" name="getAssignedResourceWithWorkOrdersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEngineerName">
+      <wsdl:input message="tns:getEngineerName" name="getEngineerName">
+    </wsdl:input>
+      <wsdl:output message="tns:getEngineerNameResponse" name="getEngineerNameResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWorkRemarks">
+      <wsdl:input message="tns:getWorkRemarks" name="getWorkRemarks">
+    </wsdl:input>
+      <wsdl:output message="tns:getWorkRemarksResponse" name="getWorkRemarksResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getQueueTypesByQueueName">
+      <wsdl:input message="tns:getQueueTypesByQueueName" name="getQueueTypesByQueueName">
+    </wsdl:input>
+      <wsdl:output message="tns:getQueueTypesByQueueNameResponse" name="getQueueTypesByQueueNameResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verifyAccountViaEMS">
+      <wsdl:input message="tns:verifyAccountViaEMS" name="verifyAccountViaEMS">
+    </wsdl:input>
+      <wsdl:output message="tns:verifyAccountViaEMSResponse" name="verifyAccountViaEMSResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWorkOrderUpdates">
+      <wsdl:input message="tns:getWorkOrderUpdates" name="getWorkOrderUpdates">
+    </wsdl:input>
+      <wsdl:output message="tns:getWorkOrderUpdatesResponse" name="getWorkOrderUpdatesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reportWorkOrderByQueueName">
+      <wsdl:input message="tns:reportWorkOrderByQueueName" name="reportWorkOrderByQueueName">
+    </wsdl:input>
+      <wsdl:output message="tns:reportWorkOrderByQueueNameResponse" name="reportWorkOrderByQueueNameResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEmail">
+      <wsdl:input message="tns:sendEmail" name="sendEmail">
+    </wsdl:input>
+      <wsdl:output message="tns:sendEmailResponse" name="sendEmailResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addremark">
+      <wsdl:input message="tns:addremark" name="addremark">
+    </wsdl:input>
+      <wsdl:output message="tns:addremarkResponse" name="addremarkResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllQueues">
+      <wsdl:input message="tns:getAllQueues" name="getAllQueues">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllQueuesResponse" name="getAllQueuesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDuplicateWorkOrders">
+      <wsdl:input message="tns:getDuplicateWorkOrders" name="getDuplicateWorkOrders">
+    </wsdl:input>
+      <wsdl:output message="tns:getDuplicateWorkOrdersResponse" name="getDuplicateWorkOrdersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getQueueTypesByQueueNameByChannel">
+      <wsdl:input message="tns:getQueueTypesByQueueNameByChannel" name="getQueueTypesByQueueNameByChannel">
+    </wsdl:input>
+      <wsdl:output message="tns:getQueueTypesByQueueNameByChannelResponse" name="getQueueTypesByQueueNameByChannelResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWorkOrder">
+      <wsdl:input message="tns:getWorkOrder" name="getWorkOrder">
+    </wsdl:input>
+      <wsdl:output message="tns:getWorkOrderResponse" name="getWorkOrderResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllQueuesByChannel">
+      <wsdl:input message="tns:getAllQueuesByChannel" name="getAllQueuesByChannel">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllQueuesByChannelResponse" name="getAllQueuesByChannelResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFaultTypes">
+      <wsdl:input message="tns:getFaultTypes" name="getFaultTypes">
+    </wsdl:input>
+      <wsdl:output message="tns:getFaultTypesResponse" name="getFaultTypesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getQueueTypes">
+      <wsdl:input message="tns:getQueueTypes" name="getQueueTypes">
+    </wsdl:input>
+      <wsdl:output message="tns:getQueueTypesResponse" name="getQueueTypesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWorkOrderList">
+      <wsdl:input message="tns:getWorkOrderList" name="getWorkOrderList">
+    </wsdl:input>
+      <wsdl:output message="tns:getWorkOrderListResponse" name="getWorkOrderListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EsbWorkforceSoapBinding" type="tns:EsbWorkforce">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAssignedResourceWithWorkOrders">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAssignedResourceWithWorkOrders">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAssignedResourceWithWorkOrdersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEngineerName">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getEngineerName">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEngineerNameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWorkRemarks">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getWorkRemarks">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getWorkRemarksResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getQueueTypesByQueueName">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getQueueTypesByQueueName">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getQueueTypesByQueueNameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verifyAccountViaEMS">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verifyAccountViaEMS">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyAccountViaEMSResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWorkOrderUpdates">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getWorkOrderUpdates">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getWorkOrderUpdatesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendEmail">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sendEmail">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendEmailResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reportWorkOrderByQueueName">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="reportWorkOrderByQueueName">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="reportWorkOrderByQueueNameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addremark">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addremark">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addremarkResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllQueues">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllQueues">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllQueuesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDuplicateWorkOrders">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getDuplicateWorkOrders">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDuplicateWorkOrdersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getQueueTypesByQueueNameByChannel">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getQueueTypesByQueueNameByChannel">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getQueueTypesByQueueNameByChannelResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWorkOrder">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getWorkOrder">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getWorkOrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllQueuesByChannel">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllQueuesByChannel">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllQueuesByChannelResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFaultTypes">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getFaultTypes">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFaultTypesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getQueueTypes">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getQueueTypes">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getQueueTypesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWorkOrderList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getWorkOrderList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getWorkOrderListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EsbWorkforce">
+    <wsdl:port binding="tns:EsbWorkforceSoapBinding" name="EsbWorkforcePort">
+      <soap:address location="https://prod1.convergenceondemand.net/ESB/EsbWorkforce"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -39,8 +39,8 @@
       </wsimport-options>
     </client>
     <client name="EsbGameplay">
-      <wsdl-url>http://81.26.64.34:8080/ESB/EsbGameplay?wsdl</wsdl-url>
-      <local-wsdl-file>81.26.64.34_8080/ESB/EsbGameplay.wsdl</local-wsdl-file>
+      <wsdl-url>http://99.81.162.1:28080/ESB/EsbGameplay?wsdl</wsdl-url>
+      <local-wsdl-file>99.81.162.1_28080/ESB/EsbGameplay.wsdl</local-wsdl-file>
       <package-name forceReplace="true">com.crowninteractive.smsportal.websrv.gameplay</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -75,8 +75,8 @@
       </wsimport-options>
     </client>
     <client name="EsbWallet">
-      <wsdl-url>http://81.26.64.34:8080/ESB/EsbWallet?wsdl</wsdl-url>
-      <local-wsdl-file>81.26.64.34_8080/ESB/EsbWallet.wsdl</local-wsdl-file>
+      <wsdl-url>http://99.81.162.1:28080/ESB/EsbWallet?wsdl</wsdl-url>
+      <local-wsdl-file>99.81.162.1_28080/ESB/EsbWallet.wsdl</local-wsdl-file>
       <package-name forceReplace="true">com.crowninteractive.smsportal.websrv.wallet</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -111,8 +111,8 @@
       </wsimport-options>
     </client>
     <client name="EsbGeneral">
-      <wsdl-url>http://81.26.64.34:8080/ESB/EsbGeneral?wsdl</wsdl-url>
-      <local-wsdl-file>81.26.64.34_8080/ESB/EsbGeneral.wsdl</local-wsdl-file>
+      <wsdl-url>http://99.81.162.1:28080/ESB/EsbGeneral?wsdl</wsdl-url>
+      <local-wsdl-file>99.81.162.1_28080/ESB/EsbGeneral.wsdl</local-wsdl-file>
       <package-name forceReplace="true">com.crowninteractive.smsportal.websrv.general</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -147,8 +147,8 @@
       </wsimport-options>
     </client>
     <client name="EsbWorkforce">
-      <wsdl-url>http://81.26.64.34:8080/ESB/EsbWorkforce?wsdl</wsdl-url>
-      <local-wsdl-file>81.26.64.34_8080/ESB/EsbWorkforce.wsdl</local-wsdl-file>
+      <wsdl-url>http://99.81.162.1:28080/ESB/EsbWorkforce?wsdl</wsdl-url>
+      <local-wsdl-file>99.81.162.1_28080/ESB/EsbWorkforce.wsdl</local-wsdl-file>
       <package-name forceReplace="true">com.crowninteractive.smsportal.websrv.workforce</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -183,8 +183,8 @@
       </wsimport-options>
     </client>
     <client name="Endpoint">
-      <wsdl-url>http://81.26.64.111:28080/UCG/Voucher/Endpoint?wsdl</wsdl-url>
-      <local-wsdl-file>81.26.64.111_28080/UCG/Voucher/Endpoint.wsdl</local-wsdl-file>
+      <wsdl-url>http://99.81.162.1:28080/UCG/Voucher/Endpoint?wsdl</wsdl-url>
+      <local-wsdl-file>99.81.162.1_28080/UCG/Voucher/Endpoint.wsdl</local-wsdl-file>
       <package-name forceReplace="true">com.crowninteractive.smsportal.websrv.ucg</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -219,8 +219,8 @@
       </wsimport-options>
     </client>
     <client name="SmsModule">
-      <wsdl-url>http://81.26.64.111:28080/ESB/SmsModule?wsdl</wsdl-url>
-      <local-wsdl-file>81.26.64.111_28080/ESB/SmsModule.wsdl</local-wsdl-file>
+      <wsdl-url>http://99.81.162.1:28080/ESB/SmsModule?wsdl</wsdl-url>
+      <local-wsdl-file>99.81.162.1_28080/ESB/SmsModule.wsdl</local-wsdl-file>
       <package-name forceReplace="true">com.crowninteractive.smsportal.websrv.sms</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
