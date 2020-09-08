@@ -8,6 +8,7 @@ package com.crowninteractive.smsportal.controller;
 import com.crowninteractive.smsportal.dto.BaseResponse;
 import com.crowninteractive.smsportal.dto.DeliveryReport;
 import com.crowninteractive.smsportal.dto.StaffValidate;
+import com.crowninteractive.smsportal.interswitch.service.ISWSSMSServiceImpl;
 import com.crowninteractive.smsportal.model.UssdTransaction;
 import com.crowninteractive.smsportal.model.dto.GenericCount;
 import com.crowninteractive.smsportal.model.dto.SMSDetails;
@@ -48,6 +49,7 @@ public class PortalManagementController {
     private final DownloadService DOWNLOADSERVICE = DownloadService.getInstance();
     private final UssdTxnServiceImpl TXNINSTANCE = UssdTxnServiceImpl.getInstance();
     private final SMSServiceImpl SMSINSTANCE = SMSServiceImpl.getInstance();
+    private final ISWSSMSServiceImpl ISWINSTANCE = ISWSSMSServiceImpl.getInstance();
     private final Logger L = Logger.getLogger(PortalManagementController.class);
     private static final Gson GSON = new Gson();
 
@@ -55,6 +57,13 @@ public class PortalManagementController {
     private HttpServletRequest servletRequest;
     @Context
     private HttpServletResponse servletResponse;
+
+    @GET
+    @Path(value = "findNetworkProviders")
+    @Produces(MediaType.APPLICATION_JSON)
+    public BaseResponse findNetworkProviders() {
+        return PORTALSERVICE.findNetworkProviders();
+    }
 
     @GET
     @Path(value = "getSMSData/{start}/{end}/{page}/{size}")
@@ -564,5 +573,12 @@ public class PortalManagementController {
     public BaseResponse searchDeliveryReports(@PathParam("searchCriterion") String searchCriterion, @PathParam("searchText") String searchText,
             @PathParam("from") long from, @PathParam("to") long to) {
         return PORTALSERVICE.findDeliveryReports(searchCriterion, searchText, from, to);
+    }
+
+    @GET
+    @Path(value = "findBroadcastLogs")
+    @Produces(MediaType.APPLICATION_JSON)
+    public BaseResponse findBroadcastLogs() {
+        return ISWINSTANCE.findBLs2();
     }
 }

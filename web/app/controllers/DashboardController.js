@@ -55,7 +55,7 @@ app.controller('SMSController', function ($scope, $rootScope, smsService, notifi
                     $rootScope.isRouteLoading = false;
                 });
             }
-            
+
         }, $scope.p.interval);
     }
     ;
@@ -1012,6 +1012,23 @@ app.controller('AllSMSController', function ($scope, $rootScope, smsService, not
         $scope.p = {};
         $scope.p.showData = false;
         $scope.p.data = [];
+        $scope.p.logs = [];
+        $rootScope.isRouteLoading = true;
+        $scope.p.autoRefresh = true;
+        smsService.findBroadcastLogs().then(function (response) {
+            $scope.p.logs = response.data.obj;
+            $rootScope.isRouteLoading = false;
+        });
+
+        $interval(function () {
+            if ($scope.p.autoRefresh) {
+                smsService.findBroadcastLogs().then(function (response) {
+                    $scope.p.logs = response.data.obj;
+                });
+            }
+        }, 5000);
+
+
     }
     ;
 

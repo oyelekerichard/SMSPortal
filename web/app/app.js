@@ -117,7 +117,12 @@ app.config(["$routeProvider", function ($routeProvider, $http) {
                         {
                             controller: 'AllSMSController',
                             templateUrl: 'app/partials/allsms.html'
-                        })        
+                        })   
+                .when('/broadcastlogs',
+                        {
+                            controller: 'AllSMSController',
+                            templateUrl: 'app/partials/broadcastlogs.html'
+                        })          
                 .when('/dashboard',
                         {
                             controller: 'DashboardController',

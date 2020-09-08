@@ -10,6 +10,7 @@ import com.crowninteractive.smsportal.dto.DeliveryReport;
 import com.crowninteractive.smsportal.dto.EMCC;
 import com.crowninteractive.smsportal.dto.EMCCResponse;
 import com.crowninteractive.smsportal.dto.FeederStatusResponse;
+import com.crowninteractive.smsportal.dto.NameValuePair;
 import com.crowninteractive.smsportal.dto.StaffDetail;
 import com.crowninteractive.smsportal.dto.StaffValidate;
 import com.crowninteractive.smsportal.dto.StaffValidateError;
@@ -263,6 +264,30 @@ public class PortalManagementService {
                     return (BaseResponse) doCheckAvailability(sms.getIncoming());
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+        return null;
+    }
+
+    public BaseResponse findNetworkProviders() {
+        EntityManager em = accessbean.getEmf().createEntityManager();
+        try {
+            List<NameValuePair> nvps = new ArrayList<>();
+            String sql = "select * from sms_settings where identifier = 'PROVIDER' limit 1";
+            Query query = em.createNativeQuery(sql, Settings.class);
+            List<Settings> smsdetails = (List<Settings>) query.getResultList();
+            if (smsdetails != null) {
+
+                Settings settings = smsdetails.get(0);
+                String[] split = settings.getCurrentValue().split(",");
+                for (String string : split) {
+                    nvps.add(new NameValuePair(string.trim(), string.trim()));
+                }
+            }
+            return new BaseResponse(nvps);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -751,7 +776,7 @@ public class PortalManagementService {
                     + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getStartOfDate(DateTimeUtil.getDateFor(start)))
                     + "' and '" + DateTimeUtil.getShortDate("yyyy-MM-dd HH:mm:ss", DateTimeUtil.getEndOfDate(DateTimeUtil.getDateFor(end))) + "'";
 
-            Query query = accessbean.createNativeQuery(sql, UssdTransactionLog.class);
+            Query query = em.createNativeQuery(sql, UssdTransactionLog.class);
             query.setFirstResult(0);
             query.setMaxResults(1000);
             smsdetails = (List<UssdTransactionLog>) query.getResultList();
@@ -865,7 +890,7 @@ public class PortalManagementService {
                     + DateTimeUtil.getShortDate("yyyy-MM-dd", DateTimeUtil.getStartOfDate(DateTimeUtil.getDateFor(start)))
                     + "' and '" + DateTimeUtil.getShortDate("yyyy-MM-dd", DateTimeUtil.getEndOfDate(DateTimeUtil.getDateFor(end))) + "'";
 
-            Query query = accessbean.createNativeQuery(sql, SMSDeliveryLog.class);
+            Query query = em.createNativeQuery(sql, SMSDeliveryLog.class);
             query.setFirstResult(0);
             query.setMaxResults(1000);
             smsdetails = (List<SMSDeliveryLog>) query.getResultList();
@@ -884,7 +909,7 @@ public class PortalManagementService {
                     + DateTimeUtil.getShortDate("yyyy-MM-dd", DateTimeUtil.getStartOfDate(DateTimeUtil.getDateFor(start)))
                     + "' and '" + DateTimeUtil.getShortDate("yyyy-MM-dd", DateTimeUtil.getEndOfDate(DateTimeUtil.getDateFor(end))) + "' group by delivery_date, stat";
 
-            Query query = accessbean.createNativeQuery(sql, DeliveryCount.class);
+            Query query = em.createNativeQuery(sql, DeliveryCount.class);
             smsdetails = (List<DeliveryCount>) query.getResultList();
         } finally {
             em.close();

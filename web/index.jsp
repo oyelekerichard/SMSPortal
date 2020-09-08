@@ -323,7 +323,7 @@
                                 <span class="arrow "></span>
                             </a>
                             <ul class="sub-menu" style="display: none;">
-                                <li class="start" data-ng-class="{'active':getClass('/deliveryreports')}">
+<!--                                <li class="start" data-ng-class="{'active':getClass('/deliveryreports')}">
                                     <a href="#/deliveryreports">
                                         <i class="fa fa-bus"></i>
                                         <span class="title">Delivery Report Stats</span>
@@ -339,6 +339,12 @@
                                     <a href="#/allsms">
                                         <i class="fa fa-map-marker"></i>
                                         <span class="title">All SMS</span>
+                                    </a>
+                                </li>-->
+                                <li class="start" data-ng-class="{'active':getClass('/broadcastlogs')}">
+                                    <a href="#/broadcastlogs">
+                                        <i class="fa fa-bullhorn"></i>
+                                        <span class="title">Broadcast Logs</span>
                                     </a>
                                 </li>
                             </ul>

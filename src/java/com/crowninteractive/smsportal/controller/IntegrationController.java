@@ -9,6 +9,8 @@ import com.crowninteractive.smsportal.dto.BaseResponse;
 import com.crowninteractive.smsportal.dto.Broadcast;
 import com.crowninteractive.smsportal.dto.MtechRequest;
 import com.crowninteractive.smsportal.dto.MtechResponse;
+import com.crowninteractive.smsportal.interswitch.dto.QueryDLRResponse;
+import com.crowninteractive.smsportal.interswitch.service.ISWSSMSServiceImpl;
 import com.crowninteractive.smsportal.service.PortalManagementService;
 import com.crowninteractive.smsportal.service.SMSServiceImpl;
 import com.crowninteractive.smsportal.ussd.DynamicHandler;
@@ -43,6 +45,7 @@ public class IntegrationController {
     private final Gson GSON = new Gson();
     private final DynamicHandler handler = new DynamicHandler();
     private final SMSServiceImpl SMSSERVICE = SMSServiceImpl.getInstance();
+    private final ISWSSMSServiceImpl ISWSERVICE = ISWSSMSServiceImpl.getInstance();
     private final PortalManagementService PMSERVICE = PortalManagementService.getInstance();
 
     @GET
@@ -81,6 +84,13 @@ public class IntegrationController {
     public BaseResponse doBroadcast(Broadcast broadcast) {
         SMSSERVICE.doBroadcast(broadcast.getMsisdns(), broadcast.getMessage(), broadcast.getChannel());
         return new BaseResponse(broadcast.getMsisdns().size());
+    }
+
+    @GET
+    @Path(value = "getTicketStatus/{ticketId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public QueryDLRResponse getTicketStatus(@PathParam(value = "ticketId") String ticketId) {
+        return ISWSERVICE.querySMSTicketStatus(ticketId);
     }
 
     @GET

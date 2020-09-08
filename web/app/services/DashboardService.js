@@ -372,12 +372,23 @@ app.service('userService', function ($http, $rootScope) {
                 });
         return promise;
     };
-    this.changeSetting = function (id, newValue) {
+    this.changeSetting = function (id, newValue, settingsSection) {
         var promise = $http({
             method: 'GET',
-            url: 'web/user/changeSetting/' + id + '/' + newValue
+            url: 'web/user/changeSetting/' + id + '/' + newValue + '/' + settingsSection
         }).success(function (data, status, headers, config) {
             settings = data;
+        }).error(function (data, status, headers, config) {
+            errorToastr('Error', status);
+        });
+        return promise;
+    };
+    this.findNetworkProviders = function () {
+        var promise = $http({
+            method: 'GET',
+            url: 'web/portal/findNetworkProviders'
+        }).success(function (data, status, headers, config) {
+            return data;
         }).error(function (data, status, headers, config) {
             errorToastr('Error', status);
         });
@@ -386,6 +397,17 @@ app.service('userService', function ($http, $rootScope) {
 });
 app.service('smsService', function ($http) {
 
+    this.findBroadcastLogs = function () {
+        var promise = $http({
+            method: 'GET',
+            url: 'web/portal/findBroadcastLogs'
+        }).success(function (data, status, headers, config) {
+            settings = data;
+        }).error(function (data, status, headers, config) {
+            errorToastr('Error', status);
+        });
+        return promise;
+    };
     this.getSMSData = function (start, end, page, size) {
         var promise = $http({
             method: 'GET',
@@ -729,6 +751,7 @@ app.service('ussdService', function ($http) {
         });
         return promise;
     };
+
     this.getDashboardData = function () {
         var promise = $http({
             method: 'GET',

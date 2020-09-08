@@ -1,5 +1,6 @@
 package com.crowninteractive.smsportal.ussd;
 
+import com.crowninteractive.smsportal.interswitch.job.DLRReportJob;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ public class USSDSessionManager {
     //Attention: Do not instatiate this guy directly ever. Always use getInstance();
     private USSDSessionManager() {
         new Thread(new SessionCleaner()).start();
+        new Thread(new DLRReportJob()).start();
     }
 
     public static USSDSessionManager getInstance() {

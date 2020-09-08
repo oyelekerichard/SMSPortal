@@ -16,18 +16,21 @@ import org.apache.log4j.Logger;
  */
 public class StartupAndShutdownHook implements ServletContextListener {
 
-    private Logger L = Logger.getLogger(StartupAndShutdownHook.class);
+    private final Logger L = Logger.getLogger(StartupAndShutdownHook.class);
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        L.info("==============================================");
-        L.info("Initializing scaffold....");
-        DeliveryLogReader.start();
-        L.info("==============================================");
+        System.out.println("==============================================");
+        System.out.println("Initializing scaffold....");
+        //DeliveryLogReader.start();
+        System.out.println("==============================================");
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        DeliveryLogReader.stop();
+        System.out.println("==============================================");
+        //DeliveryLogReader.stop();
+        System.out.println("Context destroyed!");
+        System.out.println("==============================================");
     }
 }

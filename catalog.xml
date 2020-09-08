@@ -7,11 +7,11 @@
     <system systemId="http://81.26.64.34:8080/ESB/EsbWorkforce?wsdl" uri="src/conf/xml-resources/web-service-references/EsbWorkforce/wsdl/81.26.64.34_8080/ESB/EsbWorkforce.wsdl"/>
     <system systemId="http://81.26.64.111:28080/UCG/Voucher/Endpoint?wsdl" uri="src/conf/xml-resources/web-service-references/Endpoint/wsdl/81.26.64.111_28080/UCG/Voucher/Endpoint.wsdl"/>
     <system systemId="http://81.26.64.111:28080/ESB/SmsModule?wsdl" uri="src/conf/xml-resources/web-service-references/SmsModule/wsdl/81.26.64.111_28080/ESB/SmsModule.wsdl"/>
+    <system systemId="http://99.81.162.1:28080/ESB/EsbAccount?wsdl" uri="src/conf/xml-resources/web-service-references/EsbAccount/wsdl/99.81.162.1_28080/ESB/EsbAccount.wsdl"/>
+    <system systemId="http://99.81.162.1:28080/ESB/EsbGameplay?wsdl" uri="src/conf/xml-resources/web-service-references/EsbGameplay/wsdl/99.81.162.1_28080/ESB/EsbGameplay.wsdl"/>
     <system systemId="http://99.81.162.1:28080/ESB/EsbWallet?wsdl" uri="src/conf/xml-resources/web-service-references/EsbWallet/wsdl/99.81.162.1_28080/ESB/EsbWallet.wsdl"/>
     <system systemId="http://99.81.162.1:28080/ESB/EsbGeneral?wsdl" uri="src/conf/xml-resources/web-service-references/EsbGeneral/wsdl/99.81.162.1_28080/ESB/EsbGeneral.wsdl"/>
     <system systemId="http://99.81.162.1:28080/ESB/EsbWorkforce?wsdl" uri="src/conf/xml-resources/web-service-references/EsbWorkforce/wsdl/99.81.162.1_28080/ESB/EsbWorkforce.wsdl"/>
-    <system systemId="http://99.81.162.1:28080/ESB/SmsModule?wsdl" uri="src/conf/xml-resources/web-service-references/SmsModule/wsdl/99.81.162.1_28080/ESB/SmsModule.wsdl"/>
     <system systemId="http://99.81.162.1:28080/UCG/Voucher/Endpoint?wsdl" uri="src/conf/xml-resources/web-service-references/Endpoint/wsdl/99.81.162.1_28080/UCG/Voucher/Endpoint.wsdl"/>
-    <system systemId="http://99.81.162.1:28080/ESB/EsbGameplay?wsdl" uri="src/conf/xml-resources/web-service-references/EsbGameplay/wsdl/99.81.162.1_28080/ESB/EsbGameplay.wsdl"/>
-    <system systemId="http://99.81.162.1:28080/ESB/EsbAccount?wsdl" uri="src/conf/xml-resources/web-service-references/EsbAccount/wsdl/99.81.162.1_28080/ESB/EsbAccount.wsdl"/>
+    <system systemId="http://99.81.162.1:28080/ESB/SmsModule?wsdl" uri="src/conf/xml-resources/web-service-references/SmsModule/wsdl/99.81.162.1_28080/ESB/SmsModule.wsdl"/>
 </catalog>

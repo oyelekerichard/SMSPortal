@@ -22,6 +22,7 @@ public class Config extends Properties {
 
     private void loadProps() throws IOException {
         super.load(new FileInputStream("/usr/share/smsportal/config.properties"));
+        //super.load(new FileInputStream("C:\\usr\\share\\smsportal\\config.properties"));
     }
 
     private Config() {
@@ -111,5 +112,32 @@ public class Config extends Properties {
 
     public String getEMCCAlsdStaging() {
         return getProperty("emcc.alsd.staging");
+    }
+
+    public String getISWSystemId() {
+        return getProperty("isw.sms.system.id");
+    }
+
+    public String getISWPassword() {
+        return getProperty("isw.sms.password");
+    }
+
+    public String getISWSource() {
+        return getProperty("isw.sms.source");
+    }
+
+    public String getISWSingleSubmitURL() {
+        //https://sms.vanso.com/rest/sms/submit
+        return getProperty("isw.sms.single.submit");
+    }
+
+    public String getISWMultipleSubmitURL() {
+        //https://sms.vanso.com/rest/sms/submit/bulk
+        return getProperty("isw.sms.multiple.submit");
+    }
+
+    public String getQueryDLRURL() {
+        //https://sms.vanso.com/rest/sms/dlr
+        return getProperty("isw.sms.query.dlr");
     }
 }

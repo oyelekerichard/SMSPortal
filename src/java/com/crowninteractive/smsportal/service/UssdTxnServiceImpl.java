@@ -422,7 +422,7 @@ public class UssdTxnServiceImpl {
         try {
             StringBuilder sb = new StringBuilder();
             sb.append("select network as 'name', count(distinct msisdn) as 'count' from ussd_transaction u where u.incoming_time between ?1 and ?2 group by network");
-            Query query = accessbean.createNativeQuery(sb.toString());
+            Query query = em.createNativeQuery(sb.toString());
             query.setParameter(1, startDate);
             query.setParameter(2, endDate);
             return (List<GenericCount>) query.getResultList();

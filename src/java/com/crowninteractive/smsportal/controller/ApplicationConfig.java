@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -18,6 +19,7 @@ import javax.ws.rs.core.Application;
 public class ApplicationConfig extends Application {
 
     private Set<Object> singletons = new HashSet<Object>();
+    private final Logger L = Logger.getLogger(ApplicationConfig.class);
 
     public ApplicationConfig() {
         singletons.add(new UserController());

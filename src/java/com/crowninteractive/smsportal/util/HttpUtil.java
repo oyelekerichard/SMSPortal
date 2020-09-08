@@ -13,6 +13,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Base64;
+import javax.net.ssl.HttpsURLConnection;
 import org.apache.log4j.Logger;
 
 /**
@@ -63,6 +65,49 @@ public class HttpUtil {
         con.setRequestProperty("User-Agent", USER_AGENT);
         con.setRequestProperty("Content-Type", "application/json");
         con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+        con.setDoOutput(true);
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(jsonString);
+        wr.flush();
+        wr.close();
+
+        int responseCode = con.getResponseCode();
+
+        L.info("Response Code : " + responseCode);
+
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+
+        L.info(response.toString());
+        return response.toString();
+
+    }
+
+    public static String sendHttpsPost(String url, String jsonString) throws Exception {
+        L.info("Sending 'POST' request to URL : " + url);
+        L.info("Post parameters : " + jsonString);
+        URL obj = new URL(url);
+        //HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+        HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+        //add reuqest header
+        con.setRequestMethod("POST");
+        con.setRequestProperty("User-Agent", USER_AGENT);
+        con.setRequestProperty("Content-Type", "application/json");
+        con.setRequestProperty("Accept", "application/json");
+        con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+
+        String auth = Config.getInstance().getISWSystemId() + ":" + Config.getInstance().getISWPassword();
+        byte[] encodedAuth = Base64.getEncoder().encode(auth.getBytes());
+        String authHeader = "Basic " + new String(encodedAuth);
+        con.addRequestProperty("Authorization", authHeader);
+
         con.setDoOutput(true);
         DataOutputStream wr = new DataOutputStream(con.getOutputStream());
         wr.writeBytes(jsonString);

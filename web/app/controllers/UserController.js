@@ -501,12 +501,13 @@ app.controller('SettingsMiniController', function ($scope, $modalInstance, userS
 
     init();
     function init() {
-        console.log("Angular JS loaded");
-        console.log(details);
         $scope.p = {};
         $scope.w = {};
         $scope.w.showCreate = true;
         $scope.w.showEdit = false;
+        userService.findNetworkProviders().then(function (response) {
+            $scope.w.networkProviders = response.data.obj;
+        });
     }
     ;
 
@@ -530,12 +531,15 @@ app.controller('SettingsEditMiniController', function ($scope, $modalInstance, u
         $scope.w = {};
         $scope.w.showCreate = false;
         $scope.w.showEdit = true;
+        userService.findNetworkProviders().then(function (response) {
+            $scope.w.networkProviders = response.data.obj;
+        });
     }
     ;
 
 
     $scope.editSetting = function () {
-        userService.changeSetting($scope.p.id, $scope.p.currentValue).then(function (response) {
+        userService.changeSetting($scope.p.id, $scope.p.currentValue, $scope.p.settingsSection).then(function (response) {
             $modalInstance.dismiss('cancel');
         });
     };

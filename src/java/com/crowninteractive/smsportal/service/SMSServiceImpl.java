@@ -8,6 +8,7 @@ package com.crowninteractive.smsportal.service;
 import com.crowninteractive.smsportal.dto.BaseResponse;
 import com.crowninteractive.smsportal.enums.MeterType;
 import com.crowninteractive.smsportal.enums.Status;
+import com.crowninteractive.smsportal.interswitch.service.ISWSSMSServiceImpl;
 import com.crowninteractive.smsportal.model.BroadcastLog;
 import com.crowninteractive.smsportal.model.Registrations;
 import com.crowninteractive.smsportal.model.Settings;
@@ -59,6 +60,7 @@ public class SMSServiceImpl {
     private static final String WSDL6 = CONFIG.getUCGVoucherURL();
     private final SMSProcessor sp = new SMSProcessor();
     private final EkoDistribution distribution = EkoDistribution.getInstance();
+    private final ISWSSMSServiceImpl ISWSERVICE = ISWSSMSServiceImpl.getInstance();
     private static final AccountManagementService ASERVICE = AccountManagementService.getInstance();
     private static EsbGeneral_Service generalService;
     private static EsbGeneral general;
@@ -166,27 +168,40 @@ public class SMSServiceImpl {
         String batchId = DateTimeUtil.getCurrentDate().getTime() + "";
         L.info("Message ::: " + message);
         L.info("Channel ::: " + channel);
-        final Settings setting = ASERVICE.findSetting(channel);
-        for (String msisdn : msisdns) {
-            executorService.execute(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        if (msisdn != null) {
-                            L.info("Sending SMS");
-                            SmsSender.send(msisdn, setting.getCurrentValue(), message);
-                            L.info("SMS Sent");
-                            accessbean.create(new BroadcastLog(msisdn, message, channel, Status.MESSAGE_SENT, batchId));
-                            updateCount(1);
+        Settings operatorSettings = ASERVICE.findSettings(channel);
+        L.info(operatorSettings.toString());
+        if (operatorSettings.getSettingsSection().equalsIgnoreCase("INTERSWITCH")) {
+            ISWSERVICE.sendBulkSMS(msisdns, message, channel, operatorSettings);
+        } else if (operatorSettings.getSettingsSection().equalsIgnoreCase("MTECH")) {
+            final Settings setting = operatorSettings;
+            for (String msisdn : msisdns) {
+                executorService.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            if (msisdn != null) {
+                                L.info("Sending SMS");
+                                SmsSender.send(msisdn, setting.getCurrentValue(), message);
+                                L.info("SMS Sent");
+                                BroadcastLog broadcastLog = new BroadcastLog(msisdn, message, channel, Status.MESSAGE_SENT.toString(), batchId);
+                                broadcastLog.setHeader(setting.getCurrentValue());
+                                broadcastLog.setProvider("MTECH");
+                                accessbean.create(broadcastLog);
+                                updateCount(1);
+                            }
+                        } catch (Exception ex) {
+                            L.info("Exception! Could not send message!");
+                            BroadcastLog broadcastLog = new BroadcastLog(msisdn, message, channel, Status.MESSAGE_NOT_SENT.toString(), batchId);
+                            broadcastLog.setHeader(setting.getCurrentValue());
+                            broadcastLog.setProvider("MTECH");
+                            accessbean.create(broadcastLog);
                         }
-                    } catch (Exception ex) {
-                        L.info("Exception! Could not send message!");
-                        accessbean.create(new BroadcastLog(msisdn, message, channel, Status.MESSAGE_NOT_SENT, batchId));
                     }
-                }
-            });
+                });
+            }
+            executorService.shutdown();
         }
-        executorService.shutdown();
+
     }
 
     public BaseResponse getSMSUnitsCount() {
@@ -218,7 +233,9 @@ public class SMSServiceImpl {
                         L.info("Batch ID is " + batchId);
                     } catch (Exception ex) {
                         L.info("Exception! Could not send message!");
-                        accessbean.create(new BroadcastLog(msisdn, message, channel, Status.MESSAGE_NOT_SENT, batchId));
+                        accessbean.create(new BroadcastLog(msisdn, message, channel, Status.MESSAGE_NOT_SENT.toString(), batchId
+                        )
+                        );
                     }
                 }
             });

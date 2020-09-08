@@ -479,6 +479,17 @@ public class UserController {
     }
 
     @GET
+    @Path("/changeSetting/{id}/{newValue}/{settingsSection}")
+    @Produces({"application/json"})
+    public BaseResponse changeSetting(
+            @PathParam(value = "id") Long id,
+            @PathParam(value = "newValue") String newValue,
+            @PathParam(value = "settingsSection") String settingsSection) {
+        BaseResponse changeSetting = USERSERVICE.changeSetting(id, newValue, settingsSection);
+        return changeSetting;
+    }
+
+    @GET
     @Path("/deleteSetting/{id}")
     @Produces({"application/json"})
     public BaseResponse deleteSetting(

@@ -5,14 +5,11 @@
  */
 package com.crowninteractive.smsportal.model;
 
-import com.crowninteractive.smsportal.enums.Status;
 import com.crowninteractive.smsportal.util.DateTimeUtil;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +21,7 @@ import javax.persistence.Temporal;
  * @author adekanmbi
  */
 @Entity
-@Table(name = "sms_broadcast_log")
+@Table(name = "broadcast_log2")
 public class BroadcastLog implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,19 +34,31 @@ public class BroadcastLog implements Serializable {
     private String message;
     @Column(name = "channel", length = 200)
     private String channel;
+    @Column(name = "header", length = 200)
+    private String header;
+    @Column(name = "provider", length = 200)
+    private String provider;
     @Column(name = "status", length = 200)
-    @Enumerated(EnumType.STRING)
-    private Status status;
+    private String status;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     @Column(name = "create_date")
     private Date createDate;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Column(name = "updated")
+    private Date updated;
     @Column(name = "batch_id", length = 30)
     private String batchId;
+    @Column(name = "ticket_id", length = 30)
+    private String ticketId;
+    @Column(name = "ticket_status", length = 100)
+    private String ticketStatus;
+    @Column(name = "final_status")
+    private Boolean finalStatus = false;
 
     public BroadcastLog() {
     }
 
-    public BroadcastLog(String msisdn, String message, String channel, Status status, String batchId) {
+    public BroadcastLog(String msisdn, String message, String channel, String status, String batchId) {
         this.msisdn = msisdn;
         this.message = message;
         this.channel = channel;
@@ -58,12 +67,38 @@ public class BroadcastLog implements Serializable {
         this.createDate = DateTimeUtil.getCurrentDate();
     }
 
+    public BroadcastLog(String msisdn, String message, String channel, String status, Date createDate, String batchId, String ticketId) {
+        this.msisdn = msisdn;
+        this.message = message;
+        this.channel = channel;
+        this.status = status;
+        this.createDate = createDate;
+        this.batchId = batchId;
+        this.ticketId = ticketId;
+    }
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
+    }
+
+    public Boolean getFinalStatus() {
+        return finalStatus;
+    }
+
+    public void setFinalStatus(Boolean finalStatus) {
+        this.finalStatus = finalStatus;
     }
 
     public String getMsisdn() {
@@ -90,11 +125,11 @@ public class BroadcastLog implements Serializable {
         this.channel = channel;
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -112,6 +147,38 @@ public class BroadcastLog implements Serializable {
 
     public void setBatchId(String batchId) {
         this.batchId = batchId;
+    }
+
+    public String getTicketId() {
+        return ticketId;
+    }
+
+    public void setTicketId(String ticketId) {
+        this.ticketId = ticketId;
+    }
+
+    public String getTicketStatus() {
+        return ticketStatus;
+    }
+
+    public void setTicketStatus(String ticketStatus) {
+        this.ticketStatus = ticketStatus;
+    }
+
+    public String getHeader() {
+        return header;
+    }
+
+    public void setHeader(String header) {
+        this.header = header;
+    }
+
+    public String getProvider() {
+        return provider;
+    }
+
+    public void setProvider(String provider) {
+        this.provider = provider;
     }
 
     @Override

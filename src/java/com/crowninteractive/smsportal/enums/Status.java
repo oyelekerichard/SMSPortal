@@ -10,5 +10,5 @@ package com.crowninteractive.smsportal.enums;
  * @author adekanmbi
  */
 public enum Status {
-    MESSAGE_SENT, MESSAGE_NOT_SENT
+    MESSAGE_SENT, MESSAGE_NOT_SENT, ACCEPTED, REJECTED
 }

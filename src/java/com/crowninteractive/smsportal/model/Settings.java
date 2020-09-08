@@ -160,7 +160,9 @@ public class Settings implements Serializable {
 
     @Override
     public String toString() {
-        return "Settings[ id=" + id + " ]";
+        return "Settings{" + "id=" + id + ", label=" + label + ", description=" + description + ", type=" + type + ", currentValue=" + currentValue
+                + ", lastValue=" + lastValue + ", settingsSection=" + settingsSection + ", priority=" + priority + ", identifier=" + identifier
+                + ", modifiedDate=" + modifiedDate + ", createDate=" + createDate + '}';
     }
 
 }

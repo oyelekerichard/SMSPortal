@@ -117,7 +117,7 @@
                                     <td class="">{{u.role.name}}</td>
                                     <td class="">{{u.userstate}}</td>
                                     <!--                                    <td class="">{{u.lastLoginDate && u.lastLoginDate|| "New User" | date:'EEEE, MMMM d, yyyy h:mm a'}}</td>-->
-                                    <td class="">{{u.creationDate| date:'EEEE, MMMM d, yyyy h:mm a'}}</td>
+                                    <td class="">{{u.creationDate| date:'yyyy-MM-dd HH:mm:ss'}}</td>
                                     <td class="">
                                         <button data-ng-show="hasPermission('4')" class="btn btn-xs btn-success" tooltip="View User" data-ng-click="viewUser(u)"><i class="fa fa-eye"></i></button>
                                         <button data-ng-show="hasPermission('2')" class="btn btn-xs yellow" tooltip="Update User" data-ng-click="manageUser(u)"><i class="fa fa-pencil"></i></button>

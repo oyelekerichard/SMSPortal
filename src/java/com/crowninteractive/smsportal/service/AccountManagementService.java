@@ -24,6 +24,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
@@ -39,6 +40,7 @@ public class AccountManagementService {
     private final DBAccessBean accessbean;
     private static AccountManagementService INSTANCE = new AccountManagementService();
     private final Logger L = Logger.getLogger(AccountManagementService.class);
+    public ConcurrentHashMap<String, Settings> dbSettings = null;
 
     public static AccountManagementService getInstance() {
         if (INSTANCE == null) {
@@ -498,6 +500,19 @@ public class AccountManagementService {
         return new BaseResponse(merge);
     }
 
+    public BaseResponse changeSetting(Long id, String newValue, String settingSection) {
+        Settings settings = accessbean.findSingle(Settings.class, id);
+        if (settings == null) {
+            return new BaseResponse(ResponseCodes.EMPTY_RECORDS, ResponseCodes.getDefaultMessageFor(ResponseCodes.EMPTY_RECORDS));
+        }
+        settings.setSettingsSection(settingSection);
+        settings.setLastValue(settings.getCurrentValue());
+        settings.setCurrentValue(newValue);
+        settings.setModifiedDate(DateTimeUtil.getCurrentDate());
+        Settings merge = accessbean.merge(settings);
+        return new BaseResponse(merge);
+    }
+
     public BaseResponse deleteSetting(Long id) {
         Settings settings = accessbean.findSingle(Settings.class, id);
         if (settings == null) {
@@ -529,6 +544,31 @@ public class AccountManagementService {
             retVal.add(string.trim());
         }
         return retVal;
+    }
+
+    public Settings findSettings(String identifier) {
+        Settings s = null;
+        if (dbSettings != null) {
+            L.info("Getting settings from the cache!!!");
+            s = dbSettings.getOrDefault(identifier, findSetting(identifier));
+            L.info(s);
+        } else {
+            L.info("Initial settings cache set up!");
+            List<Settings> settings = accessbean.findAll(Settings.class);
+            L.info("Found " + settings.size() + " settings.");
+            if (settings != null) {
+                dbSettings = new ConcurrentHashMap<>();
+                for (Settings setting : settings) {
+                    L.info("Adding " + setting.getIdentifier());
+                    L.info(setting.toString());
+                    dbSettings.put(setting.getIdentifier(), setting);
+                    L.info("====================================================");
+                }
+                s = dbSettings.getOrDefault(identifier, findSetting(identifier));
+                L.info("Returning " + s.toString());
+            }
+        }
+        return s;
     }
 
 }

@@ -254,28 +254,35 @@ public class DBAccessBean {
         }
     }
 
-    public <T> Query createNativeQuery(String nativeQuery, Class<T> tClass) {
-        EntityManager em = emf.createEntityManager();
-        try {
-            return em.createNativeQuery(nativeQuery, tClass);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public <T> Query createNativeQuery(String nativeQuery) {
-        EntityManager em = emf.createEntityManager();
-        try {
-            return em.createNativeQuery(nativeQuery);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public Query createQuery(String query) {
-        EntityManager em = emf.createEntityManager();
+//    public <T> Query createNativeQuery(String nativeQuery, Class<T> tClass) {
+//        EntityManager em = emf.createEntityManager();
+//        try {
+//            return em.createNativeQuery(nativeQuery, tClass);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
+//    public <T> Query createNativeQuery(EntityManager em, String nativeQuery, Class<T> tClass) {
+//        try {
+//            return em.createNativeQuery(nativeQuery, tClass);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
+//
+//    public <T> Query createNativeQuery(String nativeQuery) {
+//        EntityManager em = emf.createEntityManager();
+//        try {
+//            return em.createNativeQuery(nativeQuery);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
+//
+    public Query createQuery(EntityManager em, String query) {
         try {
             return em.createQuery(query);
         } catch (Exception e) {
@@ -321,7 +328,7 @@ public class DBAccessBean {
     public <T> List<T> findAll(String query) {
         EntityManager em = emf.createEntityManager();
         try {
-            Query q = createQuery(query);
+            Query q = createQuery(em, query);
             return q.getResultList();
         } catch (Exception e) {
             e.printStackTrace();
@@ -377,7 +384,7 @@ public class DBAccessBean {
     public Object findSingleWithSingleParameters(String query, String key, Object value) {
         EntityManager em = emf.createEntityManager();
         try {
-            Query q = createQuery(query);
+            Query q = createQuery(em, query);
             q.setParameter(key, value);
             return q.getSingleResult();
         } catch (Exception e) {
