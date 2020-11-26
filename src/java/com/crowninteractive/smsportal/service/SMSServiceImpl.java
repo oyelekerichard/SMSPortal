@@ -224,6 +224,7 @@ public class SMSServiceImpl {
     public void doBroadcastTest(List<String> msisdns, String message, String channel) {
         ExecutorService executorService = Executors.newFixedThreadPool(100);
         String batchId = DateTimeUtil.getCurrentDate().getTime() + "";
+        Settings operatorSettings = ASERVICE.findSettings(channel);
         for (String msisdn : msisdns) {
             executorService.execute(new Runnable() {
                 @Override
@@ -231,6 +232,7 @@ public class SMSServiceImpl {
                     try {
                         L.info("Sending SMS to " + msisdn + "!");
                         L.info("Batch ID is " + batchId);
+                        ISWSERVICE.sendBulkSMS2(msisdns, message, channel, operatorSettings);
                     } catch (Exception ex) {
                         L.info("Exception! Could not send message!");
                         accessbean.create(new BroadcastLog(msisdn, message, channel, Status.MESSAGE_NOT_SENT.toString(), batchId

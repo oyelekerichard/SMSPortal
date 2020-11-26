@@ -10,6 +10,9 @@ import com.crowninteractive.smsportal.interswitch.dto.Account;
 import com.crowninteractive.smsportal.interswitch.dto.BulkRequest;
 import com.crowninteractive.smsportal.interswitch.dto.BulkResponse;
 import com.crowninteractive.smsportal.interswitch.dto.DLR;
+import com.crowninteractive.smsportal.interswitch.dto.LongRequest;
+import com.crowninteractive.smsportal.interswitch.dto.LongResponse;
+import com.crowninteractive.smsportal.interswitch.dto.LongResponseHolder;
 import com.crowninteractive.smsportal.interswitch.dto.QueryDLR;
 import com.crowninteractive.smsportal.interswitch.dto.QueryDLRResponse;
 import com.crowninteractive.smsportal.interswitch.dto.SMS;
@@ -165,6 +168,54 @@ public class ISWSSMSServiceImpl {
         return bresp;
     }
 
+    public LongResponseHolder sendBulkSMS2(List<String> msisdns, String message, String channel, Settings s) {
+        LongResponseHolder bresp = null;
+        LongRequest lReq = new LongRequest();
+        String src;
+        if (s != null) {
+            src = s.getCurrentValue();
+        } else {
+            src = CONFIG.getISWSource();
+        }
+
+        List<SMS> smss = new ArrayList<>();
+        SMS sms = null;
+        for (String normal : msisdns) {
+            sms = new SMS(internationalize(normal.replaceAll(" ", "")), src, message);
+            smss.add(sms);
+        }
+        lReq.setAccount(getAccountDetails());
+        lReq.getRequests().addAll(smss);
+        String toJson = GSON.toJson(lReq);
+
+        try {
+            String sendHttpsPost = HttpUtil.sendHttpsPost(CONFIG.getISWLongSubmitURL(), toJson);
+            bresp = GSON.fromJson(sendHttpsPost, LongResponseHolder.class);
+
+            List<LongResponse> responses = bresp.getResponses();
+            for (LongResponse response : responses) {
+                List<SMSResponse> messageParts = response.getMessageParts();
+                for (SMSResponse messagePart : messageParts) {
+                    BroadcastLog broadcastLog = new BroadcastLog(msisdns.get(0),
+                            message, channel, messagePart.getStatus(),
+                            DateTimeUtil.getCurrentDate(), DateTimeUtil.getCurrentDate().getTime() + "", messagePart.getTicketId());
+                    broadcastLog.setTicketStatus(messagePart.getStatus());
+                    broadcastLog.setProvider("INTERSWITCH");
+                    if (s != null) {
+                        broadcastLog.setHeader(s.getCurrentValue());
+                    }
+                    accessbean.create(broadcastLog);
+                }
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+        return bresp;
+    }
+
     public QueryDLRResponse querySMSTicketStatus(String ticketId) {
         QueryDLRResponse qdlrr = null;
         QueryDLR qdlr = new QueryDLR();
@@ -196,6 +247,15 @@ public class ISWSSMSServiceImpl {
         if (msisdn.startsWith("0")) {
             String substring = msisdn.substring(1);
             return "234" + substring;
+        }
+        if (msisdn.startsWith("7")) {
+            return "234" + msisdn;
+        }
+        if (msisdn.startsWith("8")) {
+            return "234" + msisdn;
+        }
+        if (msisdn.startsWith("9")) {
+            return "234" + msisdn;
         }
         if (msisdn.startsWith("234")) {
             return msisdn;

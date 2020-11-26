@@ -5,44 +5,45 @@
  */
 package com.crowninteractive.smsportal.interswitch.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author adekanmbi
  */
-public class SMS {
+public class LongRequest {
 
-    private String dest;
+    private Account account;
+    private List<SMS> requests = new ArrayList<>();
     private String src;
     private String text;
-    private Boolean unicode = false;
 
-    public SMS() {
+//{
+//  "account": {
+//    "password": "string",
+//    "systemId": "string"
+//  },
+//  "destinations": [
+//    "string"
+//  ],
+//  "src": "string",
+//  "text": "string"
+//}
+    public Account getAccount() {
+        return account;
     }
 
-    public SMS(String src) {
-        this.src = src;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
-    public SMS(String dest, String src, String text) {
-        this.dest = dest;
-        this.src = src;
-        this.text = text;
+    public List<SMS> getRequests() {
+        return requests;
     }
 
-    public Boolean getUnicode() {
-        return unicode;
-    }
-
-    public void setUnicode(Boolean unicode) {
-        this.unicode = unicode;
-    }
-
-    public String getDest() {
-        return dest;
-    }
-
-    public void setDest(String dest) {
-        this.dest = dest;
+    public void setRequests(List<SMS> requests) {
+        this.requests = requests;
     }
 
     public String getSrc() {

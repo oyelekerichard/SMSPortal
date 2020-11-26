@@ -140,4 +140,9 @@ public class Config extends Properties {
         //https://sms.vanso.com/rest/sms/dlr
         return getProperty("isw.sms.query.dlr");
     }
+
+    public String getISWLongSubmitURL() {
+        //https://sms.vanso.com/rest/sms/submit/multi/long
+        return getProperty("isw.sms.long.submit");
+    }
 }

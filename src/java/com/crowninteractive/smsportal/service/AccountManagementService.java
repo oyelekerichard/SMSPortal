@@ -555,8 +555,8 @@ public class AccountManagementService {
         } else {
             L.info("Initial settings cache set up!");
             List<Settings> settings = accessbean.findAll(Settings.class);
-            L.info("Found " + settings.size() + " settings.");
             if (settings != null) {
+                L.info("Found " + settings.size() + " settings.");
                 dbSettings = new ConcurrentHashMap<>();
                 for (Settings setting : settings) {
                     L.info("Adding " + setting.getIdentifier());
