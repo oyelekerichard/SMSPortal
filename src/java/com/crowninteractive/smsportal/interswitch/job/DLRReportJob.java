@@ -33,6 +33,17 @@ public class DLRReportJob implements Runnable {
                     L.info("Done processing items.");
                 }
                 Thread.sleep(10000);
+                
+                List<BroadcastLog> findBLsForEnrouteStatus = serviceImpl.findBLsEnrouteStatus();
+                if (findBLsForEnrouteStatus != null) {
+                    L.info("Found " + findBLsForEnrouteStatus.size() + " tickets waiting for updates");
+                    for (BroadcastLog findBLEnroute : findBLsForEnrouteStatus) {
+                        serviceImpl.querySMSTicketStatus(findBLEnroute.getTicketId());
+                    }
+                    L.info("Done Updating items.");
+                }
+                Thread.sleep(15000);
+                
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -300,6 +300,21 @@ public class ISWSSMSServiceImpl {
         }
     }
 
+    public List<BroadcastLog> findBLsEnrouteStatus() {
+        EntityManager em = accessbean.getEmf().createEntityManager();
+        try {
+            String sql = "select * from broadcast_log2 b where b.ticket_status = 'ENROUTE' and b.final_status = 0 limit 50;";
+            Query query = em.createNativeQuery(sql, BroadcastLog.class);
+            List<BroadcastLog> bls = (List<BroadcastLog>) query.getResultList();
+            return bls;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            em.close();
+        }
+    }
+
     public BaseResponse findBLs2() {
         EntityManager em = accessbean.getEmf().createEntityManager();
         try {
