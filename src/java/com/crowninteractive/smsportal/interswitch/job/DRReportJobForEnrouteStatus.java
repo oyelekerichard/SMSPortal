@@ -12,9 +12,9 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author adekanmbi
+ * @author richard.oyeleke
  */
-public class DLRReportJob implements Runnable {
+public class DRReportJobForEnrouteStatus implements Runnable {
 
     private final ISWSSMSServiceImpl serviceImpl = ISWSSMSServiceImpl.getInstance();
     private final Logger L = Logger.getLogger(ISWSSMSServiceImpl.class);
@@ -22,23 +22,22 @@ public class DLRReportJob implements Runnable {
     @Override
     public void run() {
         while (true) {
-            L.info("Checking for Delivery Reports");
+            L.info("Checking for Delivery Reports for Enroute Status");
             try {
-                List<BroadcastLog> findBLs = serviceImpl.findBLs();
-                if (findBLs != null) {
-                    L.info("Found " + findBLs.size() + " tickets waiting for updates");
-                    for (BroadcastLog findBL : findBLs) {
-                        serviceImpl.querySMSTicketStatus(findBL.getTicketId());
+                List<BroadcastLog> findBLsForEnrouteStatus = serviceImpl.findBLsEnrouteStatus();
+                if (findBLsForEnrouteStatus != null) {
+                    L.info("Found " + findBLsForEnrouteStatus.size() + " tickets waiting for updates");
+                    for (BroadcastLog findBLEnroute : findBLsForEnrouteStatus) {
+                        serviceImpl.querySMSTicketStatus(findBLEnroute.getTicketId());
                     }
                     L.info("Done processing items.");
                 }
-                Thread.sleep(10000);
-                     
+                Thread.sleep(15000); //To change body of generated methods, choose Tools | Templates.
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
         }
-
     }
-
 }

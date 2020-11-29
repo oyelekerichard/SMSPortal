@@ -1,6 +1,7 @@
 package com.crowninteractive.smsportal.ussd;
 
 import com.crowninteractive.smsportal.interswitch.job.DLRReportJob;
+import com.crowninteractive.smsportal.interswitch.job.DRReportJobForEnrouteStatus;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -11,9 +12,11 @@ public class USSDSessionManager {
     //private static final Logger LOG = Logger.getLogger(USSDSessionManager.class);
 
     //Attention: Do not instatiate this guy directly ever. Always use getInstance();
-    private USSDSessionManager() {
+    private USSDSessionManager() 
+    {
         new Thread(new SessionCleaner()).start();
         new Thread(new DLRReportJob()).start();
+        new Thread(new DRReportJobForEnrouteStatus()).start();
     }
 
     public static USSDSessionManager getInstance() {
