@@ -1,6 +1,7 @@
 package com.crowninteractive.smsportal.ussd;
 
 import com.crowninteractive.smsportal.interswitch.job.DLRReportJob;
+import com.crowninteractive.smsportal.interswitch.job.DRReportJobForEnrouteStatus;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -14,6 +15,7 @@ public class USSDSessionManager {
     private USSDSessionManager() {
         new Thread(new SessionCleaner()).start();
         new Thread(new DLRReportJob()).start();
+        new Thread(new DRReportJobForEnrouteStatus()).start();
     }
 
     public static USSDSessionManager getInstance() {
